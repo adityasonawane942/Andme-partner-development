@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
+import { DataService } from 'src/app/data.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private data : DataService,
+    private _ngZone: NgZone,
+    private router: Router,
+  ) { }
 
   ngOnInit() {
+  }
+
+  logout() {
+    localStorage.removeItem('ldata');
+    console.log("loggedout")
+    this._ngZone.run(() => this.router.navigate(['/home'] ));
   }
 
 }

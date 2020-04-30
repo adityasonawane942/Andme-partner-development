@@ -15,6 +15,7 @@ import { PerformanceComponent } from './user/performance/performance.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { ApplyformComponent } from './landing/applyform/applyform.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { RouterModule } from '@angular/router';
     ProfileComponent,
     UpdatesComponent,
     StoreComponent,
-    PerformanceComponent
+    PerformanceComponent,
+    ApplyformComponent
   ],
   imports: [
     BrowserModule,
@@ -40,6 +42,7 @@ import { RouterModule } from '@angular/router';
           {path:'home',component:HomeComponent},
           {path:'login',component:LoginComponent},
           {path:'apply',component:ApplyComponent},
+          {path:'form',component:ApplyformComponent},
         ]},
       {path:'user',component:UserComponent,
         children: [
