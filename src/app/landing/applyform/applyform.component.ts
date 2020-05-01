@@ -11,12 +11,29 @@ import { FormGroup } from '@angular/forms';
 })
 export class ApplyformComponent implements OnInit {
 
+  public addArray: Add[] = [];
+
   constructor(
     private data : DataService,
     private _ngZone: NgZone,
     private router: Router,
     private http: HttpClient,
-  ) { }
+  ) { 
+    this.http.get('assets/Pincode District State.csv', {responseType: 'text'})
+    .subscribe(
+        data => {
+            let csvToRowArray = data.split("\n");
+            for (let index = 1; index < csvToRowArray.length - 1; index++) {
+              let row = csvToRowArray[index].split(",");
+              this.addArray.push(new Add( parseInt( row[0], 10), row[1], row[2].trim()));
+            }
+            console.log(this.addArray);
+        },
+        error => {
+            console.log(error);
+        }
+    );
+  }  
 
   name = JSON.parse(this.data.getLdata()).name
   email = JSON.parse(this.data.getLdata()).email
@@ -28,15 +45,38 @@ export class ApplyformComponent implements OnInit {
   city
   state
   pincode
-  age
-  tnc
+  age=false
+  tnc=false
   form = new FormGroup({});
 
   ngOnInit() {
+    console.log(this.age)
+    console.log(this.tnc)
+  }
 
+  ticka() {
+    this.age = !this.age;
+    console.log(this.age)
+  }
+
+  tickt() {
+    this.tnc = !this.tnc;
+    console.log(this.tnc)
+  }
+
+  change = (event) => {
+    console.log(event.target.value)
+    var pin = event.target.value;
+    var result = this.addArray.find(obj => {
+      return obj.pincode == pin;
+    });
+    console.log(result)
+    this.state = result.state;
+    this.city = result.district;
   }
 
   submit() {
+    if(this.age && this.tnc) {
     this.http.post("http://127.0.0.1:8000/andme/apply",{
     name: this.name,
     google_id: this.uid,
@@ -48,6 +88,8 @@ export class ApplyformComponent implements OnInit {
     city_name: this.city,
     pin_code: this.pincode,
     state: this.state,
+    age: this.age,
+    tnc: this.tnc
   }).subscribe(
     result =>{
       console.log(result)
@@ -56,10 +98,25 @@ export class ApplyformComponent implements OnInit {
     },
     error => {
       console.log(error)
-      // alert(JSON.stringify(error["error"]))
+      alert(JSON.stringify(error["error"]))
     },
     () => {}
   );
 }
+else {
+  alert("Please confirm you are 18+ and accept the T&C")
+}
+  }
+}
 
+export class Add{
+  pincode: number;
+  district: String;
+  state: String;
+
+  constructor(pincode: number, district: String, state: String){
+    this.pincode = pincode;
+    this.district = district;
+    this.state = state;
+  }
 }
