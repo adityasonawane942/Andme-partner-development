@@ -1,0 +1,84 @@
+#four {
+    position: relative;
+    left: -18%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#title {
+    font-size: 2vw;
+}
+
+#title2 {
+    font-size: 3vw;
+    text-align: center;
+}
+
+#desc {
+    font-size: 1.2vw;
+}
+
+#fl {
+    text-align: center; 
+    padding: 10px;
+    font-size: 1.2vw;
+}
+
+#ft {
+    text-align: center;
+    font-size: 1.2vw;
+}
+
+#fb {
+    background: transparent;
+    border-radius: 15px;
+    border: 1px solid red;
+    transition: ease 0.3s;
+}
+
+#fb:hover {
+    box-shadow: 0 0 10px 1px;
+}
+
+@media screen and (max-width: 1000px) {
+    #title {
+        font-size: 2.2vw;
+    }
+
+    #title2 {
+        font-size: 3.3vw;
+    }
+    
+    #desc {
+        font-size: 1.5vw;
+    }
+
+    #fl,#ft {
+        font-size: 1.5vw;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    #title {
+        font-size: 2.3vw;
+    }
+
+    #title2 {
+        font-size: 3.6vw;
+    }
+    
+    #desc {
+        font-size: 1.8vw;
+    }
+
+    #fl,#ft {
+        font-size: 1.5vw;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    #four {
+        position: relative;
+        left: -3%;
+    }
+}

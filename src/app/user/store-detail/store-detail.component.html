@@ -1,0 +1,42 @@
+<div class="row">
+    <div class="col-sm-6">
+        <img style="width: 100%;" [src]="'../../../assets/'+product_image" />
+    </div>
+    <div style="padding-left: 0;" class="col-sm-6">
+        <h1 id="title"><b>&Me {{ product.name }}</b></h1>
+        <p id="desc">{{ product.desc }}</p>
+        <div id="fl" class="row">
+            <div style="padding: 0;" class="col-sm-3">
+                <h6 id="ft">Flavor Option</h6>
+            </div>
+            <div style="padding: 1%;" *ngFor="let flavor of flavors" class="col-sm-3">
+                <button id="fb" style="width: 100%;">{{ flavor }}</button>
+            </div>
+        </div>
+        <div id="fl" class="row">
+            <div style="padding: 0;" class="col-sm-3">
+                <h6 id="ft">Select Pack</h6>
+            </div>
+            <div style="padding: 1%;" *ngFor="let price of prices" class="col-sm-3">
+                <button id="fb" style="width: 100%;">{{ price }}</button>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<div id="four" class="container">
+    <h1 id="title2">Benefits</h1>
+    <br>
+    <div style="text-align: center;" class="row">
+        <div *ngFor="let benefit of benefits" class="col-sm-4">
+            <img style="width: 100%;" [src]="'../../../assets/'+benefit.image" />
+            <p>{{ benefit.name }}</p>
+        </div>
+    </div>
+    <br>
+    <h1 id="title2">About &Me {{ product.name }}</h1>
+    <br>
+    <div style="text-align: center;" class="row">
+        <p style="white-space: pre-line">{{ working }}</p>
+    </div>
+</div>

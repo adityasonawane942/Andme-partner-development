@@ -1,1 +1,27 @@
-<p>store works!</p>
+<div id="main" class="container-fluid">
+    <div class="row">
+        <div (mouseleave)="ofhover()" id="outer" class="col-sm-3">
+            <ul><br>
+                <li [id]="'menu'+category.name" class="four" (mouseleave)="ofhover()" *ngFor="let category of categories">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-5" style="padding: 0 1% 0 0; transition: ease 0.5s;">
+                                <p id="thr" (mouseenter)="hovbutton = category.name; onhover();">{{ category.name }}</p>
+                            </div>
+                            <div id="one" class="col-sm-7" *ngIf="hovered==category.name" (mouseleave)="ofhover()">
+                                <ul>
+                                    <li id="two" *ngFor="let product of category.products">
+                                        <a routerLink="/user/store/{{ category.name }}/{{ product.name }}">{{ product.name }}</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </li><br>
+            </ul>
+        </div>
+        <div style="position: relative; left: 10px;" class="col-sm-9">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

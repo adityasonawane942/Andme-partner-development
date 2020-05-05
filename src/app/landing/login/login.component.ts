@@ -78,8 +78,25 @@ export class LoginComponent implements OnInit {
         )
   }
 
-  ngOnInit() {
+  public user: any;
 
+  ngOnInit() {
+    this.user = {
+      username: '',
+      password: ''
+    };
+  }
+
+  login() {
+    this.data.login({'username': this.user.username, 'password': this.user.password});
+  }
+ 
+  refreshToken() {
+    this.data.refreshToken();
+  }
+ 
+  logout() {
+    this.data.logout();
   }
 
   ngAfterViewInit(){

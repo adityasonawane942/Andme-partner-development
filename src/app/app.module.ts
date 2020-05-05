@@ -16,6 +16,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { ApplyformComponent } from './landing/applyform/applyform.component';
+import { DataService } from './data.service';
+import { StoreDetailComponent } from './user/store-detail/store-detail.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,8 @@ import { ApplyformComponent } from './landing/applyform/applyform.component';
     UpdatesComponent,
     StoreComponent,
     PerformanceComponent,
-    ApplyformComponent
+    ApplyformComponent,
+    StoreDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -48,12 +51,16 @@ import { ApplyformComponent } from './landing/applyform/applyform.component';
         children: [
           {path:'profile',component:ProfileComponent},
           {path:'updates',component:UpdatesComponent},
-          {path:'store',component:StoreComponent},
+          {path:'store',component:StoreComponent,
+            children: [
+              {path:':category/:product', component:StoreDetailComponent},
+            ]
+          },
           {path:'performance',component:PerformanceComponent},
         ]},
     ])
   ],
-  providers: [],
+  providers: [DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
