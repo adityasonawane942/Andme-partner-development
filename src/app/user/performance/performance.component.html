@@ -1,12 +1,7 @@
-<p>performance works!</p>
+<script src="/node_modules/chart.js/dist/Chart.min.js"></script>
+<script src="/src/assets/utils.js"></script>
 
-    <div>
-        <div style="display: block;">
-            <canvas baseChart
-                [datasets]="barChartData"
-                [labels]="barChartLabel"
-                [options]="barChartOptions"
-                [legend]="barChartLegend"
-                [chartType]="barChartType"></canvas>
-        </div>
-    </div>
+
+<div id="main" style="width:75%;">
+	<canvas id="canvas"></canvas>
+</div>

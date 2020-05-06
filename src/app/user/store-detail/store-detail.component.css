@@ -5,6 +5,15 @@
     margin-right: auto;
 }
 
+a {
+    text-decoration: none;
+    color: black;
+}
+
+#know a {
+    color: black;
+}
+
 #title {
     font-size: 2vw;
 }
@@ -18,6 +27,14 @@
     font-size: 1.2vw;
 }
 
+#zerol {
+    padding-left: 0;
+}
+
+#zero {
+    padding: 0;
+}
+
 #fl {
     text-align: center; 
     padding: 10px;
@@ -27,6 +44,9 @@
 #ft {
     text-align: center;
     font-size: 1.2vw;
+    /* position: relative;
+    top: 8vh; */
+    margin: 0;
 }
 
 #fb {
@@ -34,10 +54,22 @@
     border-radius: 15px;
     border: 1px solid red;
     transition: ease 0.3s;
+    cursor: default;
 }
 
-#fb:hover {
-    box-shadow: 0 0 10px 1px;
+#know {
+    background-color: skyblue;
+    font-size: 2vw;
+    transition: ease 0.3s;
+}
+
+#know:hover {
+    transform: scale(1.2);
+    border-radius: 10px;
+}
+
+#ben {
+    width: 100%;
 }
 
 @media screen and (max-width: 1000px) {
@@ -79,6 +111,52 @@
 @media screen and (max-width: 576px) {
     #four {
         position: relative;
-        left: -3%;
+        left: 0;
+    }
+
+    #title {
+        text-align: center;
+        font-size: 5vw;
+    }
+
+    #desc {
+        text-align: center;
+        font-size: 3vw;
+    }
+
+    #ft, #fb {
+        text-align: center;
+        font-size: 3vw;
+    }
+
+    #ft {
+        position: relative;
+        top: 0;
+    }
+
+    #know {
+        text-align: center;
+        font-size: 3vw;
+    }
+
+    #zerol {
+        padding-left: 15px;
+    }
+
+    #zero {
+        padding: 0 15px 15px 0;
+    }
+
+    #know { 
+        border-radius: 10px;
+    }
+
+    #title2 {
+        text-align: center;
+        font-size: 4vw;
+    }
+
+    #ben {
+        width: 60%;
     }
 }

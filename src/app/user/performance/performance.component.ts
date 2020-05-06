@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from 'src/app/data.service';
+import { Chart } from 'chart.js';
+
 
 @Component({
   selector: 'app-performance',
@@ -7,23 +10,80 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PerformanceComponent implements OnInit {
 
-  public barChartOptions = {
-    scaleShowVerticalLines: false,
-    responsiv: true
-  };
-
-  public barChartLabels = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
-  public barChartType = 'bar';
-  public barChartLegend = true;
-
-  public barChartData =  [
-    {data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A'},
-    {data: [28, 48, 40, 19, 86, 27, 90], label: 'Series B'}
-  ];
-
-  constructor() { }
+  constructor(
+    private weather: DataService
+  ) { }
+  
+res
+chart
 
   ngOnInit() {
+    this.res = JSON.parse(this.weather.dailyForecast())
+    console.log(this.res)
+    let temp_max = this.res['list'].map(res => res.main.temp_max)
+    let temp_min = this.res['list'].map(res => res.main.temp_min)
+    let alldates = this.res['list'].map(res => res.dt)
+
+    let weatherDates = []
+    alldates.forEach((res) => {
+      let jsdate = new Date(res * 1000)
+      weatherDates.push(jsdate.toLocaleTimeString('en', {year:'numeric', month: 'short', day: 'numeric'}))
+    })
+
+    console.log(weatherDates)
+
+    this.chart = new Chart('canvas', {
+      type: 'line',
+      data: {
+        labels: weatherDates,
+        datasets: [
+          {
+            data: temp_max,
+            borderColor: '#3cba9f',
+            fill: false
+          },
+          {
+            data: temp_min,
+            borderColor: '#ffcc00',
+            fill: false
+          },
+        ]
+      },
+      options: {
+        responsive: true,
+        legend: {
+          display: false
+        },
+				title: {
+					display: true,
+					text: 'Chart.js Line Chart'
+				},
+				tooltips: {
+					mode: 'index',
+					intersect: false,
+				},
+				hover: {
+					mode: 'nearest',
+					intersect: true
+				},
+				scales: {
+					xAxes: [{
+						display: true,
+						scaleLabel: {
+							display: true,
+							labelString: 'Time'
+						}
+					}],
+					yAxes: [{
+						display: true,
+						scaleLabel: {
+							display: true,
+							labelString: 'Temp'
+						}
+					}]
+				}
+      }
+    })
   }
 
 }

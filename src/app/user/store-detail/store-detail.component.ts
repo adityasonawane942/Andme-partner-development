@@ -57,9 +57,9 @@ export class StoreDetailComponent implements OnInit {
           this.products = this.categories.find(category => category.name==this.current_category).products
           // console.log(this.products)
           this.product = this.products.find(product => product.name==this.current_product)
-          // console.log(this.product)
+          console.log(this.product)
           this.product_image = this.product['image1']
-          // console.log(this.imagesrc)
+          // console.log(this.product_image)
           // console.log(this.product['flavour'])
           this.flavors = this.product['flavour'].split(",")
           // console.log(this.flavors)
