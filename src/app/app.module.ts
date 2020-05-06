@@ -12,6 +12,8 @@ import { UpdatesComponent } from './user/updates/updates.component';
 import { StoreComponent } from './user/store/store.component';
 import { PerformanceComponent } from './user/performance/performance.component';
 
+import { ChartsModule } from 'ng2-charts'
+
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
@@ -36,6 +38,7 @@ import { StoreDetailComponent } from './user/store-detail/store-detail.component
   ],
   imports: [
     BrowserModule,
+    ChartsModule,
     FormsModule,
     RouterModule,
     HttpClientModule,
