@@ -33,13 +33,13 @@ export class StoreComponent implements OnInit {
 
   onhover() {
     document.getElementById('menu'+this.hovbutton).style.color = "red"
-    document.getElementById('menu'+this.hovbutton).style.backgroundColor = "white"
+    // document.getElementById('menu'+this.hovbutton).style.backgroundColor = "white"
     this.hovered = this.hovbutton
   }
 
   ofhover() {
     document.getElementById('menu'+this.hovbutton).style.color = "black"
-    document.getElementById('menu'+this.hovbutton).style.backgroundColor = "inherit"
+    // document.getElementById('menu'+this.hovbutton).style.backgroundColor = "inherit"
     this.hovered = undefined
   }
 

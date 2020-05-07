@@ -1,0 +1,278 @@
+#main {
+    margin-top: 100px;
+    text-align: center;
+    background: rgb(169,233,233);
+    background: linear-gradient(0deg, rgba(169,233,233,1) 0%, rgba(98,241,239,1) 100%);
+}
+
+#banner {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#wel {
+    position: relative;
+    color: white;
+    opacity: 0.8;
+    top: -20vw;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 4vw;
+    font-weight: 900;
+}
+
+#section {
+    position: relative;
+    top: -14vw;
+}
+
+#regd {
+    padding: 5%;
+}
+
+#regh {
+    font-size: 1.5vw;
+    margin-bottom: 2vw;
+}
+
+#rega {
+    padding: 2%;
+    font-size: 1.3vw;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: lightgreen;
+    border-radius: 25px;
+    width: 50%;
+}
+
+#whyh {
+    position: relative;
+    top: -10vw;
+    font-weight: 700;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 2.5vw;
+}
+
+#smi {
+    width: 90%;
+    position: relative;
+    top: -8vw;
+}
+
+#exp {
+    position: relative;
+    top: -5vw;
+}
+
+#what {
+    margin-bottom: 2vw;
+    font-size: 2.5vw;
+    font-weight: 700;
+}
+
+#whatd {
+    padding: 0 5%;
+}
+
+#whati {
+    margin-bottom: 2vw;
+    border-radius: 50%;
+}
+
+#whath {
+    font-size: 1.5vw;
+}
+
+#stat {
+    padding: 5px 20px;
+}
+
+#stati {
+    display: inline-block;
+    width: 50%;
+    padding-right: 0;
+    position: relative;
+    left: 1px;
+}
+
+#statdt {
+    display: inline-block;
+    width: 50%;
+    background-color: lightsalmon;
+}
+
+#stath {
+    color: white;
+    font-size: 2.5vw;
+    margin-top: 4vw;
+}
+
+#statp {
+    font-size: 1.3vw;
+    color: white;
+}
+
+#faq {
+    margin-top: 7vw;
+}
+
+#item {
+    padding: 2% 0;
+    border-bottom: 1px solid steelblue;
+}
+
+#itema {
+    color: black;
+    margin: 0;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+#itema:hover {
+    text-decoration: underline;
+}
+
+#soch {
+    margin-top: 5vw;
+    margin-bottom: 1vw;
+}
+
+#icon {
+    color: black;
+    font-size: 2vw;
+    padding: 0 10px;
+}
+
+#foot {
+    background-color: lightgray;
+}
+
+@media screen and (max-width: 1000px) {
+    #regh, #whath {
+        font-size: 1.7vw;
+    }
+
+    #rega {
+        font-size: 1.5vw;
+        width: 70%;
+    }
+
+    #statp {
+        font-size: 1.4vw;
+    }
+
+    #whyh, #what, #stath {
+        font-size: 2.7vw;
+    }
+
+    #icon {
+        font-size: 2.3vw;
+    }
+}
+
+
+@media screen and (max-width: 800px) {
+    #regh, #whath {
+        font-size: 1.9vw;
+    }
+
+    #rega {
+        font-size: 1.7vw;
+    }
+
+    #statp {
+        font-size: 1.5vw;
+    }
+
+    #whyh, #what, #stath {
+        font-size: 2.9vw;
+    }
+
+    #stath {
+        margin-top: 2.8vw;
+    }
+
+    #icon {
+        font-size: 2.6vw;
+    }
+}
+
+
+@media screen and (max-width: 700px) {
+    #regh, #whath {
+        font-size: 2.1vw;
+    }
+
+    #rega {
+        font-size: 1.9vw;
+    }
+
+    #statp {
+        font-size: 1.6vw;
+    }
+
+    #whyh, #what {
+        font-size: 3.1vw;
+    }
+
+    #stath {
+        font-size: 2.8vw;
+        margin-top: 1vw;
+    }
+
+    #icon {
+        font-size: 2.9vw;
+    }
+}
+
+
+@media screen and (max-width: 576px) {
+    #regd {
+        margin-left: auto;
+        margin-right: auto;
+        width: 80%;
+    }
+
+    #regh, #whath {
+        font-size: 2.5vw;
+    }
+
+    #rega {
+        font-size: 2.7vw;
+    }
+
+    #statp {
+        font-size: 2.5vw;
+    }
+
+    #whyh, #what, #stath {
+        font-size: 5vw;
+    }
+
+    #stath {
+        margin-top: 7vw;
+    }
+
+    #whatd {
+        padding: 0 20%;
+    }
+
+    #stati {
+        left: 0;
+        padding: 0;
+    }
+
+    #stat {
+        padding: 2% 20%;
+    }
+    
+    #soch {
+        margin-bottom: 3vw;
+    }
+
+    #icon {
+        font-size: 5vw;
+    }
+}

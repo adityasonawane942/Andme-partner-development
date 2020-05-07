@@ -1,6 +1,5 @@
 #main {
     margin-top: 120px;
-    /* float: left; */
     width: 100%;
 }
 
@@ -30,7 +29,6 @@ a:hover {
     padding-left: 0; 
     font-size: 1.3vw;
     text-align: center;
-    transition: ease 0.5s;
 }
 
 #inner {
@@ -39,22 +37,11 @@ a:hover {
 
 #one {
     padding: 0;
-    background-color: white;
     position: relative;
-    transition: ease 0.5s;
-}
-
-#one:hover {
-    transition: ease 0.5s;
 }
 
 #two {
     height: 60px;
-}
-
-#two:hover {
-    background-color: skyblue;
-    transition: ease 0.5s;
 }
 
 #thr {

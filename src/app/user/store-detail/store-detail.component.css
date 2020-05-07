@@ -43,7 +43,7 @@ a {
 
 #ft {
     text-align: center;
-    font-size: 1.2vw;
+    font-size: 1.5vw;
     /* position: relative;
     top: 8vh; */
     margin: 0;
@@ -61,11 +61,15 @@ a {
     background-color: skyblue;
     font-size: 2vw;
     transition: ease 0.3s;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px 15px;
+    border-radius: 30px;
 }
 
 #know:hover {
     transform: scale(1.2);
-    border-radius: 10px;
+    /* border-radius: 10px; */
 }
 
 #ben {
@@ -85,8 +89,11 @@ a {
         font-size: 1.5vw;
     }
 
-    #fl,#ft {
+    #fl {
         font-size: 1.5vw;
+    }
+    #ft {
+        font-size: 1.8vw;
     }
 }
 
@@ -103,8 +110,11 @@ a {
         font-size: 1.8vw;
     }
 
-    #fl,#ft {
-        font-size: 1.5vw;
+    #fl {
+        font-size: 1.8vw;
+    }
+    #ft {
+        font-size: 2.1vw;
     }
 }
 
