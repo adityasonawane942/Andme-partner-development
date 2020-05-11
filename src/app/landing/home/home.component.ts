@@ -12,4 +12,8 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
   }
 
+  one() {
+    document.getElementById('arrow').style.transform = "rotate(180deg)";
+  }
+
 }

@@ -23,7 +23,7 @@ export class ApplyComponent implements OnInit {
   public gID: number;
   public imageURL: string;
   public email: string;
-  private url: string = "http://127.0.0.1:8000/andme";
+  private url: string = "http://127.0.0.1:8000/andme/user";
 
   ngOnInit() {
   }
@@ -69,20 +69,13 @@ export class ApplyComponent implements OnInit {
       .subscribe(
         data => {
           console.log(data);
-          this.data.setjdata(
-            JSON.stringify({
-            'name':data['name'],
-            'email':data['email'],
-            'uid':data['google_id'],
-            'mobile':data['mobile_number']
-          }));
           this._ngZone.run(() => this.router.navigate(['/user/profile']));
         },
         error => {
           console.log("to form")
           this._ngZone.run(() => this.router.navigate(['/form']));
-                  }
-        )
+        }
+      )
   }
 
 }

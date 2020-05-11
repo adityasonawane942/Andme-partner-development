@@ -6,7 +6,7 @@
 				<div class="col-12">
 					<nav class="navbar navbar-expand-md navbar-light">
 					
-						<a class="navbar-brand" routerLink=""><img src="../assets/logo.webp" alt=""></a>	
+						<a class="navbar-brand" routerLink="/home"><img src="../assets/logo.webp" alt=""></a>	
 						
 						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 							<span class="navbar-toggler-icon"></span>
@@ -17,11 +17,17 @@
 								<li routerLinkActive="active" class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
 									<a class="nav-link" routerLink="/home">Home</a>
 								</li>
-								<li routerLinkActive="active" class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+								<li *ngIf="!loggedin" routerLinkActive="active" class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
 									<a class="nav-link" routerLink="/login">Login</a>
 								</li>
 								<li routerLinkActive="active" class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
 									<a class="nav-link" routerLink="/apply">Apply</a>
+								</li>
+								<li *ngIf="loggedin" routerLinkActive="active" class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+									<a class="nav-link" routerLink="/user/profile">Profile</a>
+								</li>
+								<li *ngIf="loggedin" class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+									<a class="nav-link" (click)="logout()" routerLink="/home">Logout</a>
 								</li>
 							</ul>
 						</div>

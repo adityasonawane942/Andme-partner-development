@@ -9,7 +9,7 @@ export class UpdatesComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
+  ngOnInit() {  
   }
 
 }

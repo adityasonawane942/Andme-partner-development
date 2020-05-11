@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { DataService } from 'src/app/data.service';
 
 @Component({
   selector: 'app-store',
@@ -10,6 +11,7 @@ export class StoreComponent implements OnInit {
 
   constructor(
     private http: HttpClient,
+    private data: DataService,
   ) { }
 
   categories
@@ -20,10 +22,8 @@ export class StoreComponent implements OnInit {
     this.http.get('http://127.0.0.1:8000/andme/products/')
       .subscribe(
         data => {
-          // console.log(data);
           this.categories = data['Categories']
-          // console.log(this.categories)
-          // for (var i of this.categories) {console.log(i.products)}
+          this.data.setstoredata(this.categories)
         },
         error => {
           alert(JSON.stringify(error))
@@ -32,14 +32,10 @@ export class StoreComponent implements OnInit {
   }
 
   onhover() {
-    document.getElementById('menu'+this.hovbutton).style.color = "red"
-    // document.getElementById('menu'+this.hovbutton).style.backgroundColor = "white"
     this.hovered = this.hovbutton
   }
 
   ofhover() {
-    document.getElementById('menu'+this.hovbutton).style.color = "black"
-    // document.getElementById('menu'+this.hovbutton).style.backgroundColor = "inherit"
     this.hovered = undefined
   }
 

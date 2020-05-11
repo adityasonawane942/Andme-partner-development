@@ -20,6 +20,7 @@ import { RouterModule } from '@angular/router';
 import { ApplyformComponent } from './landing/applyform/applyform.component';
 import { DataService } from './data.service';
 import { StoreDetailComponent } from './user/store-detail/store-detail.component';
+import { ResourcesComponent } from './user/resources/resources.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { StoreDetailComponent } from './user/store-detail/store-detail.component
     StoreComponent,
     PerformanceComponent,
     ApplyformComponent,
-    StoreDetailComponent
+    StoreDetailComponent,
+    ResourcesComponent
   ],
   imports: [
     BrowserModule,
@@ -54,6 +56,7 @@ import { StoreDetailComponent } from './user/store-detail/store-detail.component
         children: [
           {path:'profile',component:ProfileComponent},
           {path:'updates',component:UpdatesComponent},
+          {path:'resources',component:ResourcesComponent},
           {path:'store',component:StoreComponent,
             children: [
               {path:':category/:product', component:StoreDetailComponent},

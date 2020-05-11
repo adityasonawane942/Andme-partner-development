@@ -43,7 +43,6 @@ export class LoginComponent implements OnInit {
       (googleUser)=> {
         let profile=googleUser.getBasicProfile();
         this.gID=profile.getId();
-
         this.data.setLdata(JSON.stringify({
           'name':profile.getName(),
           'email':profile.getEmail(),
@@ -62,75 +61,20 @@ export class LoginComponent implements OnInit {
       .subscribe(
         data => {
           console.log(data);
-          this.data.setjdata(
-            JSON.stringify({
-            'name':data['name'],
-            'email':data['email'],
-            'uid':data['google_id'],
-            'mobile':data['mobile_number']
-          }));
+          this.data.setuserdata(data)
           this._ngZone.run(() => this.router.navigate(['/user/profile']));
         },
         error => {
-          // this._ngZone.run(() => this.router.navigate(['/']));
           alert("You need to be a registered partner to login. To become a registered partner you need to apply here http://localhost:4200/apply");
                   }
         )
   }
 
-  public user: any;
-
   ngOnInit() {
-    this.user = {
-      username: '',
-      password: ''
-    };
-  }
-
-  login() {
-    this.data.login({'username': this.user.username, 'password': this.user.password});
-  }
- 
-  refreshToken() {
-    this.data.refreshToken();
-  }
- 
-  logout() {
-    this.data.logout();
   }
 
   ngAfterViewInit(){
     this.googleInit();
   }
-
-  
-
-//   login() {
-//     // if (this.data.getLdata()) {
-//     //   this._ngZone.run(() => this.router.navigate(['/user/profile'] ));
-//     //   console.log("loggedin")
-//     // }
-//     // else console.log("error")
-
-//     this.http.get(this.url+'/'+this.gID)
-//     .subscribe(
-//       // data => this.router.navigate(['profile'],{relativeTo: this.activatedRoute.parent}),
-//       data => {
-//         // console.log(data),
-//         this.data.setjdata(
-//           JSON.stringify({
-//           'name':data['name'],
-//           'email':data['email'],
-//           'uid':data['google_id'],
-//           'mobile':data['mobile_number']
-
-//         }))
-//         this._ngZone.run(() => this.router.navigate(['/profile']));
-//       },
-//       error => {
-//         this._ngZone.run(() => this.router.navigate(['/login']));
-//                 }
-//       )
-// }
 
 }

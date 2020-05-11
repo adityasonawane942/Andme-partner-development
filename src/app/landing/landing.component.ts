@@ -19,10 +19,18 @@ export class LandingComponent implements OnInit {
     private data: DataService,
   ) {}
 
+  logout() {
+    localStorage.removeItem('ldata');
+    console.log("loggedout")
+    this.loggedin = false
+    this._ngZone.run(() => this.router.navigate(['/home'] ));
+  }
+
   ngOnInit() {
 
     this._ngZone.run(() => this.router.navigate(['/home'] ));
 
+    if(this.data.getLdata()) {this.loggedin = true;}
     //anim
   (function($) { "use strict";
 

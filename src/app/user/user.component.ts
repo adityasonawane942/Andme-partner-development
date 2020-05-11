@@ -19,6 +19,12 @@ export class UserComponent implements OnInit {
     private data: DataService,
   ) {}
 
+  logout() {
+    localStorage.removeItem('ldata');
+    console.log("loggedout")
+    this._ngZone.run(() => this.router.navigate(['/home'] ));
+  }
+
   ngOnInit() {
 
     if(this.data.getLdata()) {this.loggedin = true;}

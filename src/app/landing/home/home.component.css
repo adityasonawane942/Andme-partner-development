@@ -132,6 +132,7 @@
 
 #itema:hover {
     text-decoration: underline;
+    transform: rotate(180deg);
 }
 
 #soch {
@@ -143,6 +144,12 @@
     color: black;
     font-size: 2vw;
     padding: 0 10px;
+    transition: ease 0.3s;
+}
+
+#icon:hover {
+    transform: scale(1.2);
+    color: hotpink;
 }
 
 #foot {
