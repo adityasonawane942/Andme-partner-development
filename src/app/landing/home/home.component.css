@@ -1,8 +1,8 @@
 #main {
     margin-top: 100px;
     text-align: center;
-    background: rgb(169,233,233);
-    background: linear-gradient(0deg, rgba(169,233,233,1) 0%, rgba(98,241,239,1) 100%);
+    background: rgb(228,239,239);
+background: linear-gradient(0deg, rgba(228,239,239,1) 0%, rgba(98,241,239,1) 100%);
 }
 
 #banner {

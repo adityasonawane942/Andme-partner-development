@@ -12,12 +12,14 @@ import * as moment from 'moment';
 export class PerformanceComponent implements OnInit {
 
   constructor(
-    private weather: DataService,
-    private http: HttpClient
+    private http: HttpClient,
+    private data: DataService
   ) { }
 
+margin
 res
 chart
+charttwo
 newlist = []
 codelist = []
 foundcode = []
@@ -25,13 +27,21 @@ foundorder = []
 price = []
 dates = []
 finaldata = []
+finaldatamargin = []
+dateoption = "Last 30 days"
 
+    select() {
+      console.log(this.dateoption)
+    }
+ 
   ngOnInit() {
     console.log(this.price)
     this.http.get('http://127.0.0.1:8000/andme/orders')
     .subscribe(
       data => {
         console.log(data);
+        this.margin = this.data.getuserdata().margin/100
+        console.log(this.margin)
         for(var i = 0; i<5; i++) {
           this.newlist.push(...data[i].orders)
         }
@@ -51,16 +61,21 @@ finaldata = []
         this.price = this.foundorder.map(res => parseFloat(res.subtotal_price))
         console.log(this.price.reverse())
         this.dates = this.foundorder.map(res => moment(res.created_at).format('LLL'))
+        this.dates = this.dates.reverse()
         console.log(this.dates.reverse())
         for(var i=0; i<this.price.length; i++) {
-          this.finaldata.push({x: new Date(this.dates[i]), y: this.price[i]})
+          this.finaldata.push({x: new Date(this.dates[this.dates.length - i - 1]), y: this.price[i].toFixed(2)})
+          this.finaldatamargin.push({x: new Date(this.dates[this.dates.length - i - 1]), y: (this.price[i]*this.margin).toFixed(2)})
         }
         console.log(this.finaldata)
+        console.log(this.finaldatamargin)
+
+        document.getElementById('loader-1').style.display = "none"
+        document.getElementById('canvas').style.display = "block"
 
         this.chart = new Chart('canvas', {
           type: 'line',
           data: {
-            // labels: DAYS(),
             datasets: [{
               data: this.finaldata,
               fill: false,
@@ -71,11 +86,11 @@ finaldata = []
             elements: {
               line: {
                   tension: 0
-              }
+              },
             },
             responsive: true,
             legend: {
-              display: true,
+              display: false,
               labels: {
                 generateLabels: (canvas) => [
                   {
@@ -84,10 +99,6 @@ finaldata = []
                   }
                 ] 
               }
-            },
-            title: {
-              display: true,
-              text: 'Chart.js Line Chart'
             },
             tooltips: {
               mode: 'index',
@@ -100,11 +111,78 @@ finaldata = []
             scales: {
               xAxes: [{
                 type: 'time',
-                // time: {
-                //     displayFormats: {
-                //         quarter: 'MMM YYYY'
-                //     }
-                // }
+                time: {
+                    unit: 'day',
+                    stepSize: 1
+                },
+                display: true,
+                scaleLabel: {
+                  display: true,
+                  labelString: 'Time'
+                }
+              }],
+              yAxes: [{
+                ticks: {
+                  callback: function(value, index, values) {
+                      return '₹' + value;
+                  },
+              },
+                display: true,
+                scaleLabel: {
+                  display: true,
+                  labelString: 'Amount'
+                }
+              }]
+            }
+          }
+        })
+
+        document.getElementById('loader-2').style.display = "none"
+        document.getElementById('canvastwo').style.display = "block"
+        
+        this.charttwo = new Chart('canvastwo', {
+          type: 'line',
+          data: {
+            // labels: DAYS(),
+            datasets: [{
+              data: this.finaldatamargin,
+              fill: false,
+              borderColor: 'skyblue'
+            }]
+          },
+          options: {
+            elements: {
+              line: {
+                  tension: 0
+              }
+            },
+            responsive: true,
+            legend: {
+              display: false,
+              labels: {
+                generateLabels: (canvastwo) => [
+                  {
+                    text: 'Amount',
+                    fillStyle: 'skyblue'
+                  }
+                ] 
+              }
+            },
+            tooltips: {
+              mode: 'index',
+              intersect: false,
+            },
+            hover: {
+              mode: 'nearest',
+              intersect: true
+            },
+            scales: {
+              xAxes: [{
+                type: 'time',
+                time: {
+                    unit: 'day',
+                    stepSize: 1
+                },
                 display: true,
                 scaleLabel: {
                   display: true,

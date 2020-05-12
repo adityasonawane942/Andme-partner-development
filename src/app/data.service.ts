@@ -24,6 +24,14 @@ export class DataService {
     return localStorage.getItem('ldata')
   }
 
+  setuserdata(data) {
+    this.userdata = data
+  }
+
+  getuserdata() {
+    return this.userdata
+  }
+
   setstoredata(data) {
     this.storedata = data
   }

@@ -1,6 +1,7 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataService } from '../data.service';
+import { HttpClient } from '@angular/common/http';
 
 declare var jQuery:any;
 
@@ -12,11 +13,15 @@ declare var jQuery:any;
 export class UserComponent implements OnInit {
 
   loggedin = false;
+  userdata
+  gID
+  url = "http://127.0.0.1:8000/andme/user" 
 
   constructor(
     private _ngZone: NgZone,
     private router: Router,
     private data: DataService,
+    private http: HttpClient,
   ) {}
 
   logout() {
@@ -27,7 +32,21 @@ export class UserComponent implements OnInit {
 
   ngOnInit() {
 
-    if(this.data.getLdata()) {this.loggedin = true;}
+    this.gID = JSON.parse(this.data.getLdata()).uid
+    this.http.get(this.url+'/'+this.gID)
+    .subscribe(
+      data => {
+        this.userdata = data
+        this.data.setuserdata(data)
+      },
+      error => {
+        alert("You need to be a registered partner to login. To become a registered partner you need to apply here http://localhost:4200/apply");
+      }
+    )
+
+    if(this.data.getLdata()) {
+      this.loggedin = true;
+    }
 
     //anim
   (function($) { "use strict";

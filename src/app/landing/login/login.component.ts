@@ -61,6 +61,7 @@ export class LoginComponent implements OnInit {
       .subscribe(
         data => {
           console.log(data);
+          this.data.setuserdata(data);
           this._ngZone.run(() => this.router.navigate(['/user/profile']));
         },
         error => {

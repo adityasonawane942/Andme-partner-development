@@ -1,7 +1,55 @@
 <script src="/node_modules/chart.js/dist/Chart.min.js"></script>
 <script src="/src/assets/utils.js"></script>
 
-
-<div id="main" style="width:75%;">
-	<canvas id="canvas"></canvas>
+<div style="margin-top: 120px;">
+	<div style="margin: 2vw auto; width: 50%;">
+		<label for="dateoption">Select One</label>
+		<select class="form-control" id="dateoption" name="dateoption" (change)="select()" [(ngModel)]="dateoption">
+			<option>Last 7 days</option>
+			<option>Last 30 days</option>
+			<option>Last 90 days</option>
+			<option>Last Month</option>
+		</select>
+	</div>
+	<div style="margin-left: auto; margin-right: auto;" class="row">
+		<div style="margin-left: auto; margin-right: auto;" class="col-sm-6">
+			<div class="card" id="main">
+				<h3 style="text-align: center;">Sales</h3>
+				<div class="loader" id="loader-1"></div>
+				<canvas id="canvas"></canvas>
+			</div>
+		</div>
+		<div style="margin-left: auto; margin-right: auto;" class="col-sm-6">
+			<div class="card" id="main">
+				<h3 style="text-align: center;">Margin</h3>
+				<div class="loader" id="loader-2"></div>
+				<canvas id="canvastwo"></canvas>
+			</div>
+		</div>
+	</div>
+	<div style="margin-top: 4vw; width: 80%; margin-left: auto; margin-right: auto;" class="card table-responsive">
+		<table id="table" class="table table-hover">
+			<thead class="thead-dark">
+			<tr>
+				<th>Name</th>
+				<th>Email</th>
+				<th>Order Date</th>
+				<th>Amount</th>
+				<th>Margin</th>
+			</tr>
+			</thead>
+			<tbody>
+			<tr *ngFor="let order of foundorder, let i=index">
+				<td style="text-transform: capitalize;">{{order.customer.first_name}} {{order.customer.last_name}}</td>
+				<td>{{order.customer.email}}</td>
+				<td>{{dates[i]}}</td>
+				<td>₹{{order.subtotal_price}}</td>
+				<td>₹{{(order.subtotal_price*margin).toFixed(2)}}</td>
+			</tr>
+			</tbody>
+		</table>
+	</div>
+	<br>
+	<br>
+	<br>
 </div>

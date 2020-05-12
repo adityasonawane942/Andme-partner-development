@@ -1,4 +1,4 @@
-#main {
+/* #main {
     margin-top: 120px;
     width: 100%;
 }
@@ -92,5 +92,53 @@ a:hover {
         text-align: center;
         position: relative;
         left: 0;
+    }
+} */
+
+.card {
+    margin-bottom: 10px;
+}
+
+.card-title {
+    font-size: 2vw;
+}
+
+.card-text {
+    font-size: 1.5vw;
+}
+
+@media screen and (max-width: 1000px) {
+    .card-title {
+        font-size: 2.2vw;
+    }
+    
+    .card-text {
+        font-size: 1.7vw;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .card-title {
+        font-size: 2.4vw;
+    }
+    
+    .card-text {
+        font-size: 1.9vw;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .card-title {
+        font-size: 4vw;
+    }
+
+    .card {
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .card-text {
+        font-size: 3vw;
     }
 }
