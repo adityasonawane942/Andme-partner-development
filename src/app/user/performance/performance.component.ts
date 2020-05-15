@@ -20,6 +20,7 @@ margin
 res
 chart
 charttwo
+deta
 newlist = []
 codelist = []
 foundcode = []
@@ -28,24 +29,65 @@ price = []
 dates = []
 finaldata = []
 finaldatamargin = []
-dateoption = "Last 30 days"
+dateoption = "Last 7 days"
+datefinal = moment().subtract(7, 'days').format()
 
-    select() {
-      console.log(this.dateoption)
+  select() {
+    document.getElementById('canvas').style.display = "none"
+    document.getElementById('canvastwo').style.display = "none"
+    console.log(this.dateoption)
+    switch(this.dateoption) {
+      case "Last 7 days":
+        console.log("case 1")
+        this.datefinal = moment().subtract(7, 'days').format()
+        break
+      case "Last 30 days":
+        console.log("case 2")
+        this.datefinal = moment().subtract(30, 'days').format()
+        break
+      case "Last 90 days":
+        console.log("case 3")
+        this.datefinal = moment().subtract(90, 'days').format()
+        break
+      default:
+        console.log("def")
     }
+    document.getElementById('loader-1').style.display = "block"
+    document.getElementById('loader-2').style.display = "block"
+    this.newlist = []
+    this.codelist = []
+    this.foundcode = []
+    this.foundorder = []
+    this.price = []
+    this.dates = []
+    this.finaldata = []
+    this.finaldatamargin = []
+    this.chart.clear()
+    this.charttwo.clear()
+    this.chart.destroy()
+    this.charttwo.destroy()
+    this.charter(this.datefinal)
+  }
  
   ngOnInit() {
     console.log(this.price)
-    this.http.get('http://127.0.0.1:8000/andme/orders')
+    this.charter(this.datefinal)
+  }
+  
+  charter(date) {
+    document.getElementById('canvas').style.display = "none"
+    document.getElementById('canvastwo').style.display = "none"
+    this.http.get('http://127.0.0.1:8000/andme/orders/' + date)
     .subscribe(
       data => {
         console.log(data);
+        this.deta = data
         this.margin = this.data.getuserdata().margin/100
         console.log(this.margin)
-        for(var i = 0; i<5; i++) {
-          this.newlist.push(...data[i].orders)
+        for(var i = 0; i<this.deta.length; i++) {
+          this.newlist.push(...(data[i].orders))
         }
-        // console.log(this.newlist)
+        console.log(this.newlist)
         for(i of this.newlist) {
           if(i['discount_codes'].length) {
             this.codelist.push(...i['discount_codes'])

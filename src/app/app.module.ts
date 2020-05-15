@@ -21,6 +21,7 @@ import { ApplyformComponent } from './landing/applyform/applyform.component';
 import { DataService } from './data.service';
 import { StoreDetailComponent } from './user/store-detail/store-detail.component';
 import { ResourcesComponent } from './user/resources/resources.component';
+import { AboutComponent } from './landing/about/about.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { ResourcesComponent } from './user/resources/resources.component';
     PerformanceComponent,
     ApplyformComponent,
     StoreDetailComponent,
-    ResourcesComponent
+    ResourcesComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
@@ -48,6 +50,7 @@ import { ResourcesComponent } from './user/resources/resources.component';
       {path:'',component:LandingComponent,
         children: [
           {path:'home',component:HomeComponent},
+          {path:'about',component:AboutComponent},
           {path:'login',component:LoginComponent},
           {path:'apply',component:ApplyComponent},
           {path:'form',component:ApplyformComponent},

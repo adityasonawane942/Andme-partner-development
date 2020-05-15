@@ -1,7 +1,8 @@
 import { Component, OnInit, NgZone } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
 import { DataService } from '../data.service';
 import { HttpClient } from '@angular/common/http';
+import * as $ from 'jquery'
 
 declare var jQuery:any;
 
@@ -31,6 +32,12 @@ export class UserComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.router.events.subscribe((evt) => {
+      if (!(evt instanceof NavigationEnd)) {
+          return;
+      }
+      window.scrollTo(0, 0)
+    });
 
     this.gID = JSON.parse(this.data.getLdata()).uid
     this.http.get(this.url+'/'+this.gID)
@@ -77,6 +84,15 @@ export class UserComponent implements OnInit {
   });	
   })(jQuery); 
   //anim
+
+  $('body').on('mouseenter mouseleave','.nav-item',function(e){
+    if ($(window).width() > 750) {
+      var _d=$(e.target).closest('.nav-item');_d.addClass('show');
+      setTimeout(function(){
+      _d[_d.is(':hover')?'addClass':'removeClass']('show');
+      },1);
+    }
+});	
 
   }
 

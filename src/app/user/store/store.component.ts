@@ -20,17 +20,23 @@ export class StoreComponent implements OnInit {
   ngOnInit() {
     $(document).ready(function(){
       var w_w = $(window).width();
-      console.log("ready")
       if(w_w < 1200){
         $("#main").removeClass('container')
         $("#main").addClass('container-fluid');
       }
+      else {
+        $("#main").removeClass('container-fluid')
+        $("#main").addClass('container');
+      }
       $(window).resize(function(){
       var w_w = $(window).width();
-      console.log("resize")
       if(w_w < 1200){
         $("#main").removeClass('container')
         $("#main").addClass('container-fluid');
+      }
+      else {
+        $("#main").removeClass('container-fluid')
+        $("#main").addClass('container');
       }
       });
     });

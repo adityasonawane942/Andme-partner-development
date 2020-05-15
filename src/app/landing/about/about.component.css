@@ -1,0 +1,239 @@
+#main {
+    padding-top: 120px;
+    text-align: center;
+    background: rgb(228,239,239);
+background: linear-gradient(0deg, rgba(228,239,239,1) 0%, rgba(98,241,239,1) 100%);
+}
+
+#regc {
+    padding: 10% 2%;
+}
+
+#regh {
+    font-size: 1.5vw;
+    margin-bottom: 2vw;
+}
+
+#button {
+    cursor: pointer;
+    border-radius: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    padding: 2%;
+    background-color: skyblue;
+    transition: ease 0.5s;
+}
+
+#button:hover {
+    transform: scale(1.1);
+}
+
+#whyh {
+    font-weight: 700;
+    margin-top: 3vw;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 2.5vw;
+}
+
+#smi {
+    width: 100%;
+    /* margin-top: 2vw; */
+    margin-bottom: 2vw;
+}
+
+#what {
+    margin-bottom: 2vw;
+    font-size: 2.5vw;
+    font-weight: 700;
+}
+
+#whatd {
+    padding: 0 5%;
+}
+
+#whati {
+    margin-bottom: 2vw;
+    border-radius: 50%;
+}
+
+#whath {
+    font-size: 1.5vw;
+}
+
+#stat {
+    padding: 5px 20px;
+}
+
+#stati {
+    display: inline-block;
+    width: 50%;
+    padding-right: 0;
+    position: relative;
+    left: 1px;
+}
+
+#statdt {
+    display: inline-block;
+    width: 50%;
+    background-color: lightsalmon;
+}
+
+#stath {
+    color: white;
+    font-size: 2.5vw;
+    margin-top: 4vw;
+}
+
+#statp {
+    font-size: 1.3vw;
+    color: white;
+}
+
+#faq {
+    margin-top: 7vw;
+}
+
+#item {
+    padding: 2% 0;
+    border-bottom: 1px solid steelblue;
+}
+
+#itema {
+    color: black;
+    margin: 0;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+#itema:hover {
+    text-decoration: underline;
+    transform: rotate(180deg);
+}
+
+#soch {
+    margin-top: 5vw;
+    margin-bottom: 1vw;
+}
+
+#icon {
+    color: black;
+    font-size: 2vw;
+    padding: 0 10px;
+    transition: ease 0.3s;
+}
+
+#icon:hover {
+    transform: scale(1.2);
+    color: hotpink;
+}
+
+#foot {
+    background-color: lightgray;
+}
+
+@media screen and (max-width: 1000px) {
+    #whath {
+        font-size: 1.7vw;
+    }
+
+    #statp {
+        font-size: 1.4vw;
+    }
+
+    #whyh, #what, #stath {
+        font-size: 2.7vw;
+    }
+
+    #icon {
+        font-size: 2.3vw;
+    }
+}
+
+
+@media screen and (max-width: 800px) {
+    #whath {
+        font-size: 1.9vw;
+    }
+
+    #statp {
+        font-size: 1.5vw;
+    }
+
+    #whyh, #what, #stath {
+        font-size: 2.9vw;
+    }
+
+    #stath {
+        margin-top: 2.8vw;
+    }
+
+    #icon {
+        font-size: 2.6vw;
+    }
+}
+
+
+@media screen and (max-width: 700px) {
+    #whath {
+        font-size: 2.1vw;
+    }
+
+    #statp {
+        font-size: 1.6vw;
+    }
+
+    #whyh, #what {
+        font-size: 3.1vw;
+    }
+
+    #stath {
+        font-size: 2.8vw;
+        margin-top: 1vw;
+    }
+
+    #icon {
+        font-size: 2.9vw;
+    }
+}
+
+
+@media screen and (max-width: 576px) {
+    #whath {
+        font-size: 2.5vw;
+    }
+
+    #statp {
+        font-size: 2.5vw;
+    }
+
+    #whyh, #what, #stath {
+        font-size: 5vw;
+    }
+
+    #stath {
+        margin-top: 7vw;
+    }
+
+    #whatd {
+        padding: 0 20%;
+    }
+
+    #stati {
+        left: 0;
+        padding: 0;
+    }
+
+    #stat {
+        padding: 2% 20%;
+    }
+    
+    #soch {
+        margin-bottom: 3vw;
+    }
+
+    #icon {
+        font-size: 5vw;
+    }
+}

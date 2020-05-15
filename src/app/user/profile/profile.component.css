@@ -9,6 +9,22 @@
     display: none;
 }
 
+#profc {
+  padding: 2%;
+  /* background: rgb(251,251,251);
+background: linear-gradient(135deg, rgba(251,251,251,1) 0%, rgba(72,147,215,0.846673703661152) 50%, rgba(197,197,197,1) 100%); */
+}
+
+#profh {
+  font-size: 2vw;
+}
+
+#profp {
+  font-size: 1.7vw;
+  font-weight: 700;
+  margin: 0;
+}
+
 #big {
     padding: 2%;
 }

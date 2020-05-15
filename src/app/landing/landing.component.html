@@ -17,12 +17,15 @@
 								<li routerLinkActive="active" class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
 									<a class="nav-link" routerLink="/home">Home</a>
 								</li>
-								<li *ngIf="!loggedin" routerLinkActive="active" class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-									<a class="nav-link" routerLink="/login">Login</a>
-								</li>
 								<li routerLinkActive="active" class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-									<a class="nav-link" routerLink="/apply">Apply</a>
+									<a class="nav-link" routerLink="/about">About Us</a>
 								</li>
+								<li *ngIf="!loggedin" class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+									<a style="cursor: pointer;" class="nav-link" data-toggle="modal" data-target="#myModal">Login</a>
+								</li>
+								<!-- <li routerLinkActive="active" class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+									<a class="nav-link" routerLink="/apply">Apply</a>
+								</li> -->
 								<li *ngIf="loggedin" routerLinkActive="active" class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
 									<a class="nav-link" routerLink="/user/profile">Profile</a>
 								</li>
@@ -37,5 +40,62 @@
 			</div>
 		</div>
 	</div>
+	<div class="modal fade" id="myModal">
+		<div class="modal-dialog modal-dialog-centered">
+		  <div class="modal-content">
+		  
+			<!-- Modal Header -->
+			<div class="modal-header">
+			  <h6 class="modal-title">Login</h6>
+			  <button type="button" class="close" data-dismiss="modal">&times;</button>
+			</div>
+			
+			<!-- Modal body -->
+			<div class="modal-body">
+			  <button data-dismiss="modal" id="button">Login</button>
+			</div>
+			
+			<!-- Modal footer -->
+			<div class="modal-footer">
+			  <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+			</div>
+			
+		  </div>
+		</div>
+	</div>
+	<router-outlet></router-outlet>
+	<div id="foot" class="container-fluid">
+		<div class="row">
+			<div style="width: 50%; height: 50%; margin: auto" class="col-sm-4">
+				<h3 id="conth">Getting Around</h3>
+				<ul style="list-style-type: none; padding: 0;">
+					<li id="contl">
+						<a style="cursor: pointer;" routerLink="/home" id="contp">Home</a>
+					</li>
+					<li id="contl">
+						<a style="cursor: pointer;" routerLink="/about" id="contp">About Us</a>	
+					</li>
+				</ul>
+			</div>
+			<div class="col-sm-4">
+			</div>
+			<div class="col-sm-4">
+				<h3 id="conth">Contact</h3>
+				<h6 id="contp">Merhaki Foods and Nutrition,</h6>
+				<h6 id="contp">No. 837, 4th Cross, 11th B Main,</h6>
+				<h6 id="contp">4th Block, Koramangala</h6>
+				<h6 id="contp">Bengaluru, India-560034</h6>
+				<h6 id="contp">andmecares@merhakifoods.com</h6>
+				<div style="margin-bottom: 0.5vw;" class="col-sm-8 offset-sm-2">
+					<h6 id="soch">FOLLOW US</h6>
+					<div style="text-align: center;">
+						<a href="#"><i id="icon" class="fab fa-facebook"></i></a>
+						<a href="#"><i id="icon" class="fab fa-instagram"></i></a>
+						<a href="#"><i id="icon" class="fab fa-twitter"></i></a>
+						<a href="#"><i id="icon" class="fab fa-youtube"></i></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
-<router-outlet></router-outlet>
