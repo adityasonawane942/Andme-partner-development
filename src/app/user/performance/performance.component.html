@@ -4,7 +4,9 @@
 <div style="margin-top: 120px;">
 	<div style="margin: 2vw auto; width: 50%;">
 		<label for="dateoption">Select One</label>
-		<select class="form-control" id="dateoption" name="dateoption" (change)="select()" [(ngModel)]="dateoption">
+		<select [disabled]="disabled" class="form-control" id="dateoption" name="dateoption" (change)="select()" [(ngModel)]="dateoption">
+			<option>Today</option>
+			<option>Yesterday</option>
 			<option>Last 7 days</option>
 			<option>Last 30 days</option>
 			<option>Last 90 days</option>

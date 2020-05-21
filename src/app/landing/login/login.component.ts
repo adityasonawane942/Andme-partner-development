@@ -62,7 +62,7 @@ export class LoginComponent implements OnInit {
         data => {
           console.log(data);
           this.data.setuserdata(data);
-          this._ngZone.run(() => this.router.navigate(['/user/profile']));
+          this._ngZone.run(() => this.router.navigate(['/user/updates']));
         },
         error => {
           alert("You need to be a registered partner to login. To become a registered partner you need to apply here http://localhost:4200/apply");

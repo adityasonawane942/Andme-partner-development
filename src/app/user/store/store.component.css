@@ -1,110 +1,23 @@
-/* #main {
-    margin-top: 120px;
-    width: 100%;
-}
-
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-}
-
-a {
-    text-decoration: none;
-    color: black;
-}
-
-a:hover {
-    color: darkgreen;
-    transition: ease 0.5s;
-}
-
-#outer {
-    background-color: lightpink;
-    border-radius: 15px;
-    position: relative; 
-    left: 10px; 
-    height: 400px;
-    padding-right: 0; 
-    padding-left: 0; 
-    font-size: 1.3vw;
-    text-align: center;
-}
-
-#inner {
-    position: relative; left: 10px;
-}
-
-#one {
-    padding: 0;
-    position: relative;
-}
-
-#two {
-    height: 60px;
-}
-
-#thr {
-    margin-bottom: 0;
-}
-
-.four {
-    height: 60px;
-    transition: ease 0.5s;
-}
-
-@media screen and (max-width: 1000px) {
-    #outer {
-        font-size: 1.8vw;
-        height: 340px;
-    }
-
-    #two {
-        height: 50px;
-    }
-
-    .four {
-        height: 50px;
-    }
-}
-
-@media screen and (max-width: 800px) {
-    #outer {
-        font-size: 1.8vw;
-        height: 280px;
-    }
-
-    #two {
-        height: 40px;
-    }
-
-    .four {
-        height: 40px;
-    }
-}
-
-@media screen and (max-width: 576px) {
-    #outer {
-        display: none;
-    }
-
-    #inner {
-        text-align: center;
-        position: relative;
-        left: 0;
-    }
-} */
-
 .card {
-    margin-bottom: 10px;
+    margin-bottom: 3vw;
+    transition: ease 0.5s;
+}
+
+.card:hover {
+    box-shadow: 0px 7px 20px 0px;
 }
 
 .card-title {
-    font-size: 2vw;
+    font-size: 1.8vw;
+}
+
+.card-body {
+    padding: 1vw;
 }
 
 .card-text {
     font-size: 1vw;
+    margin-bottom: 0.5vw;
 }
 
 @media screen and (max-width: 1200px) {
@@ -142,6 +55,10 @@ a:hover {
         width: 90%;
         margin-left: auto;
         margin-right: auto;
+    }
+
+    .card-body {
+        padding: 3vw;
     }
     
     .card-text {

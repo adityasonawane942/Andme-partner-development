@@ -2,6 +2,7 @@ import { Component, OnInit, NgZone } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { DataService } from '../data.service';
 import { HttpClient } from '@angular/common/http';
+import * as $ from 'jquery'
 
 declare var jQuery:any;
 
@@ -37,6 +38,34 @@ export class LandingComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    $(document).ready(function(){
+      var w_w = $(window).width();
+      if(w_w < 767){
+        $("#linkpro").show()
+        $("#linkout").show();
+        $("#drop").hide();
+      }
+      else {
+        $("#linkpro").hide()
+        $("#linkout").hide();
+        $("#drop").show();
+      }
+      $(window).resize(function(){
+      var w_w = $(window).width();
+      if(w_w < 767){
+        $("#linkpro").show()
+        $("#linkout").show();
+        $("#drop").hide();
+      }
+      else {
+        $("#linkpro").hide()
+        $("#linkout").hide();
+        $("#drop").show();
+      }
+      });
+    });
+
     this.router.events.subscribe((evt) => {
       if (!(evt instanceof NavigationEnd)) {
           return;
@@ -76,6 +105,15 @@ export class LandingComponent implements OnInit {
   });	
   })(jQuery); 
   //anim
+
+  $('body').on('mouseenter mouseleave','.nav-item',function(e){
+    if ($(window).width() > 750) {
+      var _d=$(e.target).closest('.nav-item');_d.addClass('show');
+      setTimeout(function(){
+      _d[_d.is(':hover')?'addClass':'removeClass']('show');
+      },1);
+    }
+});	
 
   }
 
@@ -121,7 +159,7 @@ export class LandingComponent implements OnInit {
         data => {
           console.log(data);
           this.data.setuserdata(data);
-          this._ngZone.run(() => this.router.navigate(['/user/profile']));
+          this._ngZone.run(() => this.router.navigate(['/user/updates']));
         },
         error => {
           alert("You need to be a registered partner to login. To become a registered partner you need to apply here http://localhost:4200/apply");

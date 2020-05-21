@@ -275,15 +275,64 @@ body.hero-anime p{
 	background-color: rgba(129,103,169,.6);
 }
 
+#foot {
+	position: relative;
+	bottom: 0;
+	background-color: lightgray;
+}
+
+#conth {
+	text-align: center;
+}
+
+#contp {
+	text-align: center;
+	/* margin-bottom: 0; */
+	color: black;
+	text-decoration: none;
+}
+
+#contl {
+	text-align: center;
+}
+
+#soch {
+	text-align: center;
+}
+
+#icon {
+    color: black;
+    font-size: 2vw;
+    padding: 0 10px;
+    transition: ease 0.3s;
+}
+
+#icon:hover {
+    transform: scale(1.2);
+    color: hotpink;
+}
+
 @media screen and (max-width: 1000px) {
-	.nav-link {
-		font-size: 1.8vw;
+	#icon {
+		font-size: 2.3vw;
 	}
 }
 
 @media screen and (max-width: 800px) {
-	.nav-link {
-		font-size: 2vw;
+	#icon {
+		font-size: 2.6vw;
+	}
+}
+
+@media screen and (max-width: 700px) {
+	#icon {
+		font-size: 2.9vw;
+	}
+}
+
+@media screen and (max-width: 576px) {
+	#icon {
+		font-size: 5vw;
 	}
 }
 

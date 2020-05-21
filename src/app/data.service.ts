@@ -15,6 +15,7 @@ export class DataService {
 
   userdata  
   storedata
+  postdata
 
   setLdata(data) {
     localStorage.setItem('ldata',data)
@@ -38,6 +39,14 @@ export class DataService {
 
   getstoredata() {
     return this.storedata
+  }
+
+  setpostdata(data) {
+    this.postdata = data
+  }
+
+  getpostdata() {
+    return this.postdata
   }
   
  }

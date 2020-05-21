@@ -41,7 +41,7 @@ export class AboutComponent implements OnInit {
         scope: 'profile email'
       });
       console.log("apply client")
-      this.attachSignin(document.getElementById('button'));
+      this.attachSignin(document.getElementById('buttonr'));
     });
   }
 
@@ -70,7 +70,7 @@ export class AboutComponent implements OnInit {
         data => {
           console.log(data);
           this.data.setuserdata(data);
-          this._ngZone.run(() => this.router.navigate(['/user/profile']));
+          this._ngZone.run(() => this.router.navigate(['/user/updates']));
         },
         error => {
           console.log("to form")

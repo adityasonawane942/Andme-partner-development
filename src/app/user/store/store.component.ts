@@ -18,6 +18,23 @@ export class StoreComponent implements OnInit {
   products
 
   ngOnInit() {
+    if(this.data.getstoredata()) {
+      this.products = this.data.getstoredata()
+    }
+    else {
+      this.http.get('http://127.0.0.1:8000/andme/products/')
+      .subscribe(
+        data => {
+          this.products = data['products']
+          this.data.setstoredata(this.products)
+          console.log(this.products)
+        },
+        error => {
+          alert(JSON.stringify(error))
+        }
+        )
+    }
+
     $(document).ready(function(){
       var w_w = $(window).width();
       if(w_w < 1200){
@@ -40,16 +57,5 @@ export class StoreComponent implements OnInit {
       }
       });
     });
-
-    this.http.get('http://127.0.0.1:8000/andme/products/')
-      .subscribe(
-        data => {
-          this.products = data['products']
-          this.data.setstoredata(this.products)
-        },
-        error => {
-          alert(JSON.stringify(error))
-        }
-        )
   }
 }

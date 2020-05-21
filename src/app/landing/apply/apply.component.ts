@@ -69,7 +69,7 @@ export class ApplyComponent implements OnInit {
       .subscribe(
         data => {
           console.log(data);
-          this._ngZone.run(() => this.router.navigate(['/user/profile']));
+          this._ngZone.run(() => this.router.navigate(['/user/updates']));
         },
         error => {
           console.log("to form")

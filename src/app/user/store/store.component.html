@@ -30,12 +30,13 @@
     <div class="row">
         <div *ngFor="let product of products" class="col-sm-4">
             <div class="card">
-                <img class="card-img-top" [src]="'../../../assets/'+product.image1" alt="Card image" style="width:100%">
+                <a href="{{product.url}}" target="_blank" class="stretched-link"></a>
+                <img class="card-img-top" [src]="'../../../assets/'+product.image1" style="width:100%">
                 <div class="card-body">
-                <h4 class="card-title">{{product.name}}</h4>
-                <p class="card-text">{{product.desc}}</p>
-                <p class="card-text">Flavour Options: {{product.flavour}}</p>
-                <p *ngIf="product.benefitname1" class="card-text">Benefits: {{product.benefitname1}}, {{product.benefitname2}}, {{product.benefitname3}}</p>
+                    <h4 class="card-title">{{product.name}}</h4>
+                    <p class="card-text">{{product.desc}}</p>
+                    <p class="card-text"><b>Flavour Options:</b> {{product.flavour}}</p>
+                    <p *ngIf="product.benefitname1" class="card-text"><b>Benefits:</b> {{product.benefitname1}}, {{product.benefitname2}}, {{product.benefitname3}}</p>
                 </div>
             </div>
         </div>

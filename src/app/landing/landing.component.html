@@ -23,14 +23,18 @@
 								<li *ngIf="!loggedin" class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
 									<a style="cursor: pointer;" class="nav-link" data-toggle="modal" data-target="#myModal">Login</a>
 								</li>
-								<!-- <li routerLinkActive="active" class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-									<a class="nav-link" routerLink="/apply">Apply</a>
-								</li> -->
-								<li *ngIf="loggedin" routerLinkActive="active" class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-									<a class="nav-link" routerLink="/user/profile">Profile</a>
+								<li id="linkpro" *ngIf="loggedin" routerLinkActive="active" class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+									<a class="nav-link" routerLink="profile">Your Profile</a>
 								</li>
-								<li *ngIf="loggedin" class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-									<a class="nav-link" (click)="logout()" routerLink="/home">Logout</a>
+								<li id="linkout" *ngIf="loggedin" class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+									<a class="nav-link" routerLink="/home">Logout</a>
+								</li>
+								<li id="drop" *ngIf="loggedin" class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+									<a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i></a>
+									<div class="dropdown-menu dropdown-menu-right">
+										<a class="dropdown-item" routerLink="/user/updates">Your Profile</a>
+										<a class="dropdown-item" (click)="logout()" routerLink="/home">Logout</a>
+									</div>
 								</li>
 							</ul>
 						</div>
@@ -86,7 +90,7 @@
 				<h6 id="contp">4th Block, Koramangala</h6>
 				<h6 id="contp">Bengaluru, India-560034</h6>
 				<h6 id="contp">andmecares@merhakifoods.com</h6>
-				<div style="margin-bottom: 0.5vw;" class="col-sm-8 offset-sm-2">
+				<div style="margin-bottom: 0.5vw;" class="col-sm-12">
 					<h6 id="soch">FOLLOW US</h6>
 					<div style="text-align: center;">
 						<a href="#"><i id="icon" class="fab fa-facebook"></i></a>

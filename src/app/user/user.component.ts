@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import * as $ from 'jquery'
 
 declare var jQuery:any;
+declare var instgrm : any;
 
 @Component({
   selector: 'app-user',
@@ -27,11 +28,79 @@ export class UserComponent implements OnInit {
 
   logout() {
     localStorage.removeItem('ldata');
-    console.log("loggedout")
     this._ngZone.run(() => this.router.navigate(['/home'] ));
   }
 
+  allposts
+  tenposts = []
+  products
+  
+  poster(link) {
+    this.http.get('https://api.instagram.com/oembed?hidecaption=true&url='+link)
+      .subscribe(
+        post => {
+          this.tenposts.push({media: post['thumbnail_url'], url: link})
+          this.data.setpostdata(this.tenposts)
+        },
+        err => {
+          alert(JSON.stringify(err))
+        }
+      )
+}
+
   ngOnInit() {
+    instgrm.Embeds.process()
+    this.http.get('http://127.0.0.1:8000/andme/posts/')
+      .subscribe(
+        data => {
+          this.allposts = data['data'].splice(0,12)
+          for(var i of this.allposts) {
+            this.poster(i.permalink)
+          }
+        },
+        error => {
+          alert(JSON.stringify(error))
+        }
+      )
+
+    this.http.get('http://127.0.0.1:8000/andme/products/')
+    .subscribe(
+      data => {
+        this.products = data['products']
+        this.data.setstoredata(this.products)
+      },
+      error => {
+        alert(JSON.stringify(error))
+      }
+      )
+    
+    $(document).ready(function(){
+      var w_w = $(window).width();
+      if(w_w < 767){
+        $("#linkpro").show()
+        $("#linkout").show();
+        $("#drop").hide();
+      }
+      else {
+        $("#linkpro").hide()
+        $("#linkout").hide();
+        $("#drop").show();
+      }
+      $(window).resize(function(){
+      var w_w = $(window).width();
+      if(w_w < 767){
+        $("#linkpro").show()
+        $("#linkout").show();
+        $("#drop").hide();
+      }
+      else {
+        $("#linkpro").hide()
+        $("#linkout").hide();
+        $("#drop").show();
+      }
+      });
+    });
+
     this.router.events.subscribe((evt) => {
       if (!(evt instanceof NavigationEnd)) {
           return;

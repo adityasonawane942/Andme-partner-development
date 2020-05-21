@@ -15,13 +15,6 @@
 						<div class="collapse navbar-collapse" id="navbarSupportedContent">
 							<ul *ngIf="loggedin" class="navbar-nav ml-auto py-4 py-md-0">
 								<li routerLinkActive="active" class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-									<a class="nav-link" routerLink="profile">Profile</a>
-									<div class="dropdown-menu">
-										<a class="dropdown-item" routerLink="/user/profile">Your Profile</a>
-										<a class="dropdown-item" (click)="logout()" routerLink="/home">Logout</a>
-									</div>
-								</li>
-								<li routerLinkActive="active" class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
 									<a class="nav-link" routerLink="updates">Updates</a>
 								</li>
 								<li routerLinkActive="active" class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
@@ -33,9 +26,19 @@
 								<li routerLinkActive="active" class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
 									<a class="nav-link" routerLink="resources">Resources</a>
 								</li>
-								<!-- <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-									<a class="nav-link" (click)="logout()" routerLink="/home">Logout</a>
-								</li> -->
+								<li id="linkpro" routerLinkActive="active" class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+									<a class="nav-link" routerLink="updates">Your Profile</a>
+								</li>
+								<li id="linkout" routerLinkActive="active" class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+									<a class="nav-link" routerLink="/home">Logout</a>
+								</li>
+								<li id="drop" routerLinkActive="active" class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+									<a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i></a>
+									<div class="dropdown-menu dropdown-menu-right">
+										<a class="dropdown-item" routerLink="/user/profile">Your Profile</a>
+										<a class="dropdown-item" (click)="logout()" routerLink="/home">Logout</a>
+									</div>
+								</li>
 							</ul>
 						</div>
 						
@@ -45,3 +48,37 @@
 		</div>
 	</div>
 <router-outlet></router-outlet>
+<div id="foot" class="container-fluid">
+	<div class="row">
+		<div style="width: 50%; height: 50%; margin: auto" class="col-sm-4">
+			<h3 id="conth">Getting Around</h3>
+			<ul style="list-style-type: none; padding: 0;">
+				<li id="contl">
+					<a style="cursor: pointer;" routerLink="/home" id="contp">Home</a>
+				</li>
+				<li id="contl">
+					<a style="cursor: pointer;" routerLink="/about" id="contp">About Us</a>	
+				</li>
+			</ul>
+		</div>
+		<div class="col-sm-4">
+		</div>
+		<div class="col-sm-4">
+			<h3 id="conth">Contact</h3>
+			<h6 id="contp">Merhaki Foods and Nutrition,</h6>
+			<h6 id="contp">No. 837, 4th Cross, 11th B Main,</h6>
+			<h6 id="contp">4th Block, Koramangala</h6>
+			<h6 id="contp">Bengaluru, India-560034</h6>
+			<h6 id="contp">andmecares@merhakifoods.com</h6>
+			<div style="margin-bottom: 0.5vw;" class="col-sm-12">
+				<h6 id="soch">FOLLOW US</h6>
+				<div style="text-align: center;">
+					<a href="#"><i id="icon" class="fab fa-facebook"></i></a>
+					<a href="#"><i id="icon" class="fab fa-instagram"></i></a>
+					<a href="#"><i id="icon" class="fab fa-twitter"></i></a>
+					<a href="#"><i id="icon" class="fab fa-youtube"></i></a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
