@@ -24,7 +24,7 @@
 									<a style="cursor: pointer;" class="nav-link" data-toggle="modal" data-target="#myModal">Login</a>
 								</li>
 								<li id="linkpro" *ngIf="loggedin" routerLinkActive="active" class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-									<a class="nav-link" routerLink="profile">Your Profile</a>
+									<a class="nav-link" routerLink="updates">Your Profile</a>
 								</li>
 								<li id="linkout" *ngIf="loggedin" class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
 									<a class="nav-link" routerLink="/home">Logout</a>
@@ -55,8 +55,35 @@
 			</div>
 			
 			<!-- Modal body -->
-			<div class="modal-body">
-			  <button data-dismiss="modal" id="button">Login</button>
+			<div style="text-align: center;" class="modal-body">
+				<button data-dismiss="modal" id="button">Login with Google</button>
+				<hr>
+				<div *ngIf="!data.token">
+					<div>
+						<label>Username:</label><br />
+						<input type="text" name="login-username" [(ngModel)]="user.username">
+						<span *ngFor="let error of data.errors.username"><br />
+						{{ error }}</span></div>
+					<div>
+						<label>Password:</label><br />
+						<input type="password" name="login-password" [(ngModel)]="user.password">
+						<span *ngFor="let error of data.errors.password"><br />
+						{{ error }}</span>
+					</div>
+					<div>
+						<button (click)="login()" class="btn btn-primary">Log In</button>
+					</div>
+					<div>
+						<span *ngFor="let error of data.errors.non_field_errors">{{ error }}<br /></span>
+					</div>
+				</div>
+				<div *ngIf="data.token">
+					<div>You are logged in as {{ data.username }}.<br />
+						Token Expires: {{ data.token_expires }}<br />
+						<button (click)="refreshToken()" class="btn btn-primary">Refresh Token</button>
+						<button (click)="logoutnorm()" class="btn btn-primary">Log Out</button>
+					</div>
+				</div>
 			</div>
 			
 			<!-- Modal footer -->

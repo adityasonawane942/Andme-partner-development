@@ -17,7 +17,14 @@ export class AboutComponent implements OnInit {
     private _ngZone: NgZone,
     private router: Router,
     private http: HttpClient,
-  ) { }
+  ) {
+    // this.httpOptions = {
+    //   headers: new HttpHeaders({'Content-Type': 'application/json', 'Authorization' : 'Token 38e461e6f3a9951556d082e535b86c6d5f1c8c20'})
+    // };
+   }
+
+  public user: any;
+  confpass
 
   public name: string;
   public gID: number;
@@ -26,7 +33,26 @@ export class AboutComponent implements OnInit {
   private url: string = "http://127.0.0.1:8000/andme/user";
 
   ngOnInit() {
+    // this.user = {
+    //   username : '',
+    //   email : '',
+    //   password : ''
+    // }
   }
+
+  // httpOptions
+
+  // register() {
+  //   this.http.post('http://127.0.0.1:8000/users/', this.user, this.httpOptions)
+  //     .subscribe(
+  //       result => {
+  //         console.log(result)
+  //       },
+  //       error => {
+  //         alert(JSON.stringify(error))
+  //       }
+  //     )
+  // }
 
   ngAfterViewInit(){
     this.googleInit();

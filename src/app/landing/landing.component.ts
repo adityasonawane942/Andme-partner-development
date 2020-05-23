@@ -16,6 +16,12 @@ declare const gapi: any;
 export class LandingComponent implements OnInit {
 
   loggedin = false;
+  username
+  password
+
+  normlogin() {
+
+  }
 
   constructor(
     private _ngZone: NgZone,
@@ -37,7 +43,26 @@ export class LandingComponent implements OnInit {
     this._ngZone.run(() => this.router.navigate(['/home'] ));
   }
 
+  public user: any;
+
+  login() {
+    this.data.login({'username': this.user.username, 'password': this.user.password});
+  }
+ 
+  refreshToken() {
+    this.data.refreshToken();
+  }
+ 
+  logoutnorm() {
+    this.data.logout();
+  }
+
   ngOnInit() {
+
+    this.user = {
+      username: '',
+      password: ''
+    };
 
     $(document).ready(function(){
       var w_w = $(window).width();

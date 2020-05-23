@@ -18,6 +18,7 @@
 				<h3 style="text-align: center;">Sales</h3>
 				<div class="loader" id="loader-1"></div>
 				<canvas id="canvas"></canvas>
+				<h4>Total Sales: {{total_price}}</h4>
 			</div>
 		</div>
 		<div style="margin-left: auto; margin-right: auto;" class="col-sm-6">
@@ -25,6 +26,7 @@
 				<h3 style="text-align: center;">Margin</h3>
 				<div class="loader" id="loader-2"></div>
 				<canvas id="canvastwo"></canvas>
+				<h4>Total Margin: {{total_margin}}</h4>
 			</div>
 		</div>
 	</div>
@@ -44,8 +46,8 @@
 				<td style="text-transform: capitalize;">{{order.customer.first_name}} {{order.customer.last_name}}</td>
 				<td>{{order.customer.email}}</td>
 				<td>{{dates[i]}}</td>
-				<td>₹{{order.subtotal_price}}</td>
-				<td>₹{{(order.subtotal_price*margin).toFixed(2)}}</td>
+				<td>{{formatter.format(order.subtotal_price)}}</td>
+				<td>{{formatter.format((order.subtotal_price*margin).toFixed(2))}}</td>
 			</tr>
 			</tbody>
 		</table>

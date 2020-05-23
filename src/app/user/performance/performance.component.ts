@@ -26,6 +26,8 @@ codelist = []
 foundcode = []
 foundorder = []
 price = []
+total_price
+total_margin
 dates = []
 days = []
 finaldata = []
@@ -35,6 +37,10 @@ datefinal = moment().startOf('day').format()
 unit = 'hour'
 steps = 3
 disabled = false
+formatter = new Intl.NumberFormat('en-US', {
+  style: 'currency',
+  currency: 'INR',
+});
 
   select() {
     this.disabled = true
@@ -56,35 +62,35 @@ disabled = false
     switch(this.dateoption) {
       case "Today":
         this.datefinal = moment().startOf('day').format()
-        this.finaldata = []
-        var start = moment().startOf('day')
-        for(var i=0; i<24; i=i+3) {
-          this.finaldata.push({x: start.toDate(), y: 0})
-          start = start.add(3, 'hours')
-        }
-        console.log(this.finaldata)
+        // this.finaldata = []
+        // var start = moment().startOf('day')
+        // for(var i=0; i<24; i=i+3) {
+        //   this.finaldata.push({x: start.toDate(), y: 0})
+        //   start = start.add(3, 'hours')
+        // }
+        // console.log(this.finaldata)
         break
       case "Yesterday":
         this.datefinal = moment().subtract(1, 'days').startOf('day').format()
-        this.finaldata = []
-        var start = moment().subtract(1, 'day').startOf('day')
-        for(var i=0; i<24; i=i+3) {
-          this.finaldata.push({x: start.toDate(), y: 0})
-          start = start.add(3, 'hours')
-        }
-        console.log(this.finaldata)
+        // this.finaldata = []
+        // var start = moment().subtract(1, 'day').startOf('day')
+        // for(var i=0; i<24; i=i+3) {
+        //   this.finaldata.push({x: start.toDate(), y: 0})
+        //   start = start.add(3, 'hours')
+        // }
+        // console.log(this.finaldata)
         break
       case "Last 7 days":
         this.datefinal = moment().subtract(7, 'days').format()
         this.unit = 'day'
         this.steps = 1
-        this.finaldata = []
-        var start = moment().subtract(7, 'days')
+        // this.finaldata = []
+        // var start = moment().subtract(7, 'days')
         // for(var i=0; i<7; i++) {
         //   this.finaldata.push({x: start.toDate(), y: 0})
         //   start = start.add(1, 'day')
         // }
-        console.log(this.finaldata)
+        // console.log(this.finaldata)
         break
       case "Last 30 days":
         this.datefinal = moment().subtract(30, 'days').format()
@@ -109,35 +115,35 @@ disabled = false
     this.charter(this.datefinal, this.unit, this.steps)
   }
 
-  dater(startday) {
-    var now = moment()
-    var start = moment().subtract(startday, 'days')
-    var next = moment().subtract(startday-1, 'days')
-    console.log(now.format())
-    console.log(start.format())
-    console.log(next.format())
-    var count = 0
-    while(next.format()!=now.format()&&count!=7) {
-      count = count + 1
-      this.finaldata.push({x: start.toDate(), y: 0})
-      console.log("add0")
-      for(var i=0; i<this.price.length; i++) {
-        console.log("for")
-        var mome = moment(this.dates[this.dates.length - i - 1])
-        console.log(mome.format())
-        if(mome.isBetween(start, next)) {
-          this.finaldata.push({x: new Date(this.dates[this.dates.length - i - 1]).toDateString(), y: this.price[i].toFixed(2)})
-          this.finaldatamargin.push({x: new Date(this.dates[this.dates.length - i - 1]).toDateString(), y: (this.price[i]*this.margin).toFixed(2)})
-        }
-      }
-      start = next
-      console.log(start.format())
-      next = next.add(1, 'day')
-      console.log(next.format())
-      console.log(next.format()==now.format())
-      console.log(now.format())
-    }
-  }
+  // dater(startday) {
+  //   var now = moment()
+  //   var start = moment().subtract(startday, 'days')
+  //   var next = moment().subtract(startday-1, 'days')
+  //   console.log(now.format())
+  //   console.log(start.format())
+  //   console.log(next.format())
+  //   var count = 0
+  //   while(next.format()!=now.format()&&count!=7) {
+  //     count = count + 1
+  //     this.finaldata.push({x: start.toDate(), y: 0})
+  //     console.log("add0")
+  //     for(var i=0; i<this.price.length; i++) {
+  //       console.log("for")
+  //       var mome = moment(this.dates[this.dates.length - i - 1])
+  //       console.log(mome.format())
+  //       if(mome.isBetween(start, next)) {
+  //         this.finaldata.push({x: new Date(this.dates[this.dates.length - i - 1]).toDateString(), y: this.price[i].toFixed(2)})
+  //         this.finaldatamargin.push({x: new Date(this.dates[this.dates.length - i - 1]).toDateString(), y: (this.price[i]*this.margin).toFixed(2)})
+  //       }
+  //     }
+  //     start = next
+  //     console.log(start.format())
+  //     next = next.add(1, 'day')
+  //     console.log(next.format())
+  //     console.log(next.format()==now.format())
+  //     console.log(now.format())
+  //   }
+  // }
   
   charter(date, unit, steps) {
     document.getElementById('canvas').style.display = "none"
@@ -171,26 +177,33 @@ disabled = false
         this.dates = this.foundorder.map(res => moment(res.created_at).format('LLL'))
         this.dates = this.dates.reverse()
         console.log(this.dates.reverse())
-        // for(var i=0; i<this.dates.length-1; i++) {
-        //   if(this.dates[i].substr(0,12)==this.dates[i+1].substr(0,12)) {
-        //     console.log(this.dates[i].substr(0,12))
-        //     console.log(this.dates[i+1].substr(0,12))
-        //     console.log(new Date(this.dates[i].substr(0,12)).toDateString())
-        //     this.dates.push(moment(this.dates[i]).format('LLL'))
-        //     console.log(this.dates)
-        //     this.dates.splice(i,2)
-        //     console.log(this.dates)
-        //     console.log(this.price[this.price.length - i-1])
-        //     console.log(this.price[this.price.length - i-2])
-        //     console.log(this.price[this.price.length - i-1] + this.price[this.price.length - i-2])
-        //     this.price.push(this.price[this.price.length - i-1] + this.price[this.price.length - i-2])
-        //     console.log(this.price)
-        //     this.price.splice(i+1,2)
-        //     console.log(this.price)
-        //   }
-        // }
-        this.dater(7)
-        
+        for(var i=0; i<this.dates.length-1; i++) {
+          if(this.dates[i].substr(0,12)==this.dates[i+1].substr(0,12)) {
+            console.log(this.dates[i].substr(0,12))
+            console.log(this.dates[i+1].substr(0,12))
+            console.log(new Date(this.dates[i].substr(0,12)).toDateString())
+            this.dates.push(moment(this.dates[i]).format('LLL'))
+            console.log(this.dates)
+            this.dates.splice(i,2)
+            console.log(this.dates)
+            console.log(this.price[this.price.length - i-1])
+            console.log(this.price[this.price.length - i-2])
+            console.log(this.price[this.price.length - i-1] + this.price[this.price.length - i-2])
+            this.price.push(this.price[this.price.length - i-1] + this.price[this.price.length - i-2])
+            console.log(this.price)
+            this.price.splice(i+1,2)
+            console.log(this.price)
+          }
+        }
+        // this.dater(7)
+        for(var i=0; i<this.price.length; i++) {
+          this.finaldata.push({x: new Date(this.dates[this.dates.length - i - 1]).toDateString(), y: this.price[i].toFixed(2)})
+          this.finaldatamargin.push({x: new Date(this.dates[this.dates.length - i - 1]).toDateString(), y: (this.price[i]*this.margin).toFixed(2)})
+        }
+        this.total_price = this.price.reduce((a, b) => a + b, 0).toFixed(2)
+        this.total_price = this.formatter.format(this.total_price)
+        this.total_margin = (this.price.reduce((a, b) => a + b, 0)*this.margin).toFixed(2)
+        this.total_margin = this.formatter.format(this.total_margin)
         console.log(this.finaldata)
         console.log(this.finaldatamargin)
 
@@ -269,7 +282,8 @@ disabled = false
             datasets: [{
               data: this.finaldatamargin,
               fill: false,
-              borderColor: 'skyblue'
+              borderColor: 'skyblue',
+              pointRadius: 0
             }]
           },
           options: {

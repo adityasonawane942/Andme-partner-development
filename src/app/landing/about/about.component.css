@@ -19,13 +19,42 @@ background: linear-gradient(0deg, rgba(228,239,239,1) 0%, rgba(98,241,239,1) 100
     border-radius: 20px;
     margin-left: auto;
     margin-right: auto;
+    position: relative;
+    top: 2vw;
+    width: 50%;
+    padding: 3%;
+    background-color: skyblue;
+    transition: ease 0.5s;
+}
+
+#buttonr:hover {
+    transform: scale(1.1);
+    color: white;
+}
+
+#normc {
+    padding: 2vw;
+    position: relative;
+    top: 2vw;
+}
+
+hr {
+    position: relative;
+    top: 3.5vw;
+}
+
+#buttona {
+    cursor: pointer;
+    border-radius: 20px;
+    margin-left: auto;
+    margin-right: auto;
     width: 50%;
     padding: 2%;
     background-color: skyblue;
     transition: ease 0.5s;
 }
 
-#buttonr:hover {
+#buttona:hover {
     transform: scale(1.1);
 }
 
