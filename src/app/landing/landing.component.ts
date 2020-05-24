@@ -16,12 +16,6 @@ declare const gapi: any;
 export class LandingComponent implements OnInit {
 
   loggedin = false;
-  username
-  password
-
-  normlogin() {
-
-  }
 
   constructor(
     private _ngZone: NgZone,
@@ -32,6 +26,7 @@ export class LandingComponent implements OnInit {
 
   public name: string;
   public gID: number;
+  usertoken
   public imageURL: string;
   public email: string;
   private url: string = "http://127.0.0.1:8000/andme/user";
@@ -48,17 +43,26 @@ export class LandingComponent implements OnInit {
   login() {
     this.data.login({'username': this.user.username, 'password': this.user.password});
   }
- 
+
   refreshToken() {
     this.data.refreshToken();
   }
  
   logoutnorm() {
     this.data.logout();
+    localStorage.removeItem('ldata');
+    console.log("loggedout")
+    this.loggedin = false
+    this._ngZone.run(() => this.router.navigate(['/home'] ));
   }
 
   ngOnInit() {
-
+    this._ngZone.run(() => this.router.navigate(['/home'] ));
+    if(this.data.getLdata()) {
+      this.loggedin = true;
+      this.gID = JSON.parse(this.data.getLdata()).uidg
+      this.usertoken = JSON.parse(this.data.getLdata()).uidn
+    }
     this.user = {
       username: '',
       password: ''
@@ -98,9 +102,6 @@ export class LandingComponent implements OnInit {
       window.scrollTo(0, 0)
     });
 
-    this._ngZone.run(() => this.router.navigate(['/home'] ));
-
-    if(this.data.getLdata()) {this.loggedin = true;}
     //anim
   (function($) { "use strict";
 
@@ -164,12 +165,11 @@ export class LandingComponent implements OnInit {
       (googleUser)=> {
         let profile=googleUser.getBasicProfile();
         this.gID=profile.getId();
-
         this.data.setLdata(JSON.stringify({
           'name':profile.getName(),
           'email':profile.getEmail(),
-          'uid':profile.getId()
-        }) );
+          'uidg':profile.getId()
+        }));
         this.name=profile.getName();
         this.imageURL=profile.getImageUrl();
         this.email=profile.getEmail();

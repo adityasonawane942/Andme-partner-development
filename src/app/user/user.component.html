@@ -30,13 +30,17 @@
 									<a class="nav-link" routerLink="profile">Personal Details</a>
 								</li>
 								<li id="linkout" routerLinkActive="active" class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-									<a class="nav-link" routerLink="/home">Logout</a>
+									<a *ngIf="gID" (click)="logout()" class="nav-link" routerLink="/home">Logout</a>
 								</li>
+								<!-- <li id="linkout" routerLinkActive="active" class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+									<a *ngIf="usertoken" (click)="logoutnorm()" class="nav-link" routerLink="/home">Logout</a>
+								</li> -->
 								<li id="drop" routerLinkActive="active" class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
 									<a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i></a>
 									<div class="dropdown-menu dropdown-menu-right">
 										<a class="dropdown-item" routerLink="/user/profile">Personal Details</a>
-										<a class="dropdown-item" (click)="logout()" routerLink="/home">Logout</a>
+										<a class="dropdown-item" *ngIf="gID" (click)="logout()" routerLink="/home">Logout</a>
+										<a class="dropdown-item" *ngIf="usertoken" (click)="logoutnorm()" routerLink="/home">Logout</a>
 									</div>
 								</li>
 							</ul>

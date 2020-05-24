@@ -17,6 +17,7 @@ export class UserComponent implements OnInit {
   loggedin = false;
   userdata
   gID
+  usertoken
   url = "http://127.0.0.1:8000/andme/user" 
 
   constructor(
@@ -28,6 +29,14 @@ export class UserComponent implements OnInit {
 
   logout() {
     localStorage.removeItem('ldata');
+    this._ngZone.run(() => this.router.navigate(['/home'] ));
+  }
+
+  logoutnorm() {
+    this.data.logout();
+    localStorage.removeItem('ldata');
+    console.log("loggedout")
+    this.loggedin = false
     this._ngZone.run(() => this.router.navigate(['/home'] ));
   }
 
@@ -49,6 +58,10 @@ export class UserComponent implements OnInit {
 }
 
   ngOnInit() {
+    if(this.data.getLdata()) {
+      this.loggedin = true;
+      this.gID = JSON.parse(this.data.getLdata()).uidg
+      this.usertoken = JSON.parse(this.data.getLdata()).uidn
     instgrm.Embeds.process()
     this.http.get('http://127.0.0.1:8000/andme/posts/')
       .subscribe(
@@ -108,21 +121,16 @@ export class UserComponent implements OnInit {
       window.scrollTo(0, 0)
     });
 
-    this.gID = JSON.parse(this.data.getLdata()).uid
-    this.http.get(this.url+'/'+this.gID)
-    .subscribe(
-      data => {
-        this.userdata = data
-        this.data.setuserdata(data)
-      },
-      error => {
-        alert("You need to be a registered partner to login. To become a registered partner you need to apply here http://localhost:4200/apply");
-      }
-    )
-
-    if(this.data.getLdata()) {
-      this.loggedin = true;
-    }
+    // this.http.get(this.url+'/'+this.gID)
+    // .subscribe(
+    //   data => {
+    //     this.userdata = data
+    //     this.data.setuserdata(data)
+    //   },
+    //   error => {
+    //     alert("You need to be a registered partner to login. To become a registered partner you need to apply here http://localhost:4200/apply");
+    //   }
+    // )
 
     //anim
   (function($) { "use strict";
@@ -162,7 +170,11 @@ export class UserComponent implements OnInit {
       },1);
     }
 });	
-
+  }
+  else {
+    alert("LOGIN!!")
+    this._ngZone.run(() => this.router.navigate(['/home'] ));
+  }
   }
 
 }

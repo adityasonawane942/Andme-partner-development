@@ -37,7 +37,7 @@ export class ApplyformComponent implements OnInit {
 
   name = JSON.parse(this.data.getLdata()).name
   email = JSON.parse(this.data.getLdata()).email
-  uid = JSON.parse(this.data.getLdata()).uid
+  uid = JSON.parse(this.data.getLdata()).uidg
   contactno
   dob
   gender

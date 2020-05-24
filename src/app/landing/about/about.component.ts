@@ -1,7 +1,7 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 import { DataService } from 'src/app/data.service';
 import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 declare const gapi: any;
 
@@ -18,9 +18,9 @@ export class AboutComponent implements OnInit {
     private router: Router,
     private http: HttpClient,
   ) {
-    // this.httpOptions = {
-    //   headers: new HttpHeaders({'Content-Type': 'application/json', 'Authorization' : 'Token 38e461e6f3a9951556d082e535b86c6d5f1c8c20'})
-    // };
+    this.httpOptions = {
+      headers: new HttpHeaders({'Content-Type': 'application/json', 'Authorization' : 'Token 38e461e6f3a9951556d082e535b86c6d5f1c8c20'})
+    };
    }
 
   public user: any;
@@ -33,26 +33,26 @@ export class AboutComponent implements OnInit {
   private url: string = "http://127.0.0.1:8000/andme/user";
 
   ngOnInit() {
-    // this.user = {
-    //   username : '',
-    //   email : '',
-    //   password : ''
-    // }
+    this.user = {
+      username : '',
+      email : '',
+      password : ''
+    }
   }
 
-  // httpOptions
+  httpOptions
 
-  // register() {
-  //   this.http.post('http://127.0.0.1:8000/users/', this.user, this.httpOptions)
-  //     .subscribe(
-  //       result => {
-  //         console.log(result)
-  //       },
-  //       error => {
-  //         alert(JSON.stringify(error))
-  //       }
-  //     )
-  // }
+  register() {
+    this.http.post('http://127.0.0.1:8000/users/', this.user, this.httpOptions)
+      .subscribe(
+        result => {
+          console.log(result)
+        },
+        error => {
+          alert(JSON.stringify(error))
+        }
+      )
+  }
 
   ngAfterViewInit(){
     this.googleInit();
@@ -76,11 +76,10 @@ export class AboutComponent implements OnInit {
       (googleUser)=> {
         let profile=googleUser.getBasicProfile();
         this.gID=profile.getId();
-
         this.data.setLdata(JSON.stringify({
           'name':profile.getName(),
           'email':profile.getEmail(),
-          'uid':profile.getId()
+          'uidg':profile.getId()
         }) );
         this.name=profile.getName();
         this.imageURL=profile.getImageUrl();

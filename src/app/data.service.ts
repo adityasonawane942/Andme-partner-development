@@ -41,9 +41,15 @@ export class DataService {
       this.http.post('http://127.0.0.1:8000/api-token-auth/', JSON.stringify(user), this.httpOptions).subscribe(
         data => {
           this.updateData(data['token']);
+          this.setLdata(JSON.stringify({
+            'name': user.username,
+            'uidn': data['token']
+          }));
+          this._ngZone.run(() => this.router.navigate(['/user/updates']));
         },
         err => {
           this.errors = err['error'];
+          alert("You need to be a registered partner to login. To become a registered partner you need to apply here http://localhost:4200/apply");
         }
       );
     }

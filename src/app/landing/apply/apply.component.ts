@@ -54,7 +54,7 @@ export class ApplyComponent implements OnInit {
         this.data.setLdata(JSON.stringify({
           'name':profile.getName(),
           'email':profile.getEmail(),
-          'uid':profile.getId()
+          'uidg':profile.getId()
         }) );
         this.name=profile.getName();
         this.imageURL=profile.getImageUrl();

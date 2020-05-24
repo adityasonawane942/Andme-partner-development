@@ -36,7 +36,7 @@ export class ProfileComponent implements OnInit {
   gID
 
   ngOnInit() {
-    this.gID = JSON.parse(this.data.getLdata()).uid
+    this.gID = JSON.parse(this.data.getLdata()).uidg
     this.http.get(this.url+'/'+this.gID)
     .subscribe(
       data => {
