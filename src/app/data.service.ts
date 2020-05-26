@@ -35,6 +35,7 @@ export class DataService {
   userdata  
   storedata
   postdata
+  adata
 
     // Uses http.post() to get an auth token from djangorestframework-jwt endpoint
     public login(user) {
@@ -97,6 +98,14 @@ export class DataService {
 
   getuserdata() {
     return this.userdata
+  }
+
+  setadata(data) {
+    this.adata = data
+  }
+
+  getadata() {
+    return this.adata
   }
 
   setstoredata(data) {

@@ -1,0 +1,79 @@
+<div style="text-align: center;" class="container">
+    <div class="card" style="border: 0;">
+        <a routerLink="/admin-panel/list">Go Back to List</a>
+        <div class="row">
+            <div class="col-sm-4" id="det">
+                <p><b>Name</b></p>
+                <p>{{details.name}}</p>
+            </div>
+            <div class="col-sm-4" id="det">
+                <p><b>Email</b></p>
+                <p>{{details.email}}</p>
+            </div>
+            <div class="col-sm-4" id="det">
+                <p><b>Mobile Number</b></p>
+                <p>{{details.mobile_number}}</p>
+            </div>
+            <div class="col-sm-9" id="det">
+                <p><b>Address</b></p>
+                <p>{{details.address}}</p>
+            </div>
+            <div class="col-sm-3" id="det">
+                <p><b>DOB</b></p>
+                <p>{{details.dob}}</p>
+            </div>
+            <div class="col-sm-4" id="det">
+                <p><b>City</b></p>
+                <p>{{details.city_name}}</p>
+            </div>
+            <div class="col-sm-4" id="det">
+                <p><b>State</b></p>
+                <p>{{details.state}}</p>
+            </div>
+            <div class="col-sm-4" id="det">
+                <p><b>Pincode</b></p>
+                <p>{{details.pin_code}}</p>
+            </div>
+            <div *ngIf="type=='reg'" class="col-sm-4" id="det">
+                <p><b>Referral Code</b></p>
+                <input [(ngModel)]="updateddetails.referral_code">
+            </div>
+            <div *ngIf="type=='reg'" class="col-sm-4" id="det">
+                <p><b>Discount %</b></p>
+                <select (change)="selectid()" [(ngModel)]="updateddetails.discount">
+                    <option>5</option>
+                    <option>10</option>
+                    <option>15</option>
+                </select>
+            </div>
+            <div *ngIf="type=='reg'" class="col-sm-4" id="det">
+                <p><b>Margin %</b></p>
+                <input [(ngModel)]="updateddetails.margin">
+            </div>
+            <!-- <div *ngIf="type=='app'" class="col-sm-4" id="det">
+                <p><b>Referral Code</b></p>
+                <input [(ngModel)]="newdetails.referral_code">
+            </div>
+            <div *ngIf="type=='app'" class="col-sm-4" id="det">
+                <p><b>Discount %</b></p>
+                <input [(ngModel)]="newdetails.discount">
+            </div>
+            <div *ngIf="type=='app'" class="col-sm-4" id="det">
+                <p><b>Margin %</b></p>
+                <input [(ngModel)]="newdetails.margin">
+            </div> -->
+            <div *ngIf="type=='app'" style="margin-top: 2vw;" class="col-sm-6">
+                <button (click)="approve()">Approve</button>
+            </div>
+            <div id="upd" *ngIf="type=='reg'" style="margin-top: 2vw;" class="col-sm-6">
+                <button (click)="update()">Update</button>
+            </div>
+            <div id="nc" *ngIf="type=='reg'" style="margin-top: 2vw;" class="col-sm-6">
+                <button (click)="createcode()">Create Discount/Referral Code</button>
+            </div>
+            <!-- <div *ngIf="type=='reg'" style="margin-top: 2vw;" class="col-sm-6 offset-sm-3">
+                <button (click)="pricerulecreator()">Create New Price Rule</button>
+            </div> -->
+        </div>
+    </div>
+</div>

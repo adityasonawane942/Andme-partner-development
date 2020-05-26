@@ -1,0 +1,13 @@
+#det {
+    border: 1px solid deepskyblue;
+}
+
+#upd {
+    display: none;
+}
+
+@media screen and (max-width: 576px) {
+    #det {
+        border: 0px solid deepskyblue;
+    }
+}

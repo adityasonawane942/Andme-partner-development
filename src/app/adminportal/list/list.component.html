@@ -1,0 +1,33 @@
+<div class="container">
+    <div class="row" style="text-align: center;">
+        <div class="col-sm-6">
+            <button (click)="showapp()">Applications</button>
+        </div>
+        <div class="col-sm-6">
+            <button (click)="showreg()">Approved/Registered</button>
+        </div>
+    </div>
+    <br>
+    <div id="applications">
+        <div *ngFor="let item of applications">
+            <div *ngIf="!item.accepted" class="row">
+                <div class="col-sm-12">
+                    <div class="card">
+                        <p>{{item.name}}</p>
+                        <a routerLink="/admin-panel/detail/app/{{ item.email }}">Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="registered">
+        <div *ngFor="let item of registered" class="row">
+            <div class="col-sm-12">
+                <div class="card">
+                    <p>{{item.name}}</p>
+                    <a routerLink="/admin-panel/detail/reg/{{ item.email }}">Details</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

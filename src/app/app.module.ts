@@ -22,6 +22,9 @@ import { DataService } from './data.service';
 import { StoreDetailComponent } from './user/store-detail/store-detail.component';
 import { ResourcesComponent } from './user/resources/resources.component';
 import { AboutComponent } from './landing/about/about.component';
+import { AdminportalComponent } from './adminportal/adminportal.component';
+import { ListComponent } from './adminportal/list/list.component';
+import { DetailComponent } from './adminportal/detail/detail.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +41,10 @@ import { AboutComponent } from './landing/about/about.component';
     ApplyformComponent,
     StoreDetailComponent,
     ResourcesComponent,
-    AboutComponent
+    AboutComponent,
+    AdminportalComponent,
+    ListComponent,
+    DetailComponent
   ],
   imports: [
     BrowserModule,
@@ -67,6 +73,11 @@ import { AboutComponent } from './landing/about/about.component';
           },
           {path:'performance',component:PerformanceComponent},
         ]},
+        {path:'admin-panel', component:AdminportalComponent, children: [
+          {path:'list', component:ListComponent},
+          {path:'detail/:type/:email', component:DetailComponent},
+        ]},
+        {path:'**', component:LandingComponent}
     ])
   ],
   providers: [DataService],
