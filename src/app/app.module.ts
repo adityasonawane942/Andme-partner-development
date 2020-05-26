@@ -25,6 +25,7 @@ import { AboutComponent } from './landing/about/about.component';
 import { AdminportalComponent } from './adminportal/adminportal.component';
 import { ListComponent } from './adminportal/list/list.component';
 import { DetailComponent } from './adminportal/detail/detail.component';
+import { ProductlistPipe } from './user/store/productlist.pipe';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { DetailComponent } from './adminportal/detail/detail.component';
     AboutComponent,
     AdminportalComponent,
     ListComponent,
-    DetailComponent
+    DetailComponent,
+    ProductlistPipe
   ],
   imports: [
     BrowserModule,

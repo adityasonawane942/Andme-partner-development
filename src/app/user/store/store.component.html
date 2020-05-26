@@ -1,34 +1,11 @@
-<!-- <div id="main" class="container-fluid">
-    <div class="row">
-        <div (mouseleave)="ofhover()" id="outer" class="col-sm-3">
-            <ul><br>
-                <li [id]="'menu'+category.name" class="four" (mouseleave)="ofhover()" *ngFor="let category of categories">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-sm-5" style="padding: 0 1% 0 0;">
-                                <p id="thr" (mouseenter)="hovbutton = category.name; onhover();">{{ category.name }}</p>
-                            </div>
-                            <div id="one" class="col-sm-7" *ngIf="hovered==category.name" (mouseleave)="ofhover()">
-                                <ul>
-                                    <li id="two" *ngFor="let product of category.products">
-                                        <a routerLink="/user/store/{{ category.name }}/{{ product.name }}">{{ product.name }}</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </li><br>
-            </ul>
-        </div>
-        <div class="inner" class="col-sm-9">
-            <router-outlet></router-outlet>
-        </div>
-    </div>
-</div> -->
-
 <div style="margin-top: 120px;" id="main" class="container">
+    <div style="margin-left: auto; margin-right: auto;" class="btn-group">
+        <button style="border-radius: 0;" (click)="cat(null)" class="btn btn-primary">All Products</button>
+        <button *ngFor="let item of categories , let i=index" (click)="cat(item)" class="btn btn-primary">{{categoryname[i]}}</button>
+        <input style="display: none;" [(ngModel)]="name" name="select">
+    </div><br><br>
     <div class="row">
-        <div *ngFor="let product of products" class="col-sm-4">
+        <div *ngFor="let product of products | productlist : name" class="col-sm-4">
             <div class="card">
                 <a href="{{product.url}}" target="_blank" class="stretched-link"></a>
                 <img class="card-img-top" [src]="'../../../assets/'+product.image1" style="width:100%">

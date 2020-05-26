@@ -16,10 +16,22 @@ export class StoreComponent implements OnInit {
   ) { }
 
   products
+  categories = []
+  name = null
+  categoryname = ['Period Care', 'PCOS/PCOD', 'Beauty/Detox' , 'Fitness', 'Diet Plans']
+
+  cat(selectname) {
+    this.name = selectname
+  }
 
   ngOnInit() {
     if(this.data.getstoredata()) {
       this.products = this.data.getstoredata()
+      this.products.forEach(element => {
+        this.categories.push(element.category)
+      });
+      this.categories = [...new Set(this.categories)]
+      console.log(this.categories)
     }
     else {
       this.http.get('http://127.0.0.1:8000/andme/products/')
@@ -28,6 +40,11 @@ export class StoreComponent implements OnInit {
           this.products = data['products']
           this.data.setstoredata(this.products)
           console.log(this.products)
+          this.products.forEach(element => {
+            this.categories.push(element.category)
+          });
+          this.categories = [...new Set(this.categories)]
+          console.log(this.categories)
         },
         error => {
           alert(JSON.stringify(error))
