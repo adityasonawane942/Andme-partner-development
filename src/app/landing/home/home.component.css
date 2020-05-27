@@ -31,7 +31,7 @@ background: linear-gradient(0deg, rgba(228,239,239,1) 0%, rgba(98,241,239,1) 100
     padding: 2%;
     font-size: 2vw;
     margin: 0 auto;
-    background-color: lightgreen;
+    background-color: seagreen;
     border-radius: 25px;
     width: 80%;
     color: black;
@@ -44,8 +44,19 @@ background: linear-gradient(0deg, rgba(228,239,239,1) 0%, rgba(98,241,239,1) 100
     transform: scale(1.05);
 }
 
+#pullup {
+    position: relative;
+    top: -15vw;
+}
+
+#pull {
+    position: relative;
+    top: -7vw;
+}
+
 #reg {
     padding: 10% 0;
+    background: rgba(255, 255, 255, 0.7);
 }
 
 #catc {
@@ -138,6 +149,14 @@ background: linear-gradient(0deg, rgba(228,239,239,1) 0%, rgba(98,241,239,1) 100
 
     #regh {
         font-size: 4vw;
+    }
+
+    #banner {
+        width: 100%;
+    }
+
+    #pull, #pullup {
+        top: 0;
     }
 
     #cath {

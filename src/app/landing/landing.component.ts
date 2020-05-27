@@ -50,7 +50,7 @@ export class LandingComponent implements OnInit {
  
   logoutnorm() {
     this.data.logout();
-    localStorage.removeItem('ldata');
+    localStorage.removeItem('nldata')
     console.log("loggedout")
     this.loggedin = false
     this._ngZone.run(() => this.router.navigate(['/home'] ));
@@ -58,10 +58,10 @@ export class LandingComponent implements OnInit {
 
   ngOnInit() {
     this._ngZone.run(() => this.router.navigate(['/home'] ));
-    if(this.data.getLdata()) {
+    if(this.data.getLdata()||this.data.getnldata()) {
       this.loggedin = true;
       this.gID = JSON.parse(this.data.getLdata()).uidg
-      this.usertoken = JSON.parse(this.data.getLdata()).uidn
+      this.usertoken = JSON.parse(this.data.getnldata()).uidn
     }
     this.user = {
       username: '',

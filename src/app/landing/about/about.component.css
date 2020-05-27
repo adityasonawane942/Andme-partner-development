@@ -50,6 +50,7 @@ hr {
     margin-right: auto;
     width: 50%;
     padding: 2%;
+    font-size: 1.5vw;
     background-color: skyblue;
     transition: ease 0.5s;
 }
@@ -178,6 +179,10 @@ hr {
     #icon {
         font-size: 2.3vw;
     }
+
+    #regh, #buttona {
+        font-size: 1.7vw;
+    }
 }
 
 
@@ -192,6 +197,10 @@ hr {
 
     #whyh, #what, #stath {
         font-size: 2.9vw;
+    }
+
+    #regh, #buttona {
+        font-size: 1.9vw;
     }
 
     #stath {
@@ -211,6 +220,10 @@ hr {
 
     #statp {
         font-size: 1.6vw;
+    }
+
+    #regh, #buttona {
+        font-size: 2.1vw;
     }
 
     #whyh, #what {
@@ -239,6 +252,10 @@ hr {
 
     #whyh, #what, #stath {
         font-size: 5vw;
+    }
+
+    #regh, #buttona {
+        font-size: 4vw;
     }
 
     #stath {

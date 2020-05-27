@@ -23,15 +23,15 @@
                 <hr>
                 <div id="normc">
                     <p>If you do not have a Google account</p>
-                    <label for="username">Username</label>
-                    <input type="username" name="username" [(ngModel)]="user.username" /><br>
-                    <label for="email">Email</label>
-                    <input type="email" name="email" [(ngModel)]="user.email" /><br>
-                    <label for="password">Password</label>
+                    <!-- <p for="username">Username</p>
+                    <input type="username" name="username" [(ngModel)]="user.email" /><br> -->
+                    <p for="email">Email ID</p>
+                    <input type="email" name="email" [(ngModel)]="user.username" /><br>
+                    <p for="password">Password</p>
                     <input type="password" name="password" [(ngModel)]="user.password" /><br>
-                    <label for="confpass">Confirm Password</label>
-                    <input type="password" name="confpass" [(ngModel)]="confpass" /><br>
-                    <button (click)="register()" data-dismiss="modal">Register</button>
+                    <p for="confpass">Confirm Password</p>
+                    <input type="password" name="confpass" [(ngModel)]="confpass" /><br><br>
+                    <button (click)="register()" class="btn btn-primary" data-dismiss="modal">Register</button>
                 </div>
 			</div>
 			

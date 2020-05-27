@@ -18,6 +18,7 @@ export class UserComponent implements OnInit {
   userdata
   gID
   usertoken
+  email
   url = "http://127.0.0.1:8000/andme/user" 
 
   constructor(
@@ -29,12 +30,14 @@ export class UserComponent implements OnInit {
 
   logout() {
     localStorage.removeItem('ldata');
+    console.log("loggedout")
+    this.loggedin = false
     this._ngZone.run(() => this.router.navigate(['/home'] ));
   }
 
   logoutnorm() {
     this.data.logout();
-    localStorage.removeItem('ldata');
+    localStorage.removeItem('nldata')
     console.log("loggedout")
     this.loggedin = false
     this._ngZone.run(() => this.router.navigate(['/home'] ));
@@ -58,11 +61,21 @@ export class UserComponent implements OnInit {
 }
 
   ngOnInit() {
-    if(this.data.getLdata()) { 
+    if(this.data.getLdata()||this.data.getnldata()) { 
       this.loggedin = true;
-      this.gID = JSON.parse(this.data.getLdata()).uidg
-      this.usertoken = JSON.parse(this.data.getLdata()).uidn
-      
+      try {
+        this.gID = JSON.parse(this.data.getLdata()).uidg
+      }
+      catch {
+        this.gID = null
+      }
+      try {
+      this.email = JSON.parse(this.data.getnldata()).name
+      }
+      catch {
+        this.email = null
+      }
+    if(this.gID) {
       this.http.get(this.url+'/'+this.gID)
         .subscribe(
           data => {
@@ -74,6 +87,21 @@ export class UserComponent implements OnInit {
             alert("You need to be a registered partner to login. To become a registered partner you need to apply here http://localhost:4200/apply");
           }
         )
+    }
+    else if(this.email) {
+      this.http.get('http://127.0.0.1:8000/andme/normuser/'+this.email)
+        .subscribe(
+          data => {
+            console.log(data)
+            this.userdata = data
+            this.data.setuserdata(data)
+          },
+          error => {
+            alert(JSON.stringify(error))
+            alert("You need to be a registered partner to login. To become a registered partner you need to apply here http://localhost:4200/apply");
+          }
+        )
+    }
 
       this.http.get('http://127.0.0.1:8000/andme/products/')
       .subscribe(
@@ -206,7 +234,7 @@ export class UserComponent implements OnInit {
 });	
   }
   else {
-    alert("LOGIN!!")
+    alert("Please Login again")
     this._ngZone.run(() => this.router.navigate(['/home'] ));
   }
   }

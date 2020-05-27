@@ -1,7 +1,7 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 import { DataService } from 'src/app/data.service';
 import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { FormGroup } from '@angular/forms';
 
 @Component({
@@ -33,11 +33,16 @@ export class ApplyformComponent implements OnInit {
             console.log(error);
         }
     );
+    
+    this.httpOptions = {
+      headers: new HttpHeaders({'Content-Type': 'application/json', 'Authorization' : 'Token 38e461e6f3a9951556d082e535b86c6d5f1c8c20'})
+    };
   }  
 
-  name = JSON.parse(this.data.getLdata()).name
-  email = JSON.parse(this.data.getLdata()).email
-  uid = JSON.parse(this.data.getLdata()).uidg
+  httpOptions
+  name
+  email
+  uid
   contactno
   dob
   gender
@@ -50,6 +55,16 @@ export class ApplyformComponent implements OnInit {
   form = new FormGroup({});
 
   ngOnInit() {
+    try {
+    this.name = JSON.parse(this.data.getLdata()).name
+    this.email = JSON.parse(this.data.getLdata()).email
+    this.uid = JSON.parse(this.data.getLdata()).uidg
+    }
+    catch {
+      this.name = ''
+      this.email = ''
+      this.uid = ''
+    }
     console.log(this.age)
     console.log(this.tnc)
   }
@@ -90,7 +105,7 @@ export class ApplyformComponent implements OnInit {
     state: this.state,
     age: this.age,
     tnc: this.tnc
-  }).subscribe(
+  }, this.httpOptions).subscribe(
     result =>{
       console.log(result)
       alert("Your details have been recorded. Futher details will be mailed to you.")

@@ -1,6 +1,7 @@
 import { Injectable, NgZone } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { error } from 'protractor';
 
 @Injectable({
   providedIn: 'root'
@@ -32,6 +33,7 @@ export class DataService {
       };
     }
 
+  nudata
   userdata  
   storedata
   postdata
@@ -42,15 +44,31 @@ export class DataService {
       this.http.post('http://127.0.0.1:8000/api-token-auth/', JSON.stringify(user), this.httpOptions).subscribe(
         data => {
           this.updateData(data['token']);
-          this.setLdata(JSON.stringify({
+          this.setnldata(JSON.stringify({
             'name': user.username,
             'uidn': data['token']
           }));
-          this._ngZone.run(() => this.router.navigate(['/user/updates']));
+          this.http.get('http://127.0.0.1:8000/andme/normuser/'+user.username)
+            .subscribe(
+              data => {
+                console.log(data)
+                this._ngZone.run(() => this.router.navigate(['/user/updates']));
+              },
+              error => {
+                console.log(error)
+                this._ngZone.run(() => this.router.navigate(['/form']));
+              }
+            )
         },
         err => {
+          console.log(err)
+          if(err.error.non_field_errors) {
+            alert("Please provide correct credentials.")
+          }
+          else {
+            alert("You need to be a registered partner to login. To become a registered partner you need to apply here http://localhost:4200/apply");
+          }
           this.errors = err['error'];
-          alert("You need to be a registered partner to login. To become a registered partner you need to apply here http://localhost:4200/apply");
         }
       );
     }
@@ -90,6 +108,14 @@ export class DataService {
 
   getLdata() {
     return localStorage.getItem('ldata')
+  }
+
+  setnldata(data) {
+    localStorage.setItem('nldata',data)
+  }
+
+  getnldata() {
+    return localStorage.getItem('nldata')
   }
 
   setuserdata(data) {

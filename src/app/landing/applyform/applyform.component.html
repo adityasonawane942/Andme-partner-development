@@ -1,24 +1,27 @@
-<p>applyform works!</p>
-<form>
-    <label>Name : </label>
-    <input type="text" name="name" [(ngModel)]="name" /><br>
-    <label>Email : </label>
-    <input type="email" name="email" [(ngModel)]="email" /><br>
-    <label>Contact Number : </label>
-    <input type="number" maxlength="10" name="contactno" [(ngModel)]="contactno" /><br>
-    <label>Date of Birth : </label>
-    <input type="date" name="dob" [(ngModel)]="dob" /><br>
-    <label>Gender : </label>
-    <input type="text" name="gender" [(ngModel)]="gender" /><br>
-    <label>Address : </label>
-    <input type="text" name="address" [(ngModel)]="address" /><br>
-    <label>Pin Code : </label>
-    <input type="text" maxlength="6" name="pincode" (change)="change($event)" [(ngModel)]="pincode" /><br>
-    <label>District : </label>
-    <input type="text" name="city" [(ngModel)]="city" /><br>
-    <label>State : </label>
-    <input type="text" name="state" [(ngModel)]="state" /><br>
-    <input type="checkbox" [(ngModel)]="age" name="age" (click)="ticka()" />18+<br>
-    <input type="checkbox" [(ngModel)]="tnc" name="tnc" (click)="tickt()" />TnC<br>
-    <button type="submit" (click)="submit()">Submit</button>
-</form>
+<div style="margin-top: 120px;" class="container">
+    <div class="row">
+        <form>
+            <label>Name : </label>
+            <input type="text" name="name" [(ngModel)]="name" /><br>
+            <label>Email : </label>
+            <input type="email" name="email" [(ngModel)]="email" /><br>
+            <label>Contact Number : </label>
+            <input type="number" maxlength="10" name="contactno" [(ngModel)]="contactno" /><br>
+            <label>Date of Birth : </label>
+            <input type="date" name="dob" [(ngModel)]="dob" /><br>
+            <label>Gender : </label>
+            <input type="text" name="gender" [(ngModel)]="gender" /><br>
+            <label>Address : </label>
+            <input type="text" name="address" [(ngModel)]="address" /><br>
+            <label>Pin Code : </label>
+            <input type="text" maxlength="6" name="pincode" (change)="change($event)" [(ngModel)]="pincode" /><br>
+            <label>District : </label>
+            <input type="text" name="city" [(ngModel)]="city" /><br>
+            <label>State : </label>
+            <input type="text" name="state" [(ngModel)]="state" /><br>
+            <input type="checkbox" [(ngModel)]="age" name="age" (click)="ticka()" />18+<br>
+            <input type="checkbox" [(ngModel)]="tnc" name="tnc" (click)="tickt()" />TnC<br>
+            <button type="submit" (click)="submit()">Submit</button>
+        </form>
+    </div>
+</div>

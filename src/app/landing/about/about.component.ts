@@ -35,7 +35,6 @@ export class AboutComponent implements OnInit {
   ngOnInit() {
     this.user = {
       username : '',
-      email : '',
       password : ''
     }
   }
@@ -43,15 +42,31 @@ export class AboutComponent implements OnInit {
   httpOptions
 
   register() {
-    this.http.post('http://127.0.0.1:8000/users/', this.user, this.httpOptions)
-      .subscribe(
-        result => {
-          console.log(result)
-        },
-        error => {
-          alert(JSON.stringify(error))
-        }
-      )
+    if(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(this.user.username)&&this.user.password==this.confpass) {
+      this.http.post('http://127.0.0.1:8000/users/', this.user, this.httpOptions)
+        .subscribe(
+          result => {
+            this._ngZone.run(() => this.router.navigate(['/form']));
+          },
+          error => {
+            try {
+              var err = error.error.username
+              var cerr = err[0].replace('username', 'Email ID')
+              var derr = cerr.replace('.', '. Please proceed to Login')
+              alert(derr)
+            }
+            catch(e) {
+              alert(e)
+            }
+          }
+        )
+    }
+    else if(this.user.password!=this.confpass) {
+      alert("Passwords you entered do not match")
+    }
+    else {
+      alert("Please enter a valid Email Address")
+    }
   }
 
   ngAfterViewInit(){
