@@ -6,7 +6,13 @@ background: linear-gradient(0deg, rgba(228,239,239,1) 0%, rgba(98,241,239,1) 100
 }
 
 #regc {
-    padding: 10% 2%;
+    padding: 2% 2%;
+    font-size: 1.5vw;
+}
+
+#regc p {
+    margin-bottom: 0;
+    margin-top: 10px;
 }
 
 #regh {
@@ -19,10 +25,8 @@ background: linear-gradient(0deg, rgba(228,239,239,1) 0%, rgba(98,241,239,1) 100
     border-radius: 20px;
     margin-left: auto;
     margin-right: auto;
-    position: relative;
-    top: 2vw;
     width: 50%;
-    padding: 3%;
+    padding: 2%;
     background-color: skyblue;
     transition: ease 0.5s;
 }
@@ -30,17 +34,6 @@ background: linear-gradient(0deg, rgba(228,239,239,1) 0%, rgba(98,241,239,1) 100
 #buttonr:hover {
     transform: scale(1.1);
     color: white;
-}
-
-#normc {
-    padding: 2vw;
-    position: relative;
-    top: 2vw;
-}
-
-hr {
-    position: relative;
-    top: 3.5vw;
 }
 
 #buttona {
@@ -164,7 +157,7 @@ hr {
 }
 
 @media screen and (max-width: 1000px) {
-    #whath {
+    #whath, #regc {
         font-size: 1.7vw;
     }
 
@@ -187,7 +180,7 @@ hr {
 
 
 @media screen and (max-width: 800px) {
-    #whath {
+    #whath, #regc {
         font-size: 1.9vw;
     }
 
@@ -214,7 +207,7 @@ hr {
 
 
 @media screen and (max-width: 700px) {
-    #whath {
+    #whath, #regc {
         font-size: 2.1vw;
     }
 
@@ -242,8 +235,12 @@ hr {
 
 
 @media screen and (max-width: 576px) {
-    #whath {
-        font-size: 2.5vw;
+    #whath, #regc {
+        font-size: 4vw;
+    }
+
+    #buttonr {
+        width: 70%;
     }
 
     #statp {

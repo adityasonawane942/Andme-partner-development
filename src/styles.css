@@ -8,3 +8,10 @@ html {
 html::-webkit-scrollbar {
     display: none;
   }
+
+  input {
+      text-align: center;
+      outline: none;
+      border: 1px solid black;
+      border-radius: 10px;
+  }

@@ -1,30 +1,42 @@
 <div id="main" class="container-fluid">
     <div>
-        <div class="col-sm-6 offset-sm-3">
+        <div class="col-sm-8 offset-sm-2">
             <div id="regc" class="card">
-                <h3 id="regh">Click here to register</h3>
-                <a id="buttona" data-toggle="modal" data-target="#myModaltwo">REGISTER NOW</a>
-            </div>
-        </div>
-    </div>
-	<div class="modal fade" id="myModaltwo">
-		<div class="modal-dialog modal-dialog-centered">
-		  <div class="modal-content">
-		  
-			<!-- Modal Header -->
-			<div class="modal-header">
-			  <h6 class="modal-title">Register</h6>
-			  <button type="button" class="close" data-dismiss="modal">&times;</button>
-			</div>
-			
-			<!-- Modal body -->
-			<div class="modal-body">
                 <a id="buttonr" data-dismiss="modal">Register with Google</a>
                 <hr>
                 <div id="normc">
                     <p>If you do not have a Google account</p>
                     <!-- <p for="username">Username</p>
                     <input type="username" name="username" [(ngModel)]="user.email" /><br> -->
+                    <p for="email">Email ID</p>
+                    <input type="email" name="email" [(ngModel)]="user.username" /><br>
+                    <p for="password">&Me Password</p>
+                    <input type="password" name="password" [(ngModel)]="user.password" /><br>
+                    <p for="confpass">Confirm &Me Password</p>
+                    <input type="password" name="confpass" [(ngModel)]="confpass" /><br><br>
+                    <button (click)="register()" class="btn btn-primary" data-dismiss="modal">Register</button>
+                </div>
+                <!-- <h3 id="regh">Click here to register</h3>
+                <a id="buttona" data-toggle="modal" data-target="#myModaltwo">REGISTER NOW</a> -->
+            </div>
+        </div>
+    </div>
+	<!-- <div class="modal fade" id="myModaltwo">
+		<div class="modal-dialog modal-dialog-centered">
+		  <div class="modal-content">
+		  
+			<div class="modal-header">
+			  <h6 class="modal-title">Register</h6>
+			  <button type="button" class="close" data-dismiss="modal">&times;</button>
+			</div>
+			
+			<div class="modal-body">
+                <a id="buttonr" data-dismiss="modal">Register with Google</a>
+                <hr>
+                <div id="normc">
+                    <p>If you do not have a Google account</p>
+                    <p for="username">Username</p>
+                    <input type="username" name="username" [(ngModel)]="user.email" /><br>
                     <p for="email">Email ID</p>
                     <input type="email" name="email" [(ngModel)]="user.username" /><br>
                     <p for="password">Password</p>
@@ -35,14 +47,13 @@
                 </div>
 			</div>
 			
-			<!-- Modal footer -->
 			<div class="modal-footer">
 			  <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
 			</div>
 			
 		  </div>
 		</div>
-	</div>
+	</div> -->
     <div>
         <div class="col-sm-8 offset-sm-2">
             <h4 id="whyh">Why &Me?</h4>

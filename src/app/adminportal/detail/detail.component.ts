@@ -16,8 +16,8 @@ details = {}
 newdetails = {}
 updateddetails = {}
 httpOptions
+priceruleid
 discountcode
-priceruleid = 649851404390
 
   constructor(
     private route: ActivatedRoute,
@@ -47,7 +47,7 @@ priceruleid = 649851404390
               this.details = data
               this.newdetails = data
               this.newdetails['discount'] = 5
-              this.newdetails['referral_code'] = data['name'].split(' ')[0].substr(0,3)+data['name'].split(' ')[1].substr(0,3)+(this.newdetails['discount']).toString()
+              this.newdetails['referral_code'] = data['name'].split(' ')[0].substr(0,3).toUpperCase()+data['name'].split(' ')[1].substr(0,3).toUpperCase()+(this.newdetails['discount']).toString()
               this.newdetails['margin'] = 5
             },
             error => {
@@ -76,18 +76,19 @@ priceruleid = 649851404390
 
   selectid() {
     switch(this.updateddetails['discount']) {
-      case 5:
+      case '5':
         this.priceruleid = 649851404390
         break
-      case 10:
+      case '10':
         this.priceruleid = 649853304934
         break
-      case 15:
+      case '15':
         this.priceruleid = 649853403238
         break
       default:
         this.priceruleid = 649851404390
     }
+    console.log(this.priceruleid)
   }
 
   approve() {
@@ -100,11 +101,27 @@ priceruleid = 649851404390
           alert(JSON.stringify(error))
         }
       )
+
+    
+    this.discountcode = {
+      "discount_code": {
+        "code": this.newdetails['referral_code']
+      }
+    }
+    this.http.post('http://127.0.0.1:8000/andme/discountcode/'+649851404390, this.discountcode, this.httpOptions)
+      .subscribe(
+        data => {
+        },
+        error => {
+          alert(JSON.stringify(error))
+        }
+      )
+
     this.http.post('http://127.0.0.1:8000/andme/newuser/', this.newdetails, this.httpOptions)
       .subscribe(
         data => {
           this._ngZone.run(() => {
-            alert("User has been approved and registered. Go to the list of registered users to edit details.")
+            alert("User has been approved and registered with referral code " + data['referral_code'] + ". Go to the list of registered users to edit details.")
             this.router.navigate(['/admin-panel/list']);
         });
         },
@@ -133,17 +150,20 @@ priceruleid = 649851404390
         "code": this.updateddetails['referral_code']
       }
     }
-    this.http.post('http://127.0.0.1:8000/andme/discountcode/'+this.priceruleid, this.discountcode, this.httpOptions)
-      .subscribe(
-        data => {
-          alert("Code created. Please click on update to save changes.")
-        },
-        error => {
-          alert(JSON.stringify(error))
-        }
-      )
-    document.getElementById('nc').style.display = "none"
-    document.getElementById('upd').style.display = "block"
+    console.log(this.updateddetails['referral_code'])
+    console.log(this.updateddetails['discount'])
+    this.selectid()
+    console.log(this.priceruleid)
+    // this.http.post('http://127.0.0.1:8000/andme/discountcode/'+this.priceruleid, this.discountcode, this.httpOptions)
+    //   .subscribe(
+    //     data => {
+    //       this.update()
+    //     },
+    //     error => {
+    //       alert(JSON.stringify(error))
+    //     }
+    //   )
+
   }
 
 }
