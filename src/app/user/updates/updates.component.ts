@@ -37,7 +37,6 @@ formatter = new Intl.NumberFormat('en-US', {
 
 
   ngOnInit() { 
-    console.log(this.formatter.format(2500))
     this.http.get('http://127.0.0.1:8000/andme/orders/' + this.date)
     .subscribe(
       data => {
@@ -55,7 +54,8 @@ formatter = new Intl.NumberFormat('en-US', {
           }
         }
         // console.log(this.codelist)
-        this.foundcode = this.codelist.filter(item => item.code=="ANDME5")
+        console.log(this.data.getuserdata().referral_code)
+        this.foundcode = this.codelist.filter(item => item.code==this.data.getuserdata().referral_code)
         // console.log(this.foundcode)
         for(var i=0; i<this.foundcode.length; i++) {
           this.foundorder.push(this.newlist.filter(item => item.discount_codes[0]==this.foundcode[i])[0])

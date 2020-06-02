@@ -15,6 +15,7 @@ export class StoreComponent implements OnInit {
     private data: DataService,
   ) { }
 
+  ref
   products
   categories = []
   name = null
@@ -22,6 +23,14 @@ export class StoreComponent implements OnInit {
 
   cat(selectname) {
     this.name = selectname
+  }
+
+  copyToClipboard(element) {
+    var $temp = $("<input>");
+    $("body").append($temp);
+    $temp.val($(element).text()).select();
+    document.execCommand("copy");
+    $temp.remove();
   }
 
   ngOnInit() {
@@ -32,6 +41,8 @@ export class StoreComponent implements OnInit {
       });
       this.categories = [...new Set(this.categories)]
       console.log(this.categories)
+      this.ref = this.data.getuserdata().referral_code
+      console.log(this.ref)
     }
     else {
       this.http.get('http://127.0.0.1:8000/andme/products/')
@@ -45,6 +56,8 @@ export class StoreComponent implements OnInit {
           });
           this.categories = [...new Set(this.categories)]
           console.log(this.categories)
+          this.ref = this.data.getuserdata().referral_code
+          console.log(this.ref)
         },
         error => {
           alert(JSON.stringify(error))
