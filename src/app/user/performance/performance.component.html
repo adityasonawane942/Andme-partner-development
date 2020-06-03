@@ -47,7 +47,7 @@
 				<td>{{order.customer.email}}</td>
 				<td>{{dates[i]}}</td>
 				<td>{{formatter.format(order.subtotal_price)}}</td>
-				<td>{{formatter.format((order.subtotal_price*margin).toFixed(2))}}</td>
+				<td>{{formatter.format(order.subtotal_price*margin)}}</td>
 			</tr>
 			</tbody>
 		</table>

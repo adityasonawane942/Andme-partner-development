@@ -4,43 +4,43 @@
         <div class="row">
             <div class="col-sm-4" id="det">
                 <p><b>Name</b></p>
-                <p>{{details.name}}</p>
+                <p>{{details['name']}}</p>
             </div>
             <div class="col-sm-4" id="det">
                 <p><b>Email</b></p>
-                <p>{{details.email}}</p>
+                <p>{{details['email']}}</p>
             </div>
             <div class="col-sm-4" id="det">
                 <p><b>Mobile Number</b></p>
-                <p>{{details.mobile_number}}</p>
+                <p>{{details['mobile_number']}}</p>
             </div>
             <div class="col-sm-9" id="det">
                 <p><b>Address</b></p>
-                <p>{{details.address}}</p>
+                <p>{{details['address']}}</p>
             </div>
             <div class="col-sm-3" id="det">
                 <p><b>DOB</b></p>
-                <p>{{details.dob}}</p>
+                <p>{{details['dob']}}</p>
             </div>
             <div class="col-sm-4" id="det">
                 <p><b>City</b></p>
-                <p>{{details.city_name}}</p>
+                <p>{{details['city_name']}}</p>
             </div>
             <div class="col-sm-4" id="det">
                 <p><b>State</b></p>
-                <p>{{details.state}}</p>
+                <p>{{details['state']}}</p>
             </div>
             <div class="col-sm-4" id="det">
                 <p><b>Pincode</b></p>
-                <p>{{details.pin_code}}</p>
+                <p>{{details['pin_code']}}</p>
             </div>
             <div *ngIf="type=='reg'" class="col-sm-4" id="det">
                 <p><b>Referral Code</b></p>
-                <input [(ngModel)]="updateddetails.referral_code">
+                <input [(ngModel)]="updateddetails['referral_code']">
             </div>
             <div *ngIf="type=='reg'" class="col-sm-4" id="det">
                 <p><b>Discount %</b></p>
-                <select (change)="selectid()" [(ngModel)]="updateddetails.discount">
+                <select (change)="selectid()" [(ngModel)]="updateddetails['discount']">
                     <option>5</option>
                     <option>10</option>
                     <option>15</option>
@@ -48,19 +48,19 @@
             </div>
             <div *ngIf="type=='reg'" class="col-sm-4" id="det">
                 <p><b>Margin %</b></p>
-                <input [(ngModel)]="updateddetails.margin">
+                <input [(ngModel)]="updateddetails['margin']">
             </div>
             <div *ngIf="type=='app'" class="col-sm-4" id="det">
                 <p><b>Referral Code</b></p>
-                <input disabled [(ngModel)]="newdetails.referral_code">
+                <input disabled [(ngModel)]="newdetails['referral_code']">
             </div>
             <div *ngIf="type=='app'" class="col-sm-4" id="det">
                 <p><b>Discount %</b></p>
-                <input disabled [(ngModel)]="newdetails.discount">
+                <input disabled [(ngModel)]="newdetails['discount']">
             </div>
             <div *ngIf="type=='app'" class="col-sm-4" id="det">
                 <p><b>Margin %</b></p>
-                <input disabled [(ngModel)]="newdetails.margin">
+                <input disabled [(ngModel)]="newdetails['margin']">
             </div>
             <div *ngIf="type=='app'" style="margin-top: 2vw;" class="col-sm-6">
                 <button (click)="approve()">Approve</button>

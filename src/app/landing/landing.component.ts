@@ -20,7 +20,7 @@ export class LandingComponent implements OnInit {
   constructor(
     private _ngZone: NgZone,
     private router: Router,
-    private data: DataService,
+    public data: DataService,
     private http: HttpClient
   ) {}
 
