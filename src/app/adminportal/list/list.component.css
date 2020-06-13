@@ -5,3 +5,12 @@
 #pricerule {
     display: none;
 }
+
+#det {
+    cursor: pointer;
+}
+
+#det:hover {
+    color: blue;
+    text-decoration: underline;
+}

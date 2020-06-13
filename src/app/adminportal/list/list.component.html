@@ -9,25 +9,27 @@
     </div>
     <br>
     <div id="applications">
-        <div *ngFor="let item of applications">
-            <div *ngIf="!item.accepted" class="row">
-                <div class="col-sm-12">
-                    <div class="card">
-                        <p>{{item.name}}</p>
-                        <a routerLink="/admin-panel/detail/app/{{ item.email }}">Details</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <table style="width: 80%; text-align: center;">
+            <tr>
+                <th>Name</th>
+                <th>Details</th>
+            </tr>
+            <tr *ngFor="let item of applications">
+                <td *ngIf="!item.accepted">{{item.name}}</td>
+                <td *ngIf="!item.accepted" id="det" routerLink="/admin-panel/detail/app/{{ item.email }}">Details</td>
+            </tr>
+        </table>
     </div>
     <div id="registered">
-        <div *ngFor="let item of registered" class="row">
-            <div class="col-sm-12">
-                <div class="card">
-                    <p>{{item.name}}</p>
-                    <a routerLink="/admin-panel/detail/reg/{{ item.email }}">Details</a>
-                </div>
-            </div>
-        </div>
+        <table style="width: 80%; text-align: center;">
+            <tr>
+                <th>Name</th>
+                <th>Details</th>
+            </tr>
+            <tr *ngFor="let item of registered">
+                <td>{{item.name}}</td>
+                <td id="det" routerLink="/admin-panel/detail/reg/{{ item.email }}">Details</td>
+            </tr>
+        </table>
     </div>
 </div>
