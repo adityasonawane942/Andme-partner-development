@@ -29,7 +29,7 @@ export class LandingComponent implements OnInit {
   usertoken
   public imageURL: string;
   public email: string;
-  private url: string = "http://127.0.0.1:8000/andme/user";
+  private url: string = "http://partnerapi.andme.in/andme/user";
 
   logout() {
     localStorage.removeItem('ldata');

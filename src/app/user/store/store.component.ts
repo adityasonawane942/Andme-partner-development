@@ -45,7 +45,7 @@ export class StoreComponent implements OnInit {
       console.log(this.ref)
     }
     else {
-      this.http.get('http://127.0.0.1:8000/andme/products/')
+      this.http.get('http://partnerapi.andme.in/andme/products/')
       .subscribe(
         data => {
           this.products = data['products']

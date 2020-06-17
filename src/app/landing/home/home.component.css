@@ -1,12 +1,15 @@
 #main {
-    margin-top: 100px;
+    margin-top: 70px;
     text-align: center;
-    background: rgb(228,239,239);
-background: linear-gradient(0deg, rgba(228,239,239,1) 0%, rgba(98,241,239,1) 100%);
+    /* background: rgb(228,239,239);
+background: linear-gradient(0deg, rgba(228,239,239,1) 0%, rgba(98,241,239,1) 100%); */
 }
 
 #banner {
-    width: 90%;
+    position: relative;
+    /* top: -1vw; */
+    width: 75% !important;
+    height: auto !important;
     margin-left: auto;
     margin-right: auto;
 }
@@ -15,7 +18,7 @@ background: linear-gradient(0deg, rgba(228,239,239,1) 0%, rgba(98,241,239,1) 100
     position: relative;
     color: white;
     opacity: 0.8;
-    top: -20vw;
+    /* top: -20vw; */
     margin-left: auto;
     margin-right: auto;
     font-size: 4vw;
@@ -23,17 +26,17 @@ background: linear-gradient(0deg, rgba(228,239,239,1) 0%, rgba(98,241,239,1) 100
 }
 
 #regh {
-    font-size: 2.5vw;
-    margin-bottom: 3vw;
+    font-weight: 900;
+    font-size: 2.2vw;
 }
 
 #rega {
     padding: 2%;
-    font-size: 2vw;
-    margin: 0 auto;
-    background-color: seagreen;
+    font-size: 1.7vw;
+    margin: 1vw auto;
+    background-color: #71dceb;
     border-radius: 25px;
-    width: 80%;
+    width: 60%;
     color: black;
     font-weight: 700;
     text-decoration: none;
@@ -44,24 +47,13 @@ background: linear-gradient(0deg, rgba(228,239,239,1) 0%, rgba(98,241,239,1) 100
     transform: scale(1.05);
 }
 
-#pullup {
-    position: relative;
-    top: -15vw;
-}
-
-#pull {
-    position: relative;
-    top: -7vw;
-}
-
 #reg {
-    padding: 10% 0;
-    background: rgba(255, 255, 255, 0.7);
+    padding: 3% 0;
 }
 
 #catc {
     padding: 10% 2%;
-    background-color: rgba(255, 255, 255, 0.397);
+    background-color: #71dceb;
     border: 0px;
 }
 
@@ -80,7 +72,7 @@ background: linear-gradient(0deg, rgba(228,239,239,1) 0%, rgba(98,241,239,1) 100
 }
 
 .card {
-    margin-bottom: 2vw;
+    border: 0;
     padding: 2%;
 }
 

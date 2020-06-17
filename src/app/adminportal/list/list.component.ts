@@ -27,7 +27,7 @@ export class ListComponent implements OnInit {
 
   ngOnInit() {
     if(this.data.getadata()) {
-      this.http.get('http://127.0.0.1:8000/andme/applist')
+      this.http.get('http://partnerapi.andme.in/andme/applist')
         .subscribe(
           data => {
             this.applications = data['applications'].reverse()
@@ -37,7 +37,7 @@ export class ListComponent implements OnInit {
           }
         )
 
-      this.http.get('http://127.0.0.1:8000/andme/reglist')
+      this.http.get('http://partnerapi.andme.in/andme/reglist')
         .subscribe(
           data => {
             this.registered = data['registered'].reverse()

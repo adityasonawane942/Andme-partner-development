@@ -1,8 +1,8 @@
 #main {
     padding-top: 120px;
     text-align: center;
-    background: rgb(228,239,239);
-background: linear-gradient(0deg, rgba(228,239,239,1) 0%, rgba(98,241,239,1) 100%);
+    /* background: rgb(228,239,239);
+background: linear-gradient(0deg, rgba(228,239,239,1) 0%, rgba(98,241,239,1) 100%); */
 }
 
 #regc {
@@ -61,7 +61,7 @@ background: linear-gradient(0deg, rgba(228,239,239,1) 0%, rgba(98,241,239,1) 100
 }
 
 #smi {
-    width: 100%;
+    width: 80%;
     /* margin-top: 2vw; */
     margin-bottom: 2vw;
 }
@@ -90,11 +90,11 @@ background: linear-gradient(0deg, rgba(228,239,239,1) 0%, rgba(98,241,239,1) 100
 }
 
 #stati {
-    display: inline-block;
-    width: 50%;
+    /* display: inline-block;
+    width: 50%; */
     padding-right: 0;
     position: relative;
-    left: 1px;
+    /* left: 1px; */
 }
 
 #statdt {

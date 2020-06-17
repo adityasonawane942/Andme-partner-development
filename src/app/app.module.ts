@@ -5,8 +5,6 @@ import { AppComponent } from './app.component';
 import { LandingComponent } from './landing/landing.component';
 import { UserComponent } from './user/user.component';
 import { HomeComponent } from './landing/home/home.component';
-import { LoginComponent } from './landing/login/login.component';
-import { ApplyComponent } from './landing/apply/apply.component';
 import { ProfileComponent } from './user/profile/profile.component';
 import { UpdatesComponent } from './user/updates/updates.component';
 import { StoreComponent } from './user/store/store.component';
@@ -19,7 +17,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { ApplyformComponent } from './landing/applyform/applyform.component';
 import { DataService } from './data.service';
-import { StoreDetailComponent } from './user/store-detail/store-detail.component';
 import { ResourcesComponent } from './user/resources/resources.component';
 import { AboutComponent } from './landing/about/about.component';
 import { AdminportalComponent } from './adminportal/adminportal.component';
@@ -33,14 +30,11 @@ import { ProductlistPipe } from './user/store/productlist.pipe';
     LandingComponent,
     UserComponent,
     HomeComponent,
-    LoginComponent,
-    ApplyComponent,
     ProfileComponent,
     UpdatesComponent,
     StoreComponent,
     PerformanceComponent,
     ApplyformComponent,
-    StoreDetailComponent,
     ResourcesComponent,
     AboutComponent,
     AdminportalComponent,
@@ -59,8 +53,6 @@ import { ProductlistPipe } from './user/store/productlist.pipe';
         children: [
           {path:'home',component:HomeComponent},
           {path:'about',component:AboutComponent},
-          {path:'login',component:LoginComponent},
-          {path:'apply',component:ApplyComponent},
           {path:'form',component:ApplyformComponent},
         ]},
       {path:'user',component:UserComponent,
@@ -68,18 +60,13 @@ import { ProductlistPipe } from './user/store/productlist.pipe';
           {path:'profile',component:ProfileComponent},
           {path:'updates',component:UpdatesComponent},
           {path:'resources',component:ResourcesComponent},
-          {path:'store',component:StoreComponent,
-            children: [
-              {path:':category/:product', component:StoreDetailComponent},
-            ]
-          },
+          {path:'store',component:StoreComponent},
           {path:'performance',component:PerformanceComponent},
         ]},
         {path:'admin-panel', component:AdminportalComponent, children: [
           {path:'list', component:ListComponent},
           {path:'detail/:type/:email', component:DetailComponent},
         ]},
-        {path:'**', component:LandingComponent}
     ])
   ],
   providers: [DataService],

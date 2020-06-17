@@ -19,7 +19,7 @@ export class UserComponent implements OnInit {
   gID
   usertoken
   email
-  url = "http://127.0.0.1:8000/andme/user" 
+  url = "http://partnerapi.andme.in/andme/user" 
 
   constructor(
     private _ngZone: NgZone,
@@ -89,7 +89,7 @@ export class UserComponent implements OnInit {
         )
     }
     else if(this.email) {
-      this.http.get('http://127.0.0.1:8000/andme/normuser/'+this.email)
+      this.http.get('http://partnerapi.andme.in/andme/normuser/'+this.email)
         .subscribe(
           data => {
             console.log(data)
@@ -103,7 +103,7 @@ export class UserComponent implements OnInit {
         )
     }
 
-      this.http.get('http://127.0.0.1:8000/andme/products/')
+      this.http.get('http://partnerapi.andme.in/andme/products/')
       .subscribe(
         data => {
           this.products = data['products']
@@ -115,7 +115,7 @@ export class UserComponent implements OnInit {
         )
     try{
       instgrm.Embeds.process()
-      this.http.get('http://127.0.0.1:8000/andme/posts/')
+      this.http.get('http://partnerapi.andme.in/andme/posts/')
         .subscribe(
           data => {
             this.allposts = data['data'].splice(0,12)
@@ -131,7 +131,7 @@ export class UserComponent implements OnInit {
     catch{
       setTimeout(() => {
         instgrm.Embeds.process()
-        this.http.get('http://127.0.0.1:8000/andme/posts/')
+        this.http.get('http://partnerapi.andme.in/andme/posts/')
           .subscribe(
             data => {
               this.allposts = data['data'].splice(0,12)
@@ -147,7 +147,7 @@ export class UserComponent implements OnInit {
     }
 
     // instgrm.Embeds.process()
-    // this.http.get('http://127.0.0.1:8000/andme/posts/')
+    // this.http.get('http://partnerapi.andme.in/andme/posts/')
     //   .subscribe(
     //     data => {
     //       this.allposts = data['data'].splice(0,12)

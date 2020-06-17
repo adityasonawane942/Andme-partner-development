@@ -30,7 +30,7 @@ export class AboutComponent implements OnInit {
   public gID: number;
   public imageURL: string;
   public email: string;
-  private url: string = "http://127.0.0.1:8000/andme/user";
+  private url: string = "http://partnerapi.andme.in/andme/user";
 
   ngOnInit() {
     this.user = {
@@ -43,7 +43,7 @@ export class AboutComponent implements OnInit {
 
   register() {
     if(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(this.user.username)&&this.user.password==this.confpass) {
-      this.http.post('http://127.0.0.1:8000/rout/users/', this.user, this.httpOptions)
+      this.http.post('http://partnerapi.andme.in/rout/users/', this.user, this.httpOptions)
         .subscribe(
           result => {
             this._ngZone.run(() => this.router.navigate(['/form']));

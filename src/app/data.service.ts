@@ -41,14 +41,14 @@ export class DataService {
 
     // Uses http.post() to get an auth token from djangorestframework-jwt endpoint
     public login(user) {
-      this.http.post('http://127.0.0.1:8000/api-token-auth/', JSON.stringify(user), this.httpOptions).subscribe(
+      this.http.post('http://partnerapi.andme.in/api-token-auth/', JSON.stringify(user), this.httpOptions).subscribe(
         data => {
           this.updateData(data['token']);
           this.setnldata(JSON.stringify({
             'name': user.username,
             'uidn': data['token']
           }));
-          this.http.get('http://127.0.0.1:8000/andme/normuser/'+user.username)
+          this.http.get('http://partnerapi.andme.in/andme/normuser/'+user.username)
             .subscribe(
               data => {
                 console.log(data)
@@ -75,7 +75,7 @@ export class DataService {
    
     // Refreshes the JWT token, to extend the time the user is logged in
     public refreshToken() {
-      this.http.post('http://127.0.0.1:8000/api-token-refresh/', JSON.stringify({token: this.token}), this.httpOptions).subscribe(
+      this.http.post('http://partnerapi.andme.in/api-token-refresh/', JSON.stringify({token: this.token}), this.httpOptions).subscribe(
         data => {
           this.updateData(data['token']);
         },

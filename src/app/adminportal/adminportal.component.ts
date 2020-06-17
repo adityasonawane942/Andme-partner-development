@@ -25,7 +25,7 @@ export class AdminportalComponent implements OnInit {
 
   login() {
     this.data.setadata(this.pass)
-    this.http.get('http://127.0.0.1:8000/superuser/'+this.pass)
+    this.http.get('http://partnerapi.andme.in/superuser/'+this.pass)
       .subscribe(
         data => {
           this.get = this.data.getadata()

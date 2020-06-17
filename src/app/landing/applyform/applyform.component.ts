@@ -92,7 +92,7 @@ export class ApplyformComponent implements OnInit {
 
   submit() {
     if(this.age && this.tnc) {
-    this.http.post("http://127.0.0.1:8000/andme/apply",{
+    this.http.post("http://partnerapi.andme.in/andme/apply",{
     name: this.name,
     google_id: this.uid,
     mobile_number: this.contactno,

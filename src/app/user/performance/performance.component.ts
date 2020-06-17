@@ -148,7 +148,7 @@ formatter = new Intl.NumberFormat('en-US', {
   charter(date, unit, steps) {
     document.getElementById('canvas').style.display = "none"
     document.getElementById('canvastwo').style.display = "none"
-    this.http.get('http://127.0.0.1:8000/andme/orders/' + date)
+    this.http.get('http://partnerapi.andme.in/andme/orders/' + date)
     .subscribe(
       data => {
         console.log(data);

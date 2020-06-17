@@ -41,7 +41,7 @@ discountcode
       );
 
       if(this.type=="app") {
-        this.http.get('http://127.0.0.1:8000/andme/appuser/'+ this.email)
+        this.http.get('http://partnerapi.andme.in/andme/appuser/'+ this.email)
           .subscribe(
             data => {
               this.details = data
@@ -56,7 +56,7 @@ discountcode
           )
       }
       else {
-        this.http.get('http://127.0.0.1:8000/andme/reguser/'+ this.email)
+        this.http.get('http://partnerapi.andme.in/andme/reguser/'+ this.email)
           .subscribe(
             data => {
               this.details = data
@@ -93,7 +93,7 @@ discountcode
 
   approve() {
     this.details['accepted'] = true
-    this.http.put('http://127.0.0.1:8000/andme/upappuser/'+this.email, this.details, this.httpOptions)
+    this.http.put('http://partnerapi.andme.in/andme/upappuser/'+this.email, this.details, this.httpOptions)
       .subscribe(
         data => {
         },
@@ -108,7 +108,7 @@ discountcode
         "code": this.newdetails['referral_code']
       }
     }
-    this.http.post('http://127.0.0.1:8000/andme/discountcode/'+649851404390, this.discountcode, this.httpOptions)
+    this.http.post('http://partnerapi.andme.in/andme/discountcode/'+649851404390, this.discountcode, this.httpOptions)
       .subscribe(
         data => {
         },
@@ -117,7 +117,7 @@ discountcode
         }
       )
 
-    this.http.post('http://127.0.0.1:8000/andme/newuser/', this.newdetails, this.httpOptions)
+    this.http.post('http://partnerapi.andme.in/andme/newuser/', this.newdetails, this.httpOptions)
       .subscribe(
         data => {
           this._ngZone.run(() => {
@@ -132,7 +132,7 @@ discountcode
   }
 
   update() {
-    this.http.put('http://127.0.0.1:8000/andme/upreguser/'+this.email, this.updateddetails, this.httpOptions)
+    this.http.put('http://partnerapi.andme.in/andme/upreguser/'+this.email, this.updateddetails, this.httpOptions)
       .subscribe(
         data => {
           alert("All changes have been saved.")
@@ -154,7 +154,7 @@ discountcode
     console.log(this.updateddetails['discount'])
     this.selectid()
     console.log(this.priceruleid)
-    // this.http.post('http://127.0.0.1:8000/andme/discountcode/'+this.priceruleid, this.discountcode, this.httpOptions)
+    // this.http.post('http://partnerapi.andme.in/andme/discountcode/'+this.priceruleid, this.discountcode, this.httpOptions)
     //   .subscribe(
     //     data => {
     //       this.update()

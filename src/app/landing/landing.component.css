@@ -38,7 +38,7 @@ body{
 	transition : all 0.3s ease-out;
 }
 .start-header.scroll-on .navbar-brand img{
-	height: 50px;
+	height: 30px;
 	-webkit-transition : all 0.3s ease-out;
 	transition : all 0.3s ease-out;
 }
@@ -55,7 +55,7 @@ body{
 	padding: 0;
 }
 .navbar-brand img{
-	height: 70px;
+	height: 40px;
 	width: auto;
 	display: block;
 	-webkit-transition : all 0.3s ease-out;
@@ -313,63 +313,56 @@ hr {
 }
 
 #foot {
+	margin-top: 2vw;
+	padding-top: 2vw;
 	position: relative;
 	bottom: 0;
 	background-color: lightgray;
 }
 
 #conth {
-	text-align: center;
+	font-size: 1.2vw;
 }
 
 #contp {
-	text-align: center;
-	/* margin-bottom: 0; */
+	font-size: 1vw;
 	color: black;
 	text-decoration: none;
 }
 
-#contl {
+#footend {
+	padding-top: 2vw;
+	padding-left: 2vw;
+	padding-right: 2vw;
+	padding-bottom: 2vw;
+	font-size: 1vw;
+}
+
+.col-sm-3 {
 	text-align: center;
-}
-
-#soch {
-	text-align: center;
-}
-
-#icon {
-    color: black;
-    font-size: 2vw;
-    padding: 0 10px;
-    transition: ease 0.3s;
-}
-
-#icon:hover {
-    transform: scale(1.2);
-    color: hotpink;
 }
 
 @media screen and (max-width: 1000px) {
-	#icon {
-		font-size: 2.3vw;
+	#contp {
+		font-size: 1.1vw;
 	}
 }
 
 @media screen and (max-width: 800px) {
-	#icon {
-		font-size: 2.6vw;
+	#contp {
+		font-size: 1.1vw;
 	}
 }
 
 @media screen and (max-width: 700px) {
-	#icon {
-		font-size: 2.9vw;
+	#contp {
+		font-size: 1.1vw;
 	}
 }
 
 @media screen and (max-width: 576px) {
-	#icon {
-		font-size: 5vw;
+	#contp {
+		font-size: 1.1vw;
 	}
 
 	.modal-body {

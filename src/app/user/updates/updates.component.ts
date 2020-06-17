@@ -37,7 +37,7 @@ formatter = new Intl.NumberFormat('en-US', {
 
 
   ngOnInit() { 
-    this.http.get('http://127.0.0.1:8000/andme/orders/' + this.date)
+    this.http.get('http://partnerapi.andme.in/andme/orders/' + this.date)
     .subscribe(
       data => {
         console.log(data);
