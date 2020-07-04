@@ -10,8 +10,9 @@ html::-webkit-scrollbar {
   }
 
   input {
-      text-align: center;
+      padding: 0.5vw;
+      background-color: rgb(212, 212, 212);
       outline: none;
       border: 1px solid black;
-      border-radius: 10px;
+      border-radius: 5px;
   }

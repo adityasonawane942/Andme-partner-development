@@ -25,10 +25,12 @@
             <tr>
                 <th>Name</th>
                 <th>Details</th>
+                <th>Remove</th>
             </tr>
             <tr *ngFor="let item of registered">
                 <td>{{item.name}}</td>
                 <td id="det" routerLink="/admin-panel/detail/reg/{{ item.email }}">Details</td>
+                <td><button (click)="remover(item.email)">Remove</button></td>
             </tr>
         </table>
     </div>

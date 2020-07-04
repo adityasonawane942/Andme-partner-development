@@ -52,6 +52,20 @@ export class ListComponent implements OnInit {
     }
   }
 
+  remover(email) {
+    this.http.delete('http://partnerapi.andme.in/andme/delreguser/'+email, this.httpOptions)
+      .subscribe(
+        data => {
+          console.log(data)
+        },
+        error => {
+          alert(JSON.stringify(error))
+        }
+      )
+    console.log(email)
+    console.log("removed")
+  }
+
   showapp() {
     document.getElementById('registered').style.display = "none"
     document.getElementById('applications').style.display = "block"

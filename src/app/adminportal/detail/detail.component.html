@@ -65,11 +65,11 @@
             <div *ngIf="type=='app'" style="margin-top: 2vw;" class="col-sm-6">
                 <button (click)="approve()">Approve</button>
             </div>
-            <!-- <div id="upd" *ngIf="type=='reg'" style="margin-top: 2vw;" class="col-sm-6">
-                <button (click)="update()">Update</button>
-            </div> -->
             <div *ngIf="type=='reg'" style="margin-top: 2vw;" class="col-sm-6">
-                <button (click)="createcode()">Create Discount/Referral Code</button>
+                <button (click)="createcode()">Change Discount/Referral Code</button>
+            </div>
+            <div *ngIf="type=='reg'" style="margin-top: 2vw;" class="col-sm-6">
+                <button (click)="update()">Change Margin</button>
             </div>
         </div>
     </div>

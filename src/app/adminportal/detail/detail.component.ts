@@ -154,15 +154,15 @@ discountcode
     console.log(this.updateddetails['discount'])
     this.selectid()
     console.log(this.priceruleid)
-    // this.http.post('http://partnerapi.andme.in/andme/discountcode/'+this.priceruleid, this.discountcode, this.httpOptions)
-    //   .subscribe(
-    //     data => {
-    //       this.update()
-    //     },
-    //     error => {
-    //       alert(JSON.stringify(error))
-    //     }
-    //   )
+    this.http.post('http://partnerapi.andme.in/andme/discountcode/'+this.priceruleid, this.discountcode, this.httpOptions)
+      .subscribe(
+        data => {
+          this.update()
+        },
+        error => {
+          alert(JSON.stringify(error))
+        }
+      )
 
   }
 

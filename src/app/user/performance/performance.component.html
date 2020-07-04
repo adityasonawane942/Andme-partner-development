@@ -16,17 +16,17 @@
 		<div style="margin-left: auto; margin-right: auto;" class="col-sm-6">
 			<div class="card" id="main">
 				<h3 style="text-align: center;">Sales</h3>
+				<h4>Total Sales: <b>{{total_price}}</b></h4>
 				<div class="loader" id="loader-1"></div>
 				<canvas id="canvas"></canvas>
-				<h4>Total Sales: {{total_price}}</h4>
 			</div>
 		</div>
 		<div style="margin-left: auto; margin-right: auto;" class="col-sm-6">
 			<div class="card" id="main">
 				<h3 style="text-align: center;">Margin</h3>
+				<h4>Total Margin: <b>{{total_margin}}</b></h4>
 				<div class="loader" id="loader-2"></div>
 				<canvas id="canvastwo"></canvas>
-				<h4>Total Margin: {{total_margin}}</h4>
 			</div>
 		</div>
 	</div>
@@ -35,7 +35,7 @@
 			<thead class="thead-dark">
 			<tr>
 				<th>Name</th>
-				<th>Email</th>
+				<!-- <th>Email</th> -->
 				<th>Order Date</th>
 				<th>Amount</th>
 				<th>Margin</th>
@@ -44,8 +44,8 @@
 			<tbody>
 			<tr *ngFor="let order of foundorder, let i=index">
 				<td style="text-transform: capitalize;">{{order.customer.first_name}} {{order.customer.last_name}}</td>
-				<td>{{order.customer.email}}</td>
-				<td>{{dates[i]}}</td>
+				<!-- <td>{{order.customer.email}}</td> -->
+				<td>{{datesfortable[i]}}</td>
 				<td>{{formatter.format(order.subtotal_price)}}</td>
 				<td>{{formatter.format(order.subtotal_price*margin)}}</td>
 			</tr>

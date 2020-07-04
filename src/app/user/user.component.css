@@ -105,7 +105,6 @@ body{
 .nav-link{
 	color: #212121 !important;
 	font-weight: 500;
-	font-size: 1.5vw;
     transition: all 200ms linear;
 }
 .nav-item:hover .nav-link{
@@ -141,50 +140,6 @@ body{
 	position: relative;
     transition: all 200ms linear;
 }
-
-/* .nav-item .dropdown-menu {
-    transform: translate3d(0, 10px, 0);
-    visibility: hidden;
-    opacity: 0;
-	max-height: 0;
-    display: block;
-	padding: 0;
-	margin: 0;
-    transition: all 200ms linear;
-} */
-/* .nav-item.show .dropdown-menu {
-    opacity: 1;
-    visibility: visible;
-	max-height: 999px;
-    transform: translate3d(0, 0px, 0);
-} */
-/* .dropdown-menu {
-	padding: 10px!important;
-	margin: 0;
-	font-size: 13px;
-	letter-spacing: 1px;
-	color: #212121;
-	background-color: #fcfaff;
-	border: none;
-	border-radius: 3px;
-	box-shadow: 0 5px 10px 0 rgba(138, 155, 165, 0.15);
-    transition: all 200ms linear;
-}
-.dropdown-toggle::after {
-	display: none;
-}
-
-.dropdown-item {
-	padding: 3px 15px;
-	color: #212121;
-	border-radius: 2px;
-    transition: all 200ms linear;
-}
-.dropdown-item:hover, 
-.dropdown-item:focus {
-	color: #fff;
-	background-color: rgba(129,103,169,.6);
-} */
 
 .bg-light {
 	background-color: #fff !important;
@@ -275,64 +230,145 @@ body.hero-anime p{
 	background-color: rgba(129,103,169,.6);
 }
 
+@media (max-width: 767px) { 
+	h1{
+		font-size: 38px;
+	}
+	.nav-item:after{
+		display: none;
+	}
+	.nav-item::before {
+		position: absolute;
+		display: block;
+		top: 15px;
+		left: 0;
+		width: 11px;
+		height: 1px;
+		content: "";
+		border: none;
+		background-color: #000;
+		vertical-align: 0;
+	}
+	.dropdown-toggle::after {
+		position: absolute;
+		display: block;
+		top: 10px;
+		left: -23px;
+		width: 1px;
+		height: 11px;
+		content: "";
+		border: none;
+		background-color: #000;
+		vertical-align: 0;
+		transition: all 200ms linear;
+	}
+	.dropdown-toggle[aria-expanded="true"]::after{
+		transform: rotate(90deg);
+		opacity: 0;
+	}
+	.dropdown-menu {
+		padding: 0 !important;
+		background-color: transparent;
+		box-shadow: none;
+		transition: all 200ms linear;
+	}
+	.dropdown-toggle[aria-expanded="true"] + .dropdown-menu {
+		margin-top: 10px !important;
+		margin-bottom: 20px !important;
+	}
+	body.dark .nav-item::before {
+		background-color: #fff;
+	}
+	body.dark .dropdown-toggle::after {
+		background-color: #fff;
+	}
+	body.dark .dropdown-menu {
+		background-color: transparent;
+		box-shadow: none;
+	}
+}
+
+h6 {
+	font-weight: 400;
+}
+
 #foot {
+	margin-top: 2vw;
+	padding-top: 2vw;
 	position: relative;
 	bottom: 0;
 	background-color: lightgray;
 }
 
 #conth {
-	text-align: center;
+	font-size: 1.2vw;
+	font-weight: 600;
 }
 
 #contp {
-	text-align: center;
-	/* margin-bottom: 0; */
+	font-size: 1vw;
 	color: black;
 	text-decoration: none;
+	transition: ease 0.5s;
 }
 
-#contl {
+#contp:hover {
+	color: white;
+}
+
+#footend {
+	padding-left: 5vw;
+	padding-right: 5vw;
+	padding-bottom: 0.5vw;
+	font-size: 0.8vw;
+}
+
+.col-sm-3 {
 	text-align: center;
-}
-
-#soch {
-	text-align: center;
-}
-
-#icon {
-    color: black;
-    font-size: 2vw;
-    padding: 0 10px;
-    transition: ease 0.3s;
-}
-
-#icon:hover {
-    transform: scale(1.2);
-    color: hotpink;
 }
 
 @media screen and (max-width: 1000px) {
-	#icon {
-		font-size: 2.3vw;
+	#conth {
+		font-size: 1.4vw;
+	}
+	#contp {
+		font-size: 1.1vw;
 	}
 }
 
 @media screen and (max-width: 800px) {
-	#icon {
-		font-size: 2.6vw;
+	#conth {
+		font-size: 1.6vw;
+	}
+	#contp {
+		font-size: 1.3vw;
+	}
+	#footend {
+		font-size: 1.2vw;
 	}
 }
 
 @media screen and (max-width: 700px) {
-	#icon {
-		font-size: 2.9vw;
+	#conth {
+		font-size: 1.8vw;
+	}
+	#contp {
+		font-size: 1.5vw;
+	}
+	#footend {
+		font-size: 1.4vw;
 	}
 }
 
 @media screen and (max-width: 576px) {
-	#icon {
-		font-size: 5vw;
+	#conth {
+		font-size: 3.5vw;
+	}
+	#contp {
+		font-size: 2.5vw;
+	}
+	#footend {
+		font-size: 2vw;
 	}
 }
 

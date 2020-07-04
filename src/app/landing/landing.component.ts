@@ -57,11 +57,15 @@ export class LandingComponent implements OnInit {
   }
 
   ngOnInit() {
-    this._ngZone.run(() => this.router.navigate(['/home'] ));
     if(this.data.getLdata()||this.data.getnldata()) {
+      this._ngZone.run(() => this.router.navigate(['/user/updates']));
       this.loggedin = true;
-      this.gID = JSON.parse(this.data.getLdata()).uidg
-      this.usertoken = JSON.parse(this.data.getnldata()).uidn
+      try {
+        this.gID = JSON.parse(this.data.getLdata()).uidg
+      }
+      catch {
+        this.usertoken = JSON.parse(this.data.getnldata()).uidn
+      }
     }
     this.user = {
       username: '',

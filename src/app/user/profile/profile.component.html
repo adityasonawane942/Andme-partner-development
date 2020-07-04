@@ -193,6 +193,7 @@
                         placeholder="Link to your Facebook Profile"
                         name="facebook"
                         [(ngModel)]="facebookid"
+                        value="{{userdata.fb_link}}"
                       />
                     </div>
                   </div>
@@ -207,6 +208,59 @@
                         placeholder="Link to your Instagram Profile"
                         name="insta"
                         [(ngModel)]="instagram_id"
+                        value="{{userdata.insta_link}}"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Recipient Name</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        [(ngModel)]="recipient_name"
+                        name="recipientname"
+                        value="{{userdata.recipient_name}}"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Bank Name</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="bankname"
+                        [(ngModel)]="bank_name"
+                        value="{{userdata.bank_name}}"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Account Number</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="accountnumber"
+                        [(ngModel)]="account_number"
+                        value="{{ userdata.account_number }}"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>IFSC Code</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="ifsccode"
+                        [(ngModel)]="ifsc_code"
+                        value="{{userdata.ifsc_code}}"
                       />
                     </div>
                   </div>

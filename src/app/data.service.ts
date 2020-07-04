@@ -127,11 +127,11 @@ export class DataService {
   }
 
   setadata(data) {
-    this.adata = data
+    localStorage.setItem('adata',data)
   }
 
   getadata() {
-    return this.adata
+    return localStorage.getItem('adata')
   }
 
   setstoredata(data) {

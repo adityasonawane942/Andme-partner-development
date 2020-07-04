@@ -38,7 +38,7 @@ export class AdminportalComponent implements OnInit {
   }
 
   logout() {
-    this.data.setadata(null)
+    localStorage.removeItem('adata')
     this._ngZone.run(() => this.router.navigate(['/home'] ));
   }
 

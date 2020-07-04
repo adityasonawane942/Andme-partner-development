@@ -1,6 +1,11 @@
 <div id="main" class="container-fluid" style="padding: 0;">
     <div>
-        <video autoplay loop id="banner" src="../../../assets/ambassador page top video.mp4"></video>
+        <div>
+            <video autoplay [muted]="true" loop id="banner">
+                <source type="video/mp4" src="../../../assets/ambassador page top video.mp4">
+                    Your browser does not support the video tag.
+            </video>
+        </div>
         <!-- <p id="wel">Make a change with &Me!</p> -->
         <!-- <div id="section" class="col-sm-4 offset-sm-7">
             <div id="regd" class="card">

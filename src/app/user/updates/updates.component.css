@@ -1,3 +1,39 @@
 #bar {
     margin-top: 70px;
 }
+
+.card {
+    margin-bottom: 2vw;
+}
+
+#stats {
+    font-size: 2vw;
+}
+
+@media screen and (max-width: 1000px) {
+	#stats {
+		font-size: 2.2vw;
+	}
+}
+
+@media screen and (max-width: 800px) {
+	#stats {
+		font-size: 2.4vw;
+	}
+}
+
+@media screen and (max-width: 700px) {
+	#stats {
+		font-size: 2.6vw;
+	}
+}
+
+@media screen and (max-width: 576px) {
+	#stats {
+		font-size: 4vw;
+    }
+    .wid {
+        width: 90%;
+        left: 5%;
+    }
+}

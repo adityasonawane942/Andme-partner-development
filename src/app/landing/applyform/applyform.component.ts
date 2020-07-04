@@ -50,7 +50,7 @@ export class ApplyformComponent implements OnInit {
   city
   state
   pincode
-  age=false
+  age=true
   tnc=false
   form = new FormGroup({});
 
@@ -63,7 +63,7 @@ export class ApplyformComponent implements OnInit {
     catch {
       this.name = ''
       this.email = ''
-      this.uid = ''
+      this.uid = '0000'
     }
     console.log(this.age)
     console.log(this.tnc)

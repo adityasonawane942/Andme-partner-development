@@ -26,8 +26,9 @@ background: linear-gradient(0deg, rgba(228,239,239,1) 0%, rgba(98,241,239,1) 100
     margin-left: auto;
     margin-right: auto;
     width: 50%;
+    color: white;
     padding: 2%;
-    background-color: skyblue;
+    background-color: black;
     transition: ease 0.5s;
 }
 
@@ -44,7 +45,8 @@ background: linear-gradient(0deg, rgba(228,239,239,1) 0%, rgba(98,241,239,1) 100
     width: 50%;
     padding: 2%;
     font-size: 1.5vw;
-    background-color: skyblue;
+    background-color: black;
+    color: white;
     transition: ease 0.5s;
 }
 
@@ -128,6 +130,7 @@ background: linear-gradient(0deg, rgba(228,239,239,1) 0%, rgba(98,241,239,1) 100
     margin: 0;
     cursor: pointer;
     font-weight: 500;
+    font-size: 1.2vw;
 }
 
 #itema:hover {
@@ -138,6 +141,10 @@ background: linear-gradient(0deg, rgba(228,239,239,1) 0%, rgba(98,241,239,1) 100
 #soch {
     margin-top: 5vw;
     margin-bottom: 1vw;
+}
+
+.btn-primary {
+    background-color: black;
 }
 
 #icon {
@@ -154,6 +161,10 @@ background: linear-gradient(0deg, rgba(228,239,239,1) 0%, rgba(98,241,239,1) 100
 
 #foot {
     background-color: lightgray;
+}
+
+#para, #item>p {
+    font-size: 1.2vw;
 }
 
 @media screen and (max-width: 1000px) {
@@ -175,6 +186,10 @@ background: linear-gradient(0deg, rgba(228,239,239,1) 0%, rgba(98,241,239,1) 100
 
     #regh, #buttona {
         font-size: 1.7vw;
+    }
+
+    #itema, #para, #item>p {
+        font-size: 1.4vw;
     }
 }
 
@@ -203,6 +218,10 @@ background: linear-gradient(0deg, rgba(228,239,239,1) 0%, rgba(98,241,239,1) 100
     #icon {
         font-size: 2.6vw;
     }
+
+    #itema, #para, #item>p {
+        font-size: 1.6vw;
+    }
 }
 
 
@@ -230,6 +249,10 @@ background: linear-gradient(0deg, rgba(228,239,239,1) 0%, rgba(98,241,239,1) 100
 
     #icon {
         font-size: 2.9vw;
+    }
+
+    #itema, #para, #item>p {
+        font-size: 1.8vw;
     }
 }
 
@@ -278,5 +301,9 @@ background: linear-gradient(0deg, rgba(228,239,239,1) 0%, rgba(98,241,239,1) 100
 
     #icon {
         font-size: 5vw;
+    }
+
+    #itema, #para, #item>p {
+        font-size: 3vw;
     }
 }

@@ -34,10 +34,10 @@ background: linear-gradient(0deg, rgba(228,239,239,1) 0%, rgba(98,241,239,1) 100
     padding: 2%;
     font-size: 1.7vw;
     margin: 1vw auto;
-    background-color: #71dceb;
+    background-color: black;
     border-radius: 25px;
     width: 60%;
-    color: black;
+    color: white;
     font-weight: 700;
     text-decoration: none;
     transition: ease 0.5s;
@@ -53,13 +53,14 @@ background: linear-gradient(0deg, rgba(228,239,239,1) 0%, rgba(98,241,239,1) 100
 
 #catc {
     padding: 10% 2%;
-    background-color: #71dceb;
+    background-color: rgb(233, 227, 224);
     border: 0px;
+    margin-bottom: 2vw;
 }
 
 #cath {
     text-align: left;
-    color: rgb(46, 46, 168);
+    color: rgb(247, 27, 27);
     font-weight: 900;
     margin-left: 2vw;
     font-size: 2vw;
@@ -67,6 +68,7 @@ background: linear-gradient(0deg, rgba(228,239,239,1) 0%, rgba(98,241,239,1) 100
 
 #catp {
     text-align: left;
+    color: black;
     margin-left: 2vw;
     font-size: 1.3vw;
 }

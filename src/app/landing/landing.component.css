@@ -293,9 +293,10 @@ body.hero-anime p{
     border-radius: 20px;
     margin-left: auto;
 	margin-right: auto;
-    width: 50%;
+	width: 50%;
+	color: white;
     padding: 3%;
-    background-color: skyblue;
+    background-color: black;
     transition: ease 0.5s;
 }
 
@@ -304,12 +305,20 @@ body.hero-anime p{
     color: white;
 }
 
+.btn-primary {
+	background-color: black;
+}
+
 .modal-body {
 	padding: 3rem;
 }
 
 hr {
 	margin-top: 3rem;
+}
+
+h6 {
+	margin: 0;
 }
 
 #foot {
@@ -322,49 +331,73 @@ hr {
 
 #conth {
 	font-size: 1.2vw;
+	font-weight: 600;
 }
 
 #contp {
 	font-size: 1vw;
 	color: black;
 	text-decoration: none;
+	transition: ease 0.5s;
+}
+
+#contp:hover {
+	color: white;
 }
 
 #footend {
-	padding-top: 2vw;
-	padding-left: 2vw;
-	padding-right: 2vw;
-	padding-bottom: 2vw;
-	font-size: 1vw;
+	padding-left: 5vw;
+	padding-right: 5vw;
+	padding-bottom: 0.5vw;
+	font-size: 0.8vw;
 }
 
 .col-sm-3 {
 	text-align: center;
 }
-
 @media screen and (max-width: 1000px) {
+	#conth {
+		font-size: 1.4vw;
+	}
 	#contp {
 		font-size: 1.1vw;
 	}
 }
 
 @media screen and (max-width: 800px) {
+	#conth {
+		font-size: 1.6vw;
+	}
 	#contp {
-		font-size: 1.1vw;
+		font-size: 1.3vw;
+	}
+	#footend {
+		font-size: 1.2vw;
 	}
 }
 
 @media screen and (max-width: 700px) {
+	#conth {
+		font-size: 1.8vw;
+	}
 	#contp {
-		font-size: 1.1vw;
+		font-size: 1.5vw;
+	}
+	#footend {
+		font-size: 1.4vw;
 	}
 }
 
 @media screen and (max-width: 576px) {
-	#contp {
-		font-size: 1.1vw;
+	#conth {
+		font-size: 3.5vw;
 	}
-
+	#contp {
+		font-size: 2.5vw;
+	}
+	#footend {
+		font-size: 2vw;
+	}
 	.modal-body {
 		padding: 3rem;
 	}

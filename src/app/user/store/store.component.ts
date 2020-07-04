@@ -41,7 +41,8 @@ export class StoreComponent implements OnInit {
       });
       this.categories = [...new Set(this.categories)]
       console.log(this.categories)
-      this.ref = this.data.getuserdata().referral_code
+      this.ref = "FREESHAKER"
+      // this.ref = this.data.getuserdata().referral_code
       console.log(this.ref)
     }
     else {
