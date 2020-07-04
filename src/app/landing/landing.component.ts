@@ -67,6 +67,9 @@ export class LandingComponent implements OnInit {
         this.usertoken = JSON.parse(this.data.getnldata()).uidn
       }
     }
+    else {
+      this._ngZone.run(() => this.router.navigate(['/home'] ));
+    }
     this.user = {
       username: '',
       password: ''
@@ -191,7 +194,7 @@ export class LandingComponent implements OnInit {
           this._ngZone.run(() => this.router.navigate(['/user/updates']));
         },
         error => {
-          alert("You need to be a registered partner to login. To become a registered partner you need to apply here http://localhost:4200/apply");
+          alert("You need to be a registered partner to login.");
         }
       )
   }
