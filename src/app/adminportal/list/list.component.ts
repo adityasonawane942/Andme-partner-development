@@ -62,6 +62,16 @@ export class ListComponent implements OnInit {
           alert(JSON.stringify(error))
         }
       )
+      
+    this.http.delete('http://partnerapi.andme.in/andme/deluserapp/'+email, this.httpOptions)
+    .subscribe(
+      data => {
+        console.log(data)
+      },
+      error => {
+        alert(JSON.stringify(error))
+      }
+    )
     console.log(email)
     console.log("removed")
   }
