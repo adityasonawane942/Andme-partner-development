@@ -27,10 +27,10 @@ export class ApplyformComponent implements OnInit {
               let row = csvToRowArray[index].split(",");
               this.addArray.push(new Add( parseInt( row[0], 10), row[1], row[2].trim()));
             }
-            console.log(this.addArray);
+            // console.log(this.addArray);
         },
         error => {
-            console.log(error);
+            // console.log(error);
         }
     );
     
@@ -65,27 +65,27 @@ export class ApplyformComponent implements OnInit {
       this.email = ''
       this.uid = '0000'
     }
-    console.log(this.age)
-    console.log(this.tnc)
+    // console.log(this.age)
+    // console.log(this.tnc)
   }
 
   ticka() {
     this.age = !this.age;
-    console.log(this.age)
+    // console.log(this.age)
   }
 
   tickt() {
     this.tnc = !this.tnc;
-    console.log(this.tnc)
+    // console.log(this.tnc)
   }
 
   change = (event) => {
-    console.log(event.target.value)
+    // console.log(event.target.value)
     var pin = event.target.value;
     var result = this.addArray.find(obj => {
       return obj.pincode == pin;
     });
-    console.log(result)
+    // console.log(result)
     this.state = result.state;
     this.city = result.district;
   }
@@ -107,12 +107,12 @@ export class ApplyformComponent implements OnInit {
     tnc: this.tnc
   }, this.httpOptions).subscribe(
     result =>{
-      console.log(result)
+      // console.log(result)
       alert("Your details have been recorded. Futher details will be mailed to you.")
       this._ngZone.run(() => this.router.navigate(['/home'] ));
     },
     error => {
-      console.log(error)
+      // console.log(error)
       alert(JSON.stringify(error["error"]))
     },
     () => {}

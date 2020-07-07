@@ -40,49 +40,49 @@ formatter = new Intl.NumberFormat('en-US', {
     this.http.get('http://partnerapi.andme.in/andme/orders/' + this.date)
     .subscribe(
       data => {
-        console.log(data);
+        // console.log(data);
         this.deta = data
         this.margin = this.data.getuserdata().margin/100
-        console.log(this.margin)
+        // console.log(this.margin)
         for(var i = 0; i<this.deta.length; i++) {
           this.newlist.push(...(data[i].orders))
         }
-        console.log(this.newlist)
+        // console.log(this.newlist)
         for(i of this.newlist) {
           if(i['discount_codes'].length) {
             this.codelist.push(...i['discount_codes'])
           }
         }
         // console.log(this.codelist)
-        console.log(this.data.getuserdata().referral_code)
+        // console.log(this.data.getuserdata().referral_code)
         this.foundcode = this.codelist.filter(item => item.code=="FREESHAKER")
         // this.foundcode = this.codelist.filter(item => item.code==this.data.getuserdata().referral_code)
         // console.log(this.foundcode)
         for(var i=0; i<this.foundcode.length; i++) {
           this.foundorder.push(this.newlist.filter(item => item.discount_codes[0]==this.foundcode[i])[0])
         }
-        console.log(this.foundorder)
+        // console.log(this.foundorder)
         this.price = this.foundorder.map(res => parseFloat(res.subtotal_price))
-        console.log(this.price.reverse())
+        // console.log(this.price.reverse())
         this.dates = this.foundorder.map(res => moment(res.created_at).format('LLL'))
         this.dates = this.dates.reverse()
-        console.log(this.dates.reverse())
+        // console.log(this.dates.reverse())
         for(var i=0; i<this.dates.length-1; i++) {
           if(this.dates[i].substr(0,12)==this.dates[i+1].substr(0,12)) {
-            console.log(this.dates[i].substr(0,12))
-            console.log(this.dates[i+1].substr(0,12))
-            console.log(new Date(this.dates[i].substr(0,12)).toDateString())
+            // console.log(this.dates[i].substr(0,12))
+            // console.log(this.dates[i+1].substr(0,12))
+            // console.log(new Date(this.dates[i].substr(0,12)).toDateString())
             this.dates.push(moment(this.dates[i]).format('LLL'))
-            console.log(this.dates)
+            // console.log(this.dates)
             this.dates.splice(i,2)
-            console.log(this.dates)
-            console.log(this.price[this.price.length - i-1])
-            console.log(this.price[this.price.length - i-2])
-            console.log(this.price[this.price.length - i-1] + this.price[this.price.length - i-2])
+            // console.log(this.dates)
+            // console.log(this.price[this.price.length - i-1])
+            // console.log(this.price[this.price.length - i-2])
+            // console.log(this.price[this.price.length - i-1] + this.price[this.price.length - i-2])
             this.price.push(this.price[this.price.length - i-1] + this.price[this.price.length - i-2])
-            console.log(this.price)
+            // console.log(this.price)
             this.price.splice(i+1,2)
-            console.log(this.price)
+            // console.log(this.price)
           }
         }
         // this.dater(7)

@@ -51,17 +51,17 @@ export class DataService {
           this.http.get('http://partnerapi.andme.in/andme/normuser/'+user.username)
             .subscribe(
               data => {
-                console.log(data)
+                // console.log(data)
                 this._ngZone.run(() => this.router.navigate(['/user/updates']));
               },
               error => {
-                console.log(error)
+                // console.log(error)
                 this._ngZone.run(() => this.router.navigate(['/form']));
               }
             )
         },
         err => {
-          console.log(err)
+          // console.log(err)
           if(err.error.non_field_errors) {
             alert("Please provide correct credentials.")
           }

@@ -81,7 +81,7 @@ export class AboutComponent implements OnInit {
         cookiepolicy: 'single_host_origin',
         scope: 'profile email'
       });
-      console.log("apply client")
+      // console.log("apply client")
       this.attachSignin(document.getElementById('buttonr'));
     });
   }
@@ -99,7 +99,7 @@ export class AboutComponent implements OnInit {
         this.name=profile.getName();
         this.imageURL=profile.getImageUrl();
         this.email=profile.getEmail();
-        console.log("apply attach")
+        // console.log("apply attach")
         this.onClick();
       });
   }
@@ -108,12 +108,12 @@ export class AboutComponent implements OnInit {
     this.http.get(this.url+'/'+this.gID)
       .subscribe(
         data => {
-          console.log(data);
+          // console.log(data);
           this.data.setuserdata(data);
           this._ngZone.run(() => this.router.navigate(['/user/updates']));
         },
         error => {
-          console.log("to form")
+          // console.log("to form")
           this._ngZone.run(() => this.router.navigate(['/form']));
         }
       )

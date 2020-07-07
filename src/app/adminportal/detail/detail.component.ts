@@ -61,6 +61,7 @@ discountcode
             data => {
               this.details = data
               this.updateddetails = data
+              // console.log(this.updateddetails)
             },
             error => {
               alert(JSON.stringify(error))
@@ -88,7 +89,7 @@ discountcode
       default:
         this.priceruleid = 649851404390
     }
-    console.log(this.priceruleid)
+    // console.log(this.priceruleid)
   }
 
   approve() {
@@ -150,10 +151,10 @@ discountcode
         "code": this.updateddetails['referral_code']
       }
     }
-    console.log(this.updateddetails['referral_code'])
-    console.log(this.updateddetails['discount'])
+    // console.log(this.updateddetails['referral_code'])
+    // console.log(this.updateddetails['discount'])
     this.selectid()
-    console.log(this.priceruleid)
+    // console.log(this.priceruleid)
     this.http.post('http://partnerapi.andme.in/andme/discountcode/'+this.priceruleid, this.discountcode, this.httpOptions)
       .subscribe(
         data => {

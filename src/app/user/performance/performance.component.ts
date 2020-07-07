@@ -53,27 +53,27 @@ datesetter() {
   for(var i=0; i<24; i++) {
     this.today.push({x: todaystart.add(1, 'hour').toISOString(), y: 0})
   }
-  console.log(this.today)
+  // console.log(this.today)
   var startyesterday = moment().subtract(1, 'day').startOf('day')
   for(var i=0; i<24; i++) {
     this.yesterday.push({x: startyesterday.add(1, 'hour').toISOString(), y: 0})
   }
-  console.log(this.yesterday)
+  // console.log(this.yesterday)
   var start7day = moment().subtract(7, 'days')
   for(var i=0; i<7; i++) {
     this.last7days.push({x: start7day.add(1, 'day').toISOString(), y: 0})
   }
-  console.log(this.last7days)
+  // console.log(this.last7days)
   var start30day = moment().subtract(30, 'days')
   for(var i=0; i<30; i++) {
     this.last30days.push({x: start30day.add(1, 'day').toISOString(), y: 0})
   }
-  console.log(this.last30days)
+  // console.log(this.last30days)
   var start90day = moment().subtract(90, 'days')
   for(var i=0; i<90; i++) {
     this.last90days.push({x: start90day.add(1, 'day').toISOString(), y: 0})
   }
-  console.log(this.last90days)
+  // console.log(this.last90days)
 }
 
 
@@ -93,7 +93,7 @@ datesetter() {
     this.charttwo.destroy()
     document.getElementById('canvas').style.display = "none"
     document.getElementById('canvastwo').style.display = "none"
-    console.log(this.dateoption)
+    // console.log(this.dateoption)
     switch(this.dateoption) {
       case "Today":
         this.datefinal = moment().startOf('day').format()
@@ -138,7 +138,7 @@ datesetter() {
         this.steps = 9
         break
       default:
-        console.log("def")
+        // console.log("def")
     }
     document.getElementById('loader-1').style.display = "block"
     document.getElementById('loader-2').style.display = "block"
@@ -147,7 +147,7 @@ datesetter() {
  
   ngOnInit() {
     this.datesetter()
-    console.log(this.price)
+    // console.log(this.price)
     this.charter(this.datefinal, this.unit, this.steps)
   }
 
@@ -187,50 +187,50 @@ datesetter() {
     this.http.get('http://partnerapi.andme.in/andme/orders/' + date)
     .subscribe(
       data => {
-        console.log(data);
+        // console.log(data);
         this.disabled = false
         this.deta = data
         this.margin = this.data.getuserdata().margin/100
-        console.log(this.margin)
+        // console.log(this.margin)
         for(var i = 0; i<this.deta.length; i++) {
           this.newlist.push(...(data[i].orders))
         }
-        console.log(this.newlist)
+        // console.log(this.newlist)
         for(i of this.newlist) {
           if(i['discount_codes'].length) {
             this.codelist.push(...i['discount_codes'])
           }
         }
-        console.log(this.codelist)
+        // console.log(this.codelist)
         this.foundcode = this.codelist.filter(item => item.code=="FREESHAKER")
         // this.foundcode = this.codelist.filter(item => item.code==this.data.getuserdata().referral_code)
         // console.log(this.foundcode)
         for(var i=0; i<this.foundcode.length; i++) {
           this.foundorder.push(this.newlist.filter(item => item.discount_codes[0]==this.foundcode[i])[0])
         }
-        console.log(this.foundorder)
+        // console.log(this.foundorder)
         this.price = this.foundorder.map(res => parseFloat(res.subtotal_price))
-        console.log(this.price.reverse())
+        // console.log(this.price.reverse())
         this.dates = this.foundorder.map(res => moment(res.created_at).format('LLL'))
         this.dates = this.dates.reverse()
         this.datesfortable = this.foundorder.map(res => moment(res.created_at).format('LLL'))
-        console.log(this.dates.reverse())
+        // console.log(this.dates.reverse())
         for(var i=0; i<this.dates.length-1; i++) {
           if(this.dates[i].substr(0,13)==this.dates[i+1].substr(0,13)) {
-            console.log(this.dates[i].substr(0,13))
-            console.log(this.dates[i+1].substr(0,13))
-            console.log(new Date(this.dates[i].substr(0,13)).toDateString())
+            // console.log(this.dates[i].substr(0,13))
+            // console.log(this.dates[i+1].substr(0,13))
+            // console.log(new Date(this.dates[i].substr(0,13)).toDateString())
             this.dates.splice(i, 0, moment(this.dates[i]).format('LLL'))
-            console.log(this.dates)
+            // console.log(this.dates)
             this.dates.splice(i,2)
-            console.log(this.dates)
-            console.log(this.price[this.price.length - i-1])
-            console.log(this.price[this.price.length - i-2])
-            console.log(this.price[this.price.length - i-1] + this.price[this.price.length - i-2])
+            // console.log(this.dates)
+            // console.log(this.price[this.price.length - i-1])
+            // console.log(this.price[this.price.length - i-2])
+            // console.log(this.price[this.price.length - i-1] + this.price[this.price.length - i-2])
             this.price.splice(this.price.length - i, 0,this.price[this.price.length - i-1] + this.price[this.price.length - i-2])
-            console.log(this.price)
+            // console.log(this.price)
             this.price.splice(this.price.length - i-3,2)
-            console.log(this.price)
+            // console.log(this.price)
           }
         }
         // this.dater(7)
@@ -244,13 +244,13 @@ datesetter() {
             listC.sort((a, b) => {
                 return (a.x || a.x).localeCompare((b.x || b.x))
             })
-            console.log(listC)
+            // console.log(listC)
             this.finaldata = listC
             var listD = this.finaldatamargin.concat(this.today)
             listD.sort((a, b) => {
                 return (a.x || a.x).localeCompare((b.x || b.x))
             })
-            console.log(listD)
+            // console.log(listD)
             this.finaldatamargin = listD
             break
           case "Yesterday":
@@ -258,13 +258,13 @@ datesetter() {
             listC.sort((a, b) => {
                 return (a.x || a.x).localeCompare((b.x || b.x))
             })
-            console.log(listC)
+            // console.log(listC)
             this.finaldata = listC
             var listD = this.finaldatamargin.concat(this.yesterday)
             listD.sort((a, b) => {
                 return (a.x || a.x).localeCompare((b.x || b.x))
             })
-            console.log(listD)
+            // console.log(listD)
             this.finaldatamargin = listD
             break
           case "Last 7 days":
@@ -272,13 +272,13 @@ datesetter() {
             listC.sort((a, b) => {
                 return (a.x || a.x).localeCompare((b.x || b.x))
             })
-            console.log(listC)
+            // console.log(listC)
             this.finaldata = listC
             var listD = this.finaldatamargin.concat(this.last7days)
             listD.sort((a, b) => {
                 return (a.x || a.x).localeCompare((b.x || b.x))
             })
-            console.log(listD)
+            // console.log(listD)
             this.finaldatamargin = listD
             break
           case "Last 30 days":
@@ -286,13 +286,13 @@ datesetter() {
             listC.sort((a, b) => {
                 return (a.x || a.x).localeCompare((b.x || b.x))
             })
-            console.log(listC)
+            // console.log(listC)
             this.finaldata = listC
             var listD = this.finaldatamargin.concat(this.last30days)
             listD.sort((a, b) => {
                 return (a.x || a.x).localeCompare((b.x || b.x))
             })
-            console.log(listD)
+            // console.log(listD)
             this.finaldatamargin = listD
             break
           case "Last 90 days":
@@ -300,24 +300,24 @@ datesetter() {
             listC.sort((a, b) => {
                 return (a.x || a.x).localeCompare((b.x || b.x))
             })
-            console.log(listC)
+            // console.log(listC)
             this.finaldata = listC
             var listD = this.finaldatamargin.concat(this.last90days)
             listD.sort((a, b) => {
                 return (a.x || a.x).localeCompare((b.x || b.x))
             })
-            console.log(listD)
+            // console.log(listD)
             this.finaldatamargin = listD
             break
           default:
-            console.log("def")
+            // console.log("def")
         }
         this.total_price = this.price.reduce((a, b) => a + b, 0).toFixed(2)
         this.total_price = this.formatter.format(this.total_price)
         this.total_margin = (this.price.reduce((a, b) => a + b, 0)*this.margin).toFixed(2)
         this.total_margin = this.formatter.format(this.total_margin)
-        console.log(this.finaldata)
-        console.log(this.finaldatamargin)
+        // console.log(this.finaldata)
+        // console.log(this.finaldatamargin)
 
         document.getElementById('loader-1').style.display = "none"
         document.getElementById('canvas').style.display = "block"

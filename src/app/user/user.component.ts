@@ -30,7 +30,7 @@ export class UserComponent implements OnInit {
 
   logout() {
     localStorage.removeItem('ldata');
-    console.log("loggedout")
+    // console.log("loggedout")
     this.loggedin = false
     this._ngZone.run(() => this.router.navigate(['/home'] ));
   }
@@ -38,7 +38,7 @@ export class UserComponent implements OnInit {
   logoutnorm() {
     this.data.logout();
     localStorage.removeItem('nldata')
-    console.log("loggedout")
+    // console.log("loggedout")
     this.loggedin = false
     this._ngZone.run(() => this.router.navigate(['/home'] ));
   }
@@ -92,7 +92,7 @@ export class UserComponent implements OnInit {
       this.http.get('http://partnerapi.andme.in/andme/normuser/'+this.email)
         .subscribe(
           data => {
-            console.log(data)
+            // console.log(data)
             this.userdata = data
             this.data.setuserdata(data)
           },

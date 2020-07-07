@@ -34,6 +34,30 @@
                 <p><b>Pincode</b></p>
                 <p>{{details['pin_code']}}</p>
             </div>
+            <div *ngIf="type=='reg'" class="col-sm-6" id="det">
+                <p><b>FB Link</b></p>
+                <input [(ngModel)]="updateddetails['fb_link']">
+            </div>
+            <div *ngIf="type=='reg'" class="col-sm-6" id="det">
+                <p><b>Instagram Link</b></p>
+                <input [(ngModel)]="updateddetails['insta_link']">
+            </div>
+            <div *ngIf="type=='reg'" class="col-sm-3" id="det">
+                <p><b>Recipient Name</b></p>
+                <input [(ngModel)]="updateddetails['recipient_name']">
+            </div>
+            <div *ngIf="type=='reg'" class="col-sm-3" id="det">
+                <p><b>Bank Name</b></p>
+                <input [(ngModel)]="updateddetails['bank_name']">
+            </div>
+            <div *ngIf="type=='reg'" class="col-sm-3" id="det">
+                <p><b>Account Number</b></p>
+                <input [(ngModel)]="updateddetails['account_number']">
+            </div>
+            <div *ngIf="type=='reg'" class="col-sm-3" id="det">
+                <p><b>IFSC Code</b></p>
+                <input [(ngModel)]="updateddetails['ifsc_code']">
+            </div>
             <div *ngIf="type=='reg'" class="col-sm-4" id="det">
                 <p><b>Referral Code</b></p>
                 <input [(ngModel)]="updateddetails['referral_code']">

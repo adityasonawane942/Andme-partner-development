@@ -73,14 +73,14 @@ export class ProfileComponent implements OnInit {
     }, this.httpOptions)
       .subscribe(
         data => {
-          console.log(data)
+          // console.log(data)
           alert("Your profile has been updated successfully")
         },
         error => {
           alert(JSON.stringify(error))
         }
     )
-    console.log("update")
+    // console.log("update")
   }
 
   ngOnInit() {
@@ -90,7 +90,7 @@ export class ProfileComponent implements OnInit {
         .subscribe(
           data => {
             this.userdata = data
-            console.log(this.userdata)
+            // console.log(this.userdata)
             this.email = this.userdata.email
             this.instagram_id = this.userdata.insta_link
             this.facebookid = this.userdata.fb_link
@@ -106,7 +106,7 @@ export class ProfileComponent implements OnInit {
         .subscribe(
           data => {
             this.userdata = data
-            console.log(this.userdata)
+            // console.log(this.userdata)
             this.instagram_id = this.userdata.insta_link
             this.facebookid = this.userdata.fb_link
           },

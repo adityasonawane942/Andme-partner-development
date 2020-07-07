@@ -40,10 +40,10 @@ export class StoreComponent implements OnInit {
         this.categories.push(element.category)
       });
       this.categories = [...new Set(this.categories)]
-      console.log(this.categories)
+      // console.log(this.categories)
       this.ref = "FREESHAKER"
       // this.ref = this.data.getuserdata().referral_code
-      console.log(this.ref)
+      // console.log(this.ref)
     }
     else {
       this.http.get('http://partnerapi.andme.in/andme/products/')
@@ -51,14 +51,14 @@ export class StoreComponent implements OnInit {
         data => {
           this.products = data['products']
           this.data.setstoredata(this.products)
-          console.log(this.products)
+          // console.log(this.products)
           this.products.forEach(element => {
             this.categories.push(element.category)
           });
           this.categories = [...new Set(this.categories)]
-          console.log(this.categories)
+          // console.log(this.categories)
           this.ref = this.data.getuserdata().referral_code
-          console.log(this.ref)
+          // console.log(this.ref)
         },
         error => {
           alert(JSON.stringify(error))

@@ -6,6 +6,19 @@
     display: none;
 }
 
+input {
+    width: 80%;
+    margin-bottom: 1vw;
+}
+
+select {
+    padding: 0.5vw;
+    background-color: rgb(212, 212, 212);
+    outline: none;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
 @media screen and (max-width: 576px) {
     #det {
         border: 0px solid deepskyblue;

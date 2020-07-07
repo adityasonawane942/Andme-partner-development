@@ -33,7 +33,7 @@ export class LandingComponent implements OnInit {
 
   logout() {
     localStorage.removeItem('ldata');
-    console.log("loggedout")
+    // console.log("loggedout")
     this.loggedin = false
     this._ngZone.run(() => this.router.navigate(['/home'] ));
   }
@@ -51,7 +51,7 @@ export class LandingComponent implements OnInit {
   logoutnorm() {
     this.data.logout();
     localStorage.removeItem('nldata')
-    console.log("loggedout")
+    // console.log("loggedout")
     this.loggedin = false
     this._ngZone.run(() => this.router.navigate(['/home'] ));
   }
@@ -162,7 +162,7 @@ export class LandingComponent implements OnInit {
         cookiepolicy: 'single_host_origin',
         scope: 'profile email'
       });
-      console.log("apply client")
+      // console.log("apply client")
       this.attachSignin(document.getElementById('button'));
     });
   }
@@ -180,7 +180,7 @@ export class LandingComponent implements OnInit {
         this.name=profile.getName();
         this.imageURL=profile.getImageUrl();
         this.email=profile.getEmail();
-        console.log("apply attach")
+        // console.log("apply attach")
         this.onClick();
       });
   }
@@ -189,7 +189,7 @@ export class LandingComponent implements OnInit {
     this.http.get(this.url+'/'+this.gID)
       .subscribe(
         data => {
-          console.log(data);
+          // console.log(data);
           this.data.setuserdata(data);
           this._ngZone.run(() => this.router.navigate(['/user/updates']));
         },
