@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/data.service';
 import { Chart } from 'chart.js';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import * as moment from 'moment';
 
 @Component({
@@ -14,8 +14,14 @@ export class PerformanceComponent implements OnInit {
   constructor(
     private http: HttpClient,
     private data: DataService
-  ) { }
+  ) {
+    this.httpOptions = {
+      headers: new HttpHeaders({'Content-Type': 'application/json', 'Authorization' : 'Token 38e461e6f3a9951556d082e535b86c6d5f1c8c20'})
+    };
+  }
 
+  httpOptions
+  email
 margin
 res
 chart
@@ -47,6 +53,8 @@ formatter = new Intl.NumberFormat('en-US', {
   style: 'currency',
   currency: 'INR',
 });
+
+updateddetails = {}
 
 datesetter() {
   var todaystart = moment().startOf('day')
@@ -146,6 +154,68 @@ datesetter() {
   }
  
   ngOnInit() {
+    if(this.data.getLdata()) {
+      try {
+        this.email = JSON.parse(this.data.getLdata()).email
+        this.http.get('http://partnerapi.andme.in/andme/reguser/'+ this.email)
+          .subscribe(
+            data => {
+              console.log(data)
+              this.updateddetails = data
+              console.log(this.updateddetails)
+            },
+            error => {
+              console.log(error)
+            }
+          )
+      }
+      catch {
+        this.email = null
+        console.log("W")
+      }
+    }
+    else if(this.data.getnldata()) {
+      try {
+        this.email = JSON.parse(this.data.getnldata()).name
+        this.http.get('http://partnerapi.andme.in/andme/reguser/'+ this.email)
+          .subscribe(
+            data => {
+              console.log(data)
+              this.updateddetails = data
+              console.log(this.updateddetails)
+            },
+            error => {
+              console.log(error)
+            }
+          )
+      }
+      catch {
+        this.email = null
+        console.log("W")
+      }
+    }
+    var ninety = moment().subtract(90, 'days').format()
+    this.http.get('http://partnerapi.andme.in/andme/orders/' + ninety)
+      .subscribe(
+        data => {
+          // console.log(JSON.stringify(data))
+          var neworders = JSON.stringify(data)
+          this.updateddetails['orders'] = neworders
+          console.log(this.updateddetails)
+          this.http.put('http://partnerapi.andme.in/andme/upreguser/'+this.email, this.updateddetails, this.httpOptions)
+            .subscribe(
+              data => {
+                console.log(data)
+              },
+              error => {
+                console.log(error)
+              }
+            )
+        },
+        error => {
+          alert(JSON.stringify(error))
+        }
+      )
     this.datesetter()
     // console.log(this.price)
     this.charter(this.datefinal, this.unit, this.steps)
