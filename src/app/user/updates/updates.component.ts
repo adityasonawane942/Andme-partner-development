@@ -55,7 +55,7 @@ formatter = new Intl.NumberFormat('en-US', {
         }
         // console.log(this.codelist)
         // console.log(this.data.getuserdata().referral_code)
-        this.foundcode = this.codelist.filter(item => item.code=="FREESHAKER")
+        this.foundcode = this.codelist.filter(item => item.code==JSON.parse(this.data.getuserdata()).referral_code)
         // this.foundcode = this.codelist.filter(item => item.code==this.data.getuserdata().referral_code)
         // console.log(this.foundcode)
         for(var i=0; i<this.foundcode.length; i++) {

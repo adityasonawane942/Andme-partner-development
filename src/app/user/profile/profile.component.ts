@@ -25,7 +25,7 @@ export class ProfileComponent implements OnInit {
   name
   address
   rcode
-  userdata
+  userdata = JSON.parse(this.data.getuserdata()).name
   uid
   contactno
   dob
