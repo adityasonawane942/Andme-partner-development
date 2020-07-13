@@ -68,20 +68,20 @@ formatter = new Intl.NumberFormat('en-US', {
         this.dates = this.dates.reverse()
         // console.log(this.dates.reverse())
         for(var i=0; i<this.dates.length-1; i++) {
-          if(this.dates[i].substr(0,12)==this.dates[i+1].substr(0,12)) {
-            // console.log(this.dates[i].substr(0,12))
-            // console.log(this.dates[i+1].substr(0,12))
-            // console.log(new Date(this.dates[i].substr(0,12)).toDateString())
-            this.dates.push(moment(this.dates[i]).format('LLL'))
+          if(this.dates[i].substr(0,13)==this.dates[i+1].substr(0,13)) {
+            // console.log(this.dates[i].substr(0,13))
+            // console.log(this.dates[i+1].substr(0,13))
+            // console.log(new Date(this.dates[i].substr(0,13)).toDateString())
+            this.dates.splice(i, 0, moment(this.dates[i]).format('LLL'))
             // console.log(this.dates)
             this.dates.splice(i,2)
             // console.log(this.dates)
             // console.log(this.price[this.price.length - i-1])
             // console.log(this.price[this.price.length - i-2])
             // console.log(this.price[this.price.length - i-1] + this.price[this.price.length - i-2])
-            this.price.push(this.price[this.price.length - i-1] + this.price[this.price.length - i-2])
+            this.price.splice(this.price.length - i, 0,this.price[this.price.length - i-1] + this.price[this.price.length - i-2])
             // console.log(this.price)
-            this.price.splice(i+1,2)
+            this.price.splice(this.price.length - i-3,2)
             // console.log(this.price)
           }
         }
