@@ -84,10 +84,10 @@ export class ListComponent implements OnInit {
       // console.log(j.code)
       this.codeorders.push(this.orderlist.filter(item => {if(item.discount_codes.length&&item.discount_codes[0].code==j.code) {return item} else {return false}}))
     }
-    console.log(this.codeorders)
+    // console.log(this.codeorders)
     for(var i=0; i<this.codeorders.length; i++) {
       for(var k = 0; k<this.codeorders[i].length; k++) {
-        console.log(this.codeorders[i][k].subtotal_price)
+        // console.log(this.codeorders[i][k].subtotal_price)
         this.codebucket[i].sale += parseFloat(this.codeorders[i][k].subtotal_price)
       }
       this.codebucket[i].sale = this.codebucket[i].sale.toFixed(2)
@@ -97,7 +97,7 @@ export class ListComponent implements OnInit {
       //   this.codebucket[i].margin = ((this.codeorders[i].reduce((a, b) => parseFloat(a.subtotal_price) + parseFloat(b.subtotal_price)))*(this.codebucket[i].marginper/100)).toFixed(2)
       // }
     }
-    console.log(this.codebucket)
+    // console.log(this.codebucket)
     this.disabled = false
   }
 

@@ -43,7 +43,7 @@ export class StoreComponent implements OnInit {
       // console.log(this.categories)
       // this.ref = "FREESHAKER"
       this.ref = JSON.parse(this.data.getuserdata()).referral_code
-      console.log(this.ref)
+      // console.log(this.ref)
     }
     else {
       this.http.get('http://partnerapi.andme.in/andme/products/')
