@@ -22,6 +22,8 @@ export class PerformanceComponent implements OnInit {
 
   httpOptions
   email
+  neworders
+  neworderlist = []
 margin
 res
 chart
@@ -154,68 +156,6 @@ datesetter() {
   }
  
   ngOnInit() {
-    if(this.data.getLdata()) {
-      try {
-        this.email = JSON.parse(this.data.getLdata()).email
-        this.http.get('http://partnerapi.andme.in/andme/reguser/'+ this.email)
-          .subscribe(
-            data => {
-              console.log(data)
-              this.updateddetails = data
-              console.log(this.updateddetails)
-            },
-            error => {
-              console.log(error)
-            }
-          )
-      }
-      catch {
-        this.email = null
-        console.log("W")
-      }
-    }
-    else if(this.data.getnldata()) {
-      try {
-        this.email = JSON.parse(this.data.getnldata()).name
-        this.http.get('http://partnerapi.andme.in/andme/reguser/'+ this.email)
-          .subscribe(
-            data => {
-              console.log(data)
-              this.updateddetails = data
-              console.log(this.updateddetails)
-            },
-            error => {
-              console.log(error)
-            }
-          )
-      }
-      catch {
-        this.email = null
-        console.log("W")
-      }
-    }
-    var ninety = moment().subtract(90, 'days').format()
-    this.http.get('http://partnerapi.andme.in/andme/orders/' + ninety)
-      .subscribe(
-        data => {
-          // console.log(JSON.stringify(data))
-          var neworders = JSON.stringify(data)
-          this.updateddetails['orders'] = neworders
-          console.log(this.updateddetails)
-          this.http.put('http://partnerapi.andme.in/andme/upreguser/'+this.email, this.updateddetails, this.httpOptions)
-            .subscribe(
-              data => {
-                console.log(data)
-              },
-              error => {
-                console.log(error)
-              }
-            )
-        },
-        error => {
-          alert(JSON.stringify(error))
-        }
-      )
     this.datesetter()
     // console.log(this.price)
     this.charter(this.datefinal, this.unit, this.steps)
@@ -260,7 +200,7 @@ datesetter() {
         // console.log(data);
         this.disabled = false
         this.deta = data
-        this.margin = this.data.getuserdata().margin/100
+        this.margin = JSON.parse(this.data.getuserdata()).margin/100
         // console.log(this.margin)
         for(var i = 0; i<this.deta.length; i++) {
           this.newlist.push(...(data[i].orders))
@@ -272,8 +212,8 @@ datesetter() {
           }
         }
         // console.log(this.codelist)
-        this.foundcode = this.codelist.filter(item => item.code=="FREESHAKER")
-        // this.foundcode = this.codelist.filter(item => item.code==this.data.getuserdata().referral_code)
+        // this.foundcode = this.codelist.filter(item => item.code=="FREESHAKER")
+        this.foundcode = this.codelist.filter(item => item.code==JSON.parse(this.data.getuserdata()).referral_code)
         // console.log(this.foundcode)
         for(var i=0; i<this.foundcode.length; i++) {
           this.foundorder.push(this.newlist.filter(item => item.discount_codes[0]==this.foundcode[i])[0])
@@ -531,7 +471,7 @@ datesetter() {
                 },
                 display: true,
                 scaleLabel: {
-                  display: true,
+                  display: false,
                   labelString: 'Time'
                 }
               }],

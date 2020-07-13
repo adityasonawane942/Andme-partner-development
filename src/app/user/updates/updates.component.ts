@@ -42,7 +42,7 @@ formatter = new Intl.NumberFormat('en-US', {
       data => {
         // console.log(data);
         this.deta = data
-        this.margin = this.data.getuserdata().margin/100
+        this.margin = (JSON.parse(this.data.getuserdata()).margin)/100
         // console.log(this.margin)
         for(var i = 0; i<this.deta.length; i++) {
           this.newlist.push(...(data[i].orders))

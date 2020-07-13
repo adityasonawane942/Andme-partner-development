@@ -41,9 +41,9 @@ export class StoreComponent implements OnInit {
       });
       this.categories = [...new Set(this.categories)]
       // console.log(this.categories)
-      this.ref = "FREESHAKER"
-      // this.ref = this.data.getuserdata().referral_code
-      // console.log(this.ref)
+      // this.ref = "FREESHAKER"
+      this.ref = JSON.parse(this.data.getuserdata()).referral_code
+      console.log(this.ref)
     }
     else {
       this.http.get('http://partnerapi.andme.in/andme/products/')
@@ -57,8 +57,8 @@ export class StoreComponent implements OnInit {
           });
           this.categories = [...new Set(this.categories)]
           // console.log(this.categories)
-          this.ref = this.data.getuserdata().referral_code
-          // console.log(this.ref)
+          this.ref = JSON.parse(this.data.getuserdata()).referral_code
+          console.log(this.ref)
         },
         error => {
           alert(JSON.stringify(error))

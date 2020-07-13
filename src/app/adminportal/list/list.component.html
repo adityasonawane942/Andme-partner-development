@@ -21,17 +21,32 @@
         </table>
     </div>
     <div id="registered">
-        <table style="width: 80%; text-align: center;">
+        <div style="margin: 2vw auto; width: 50%;">
+            <label for="dateoption">Select One</label>
+            <select [disabled]="disabled" class="form-control" id="dateoption" name="dateoption" (change)="select()" [(ngModel)]="dateoption">
+                <option>Today</option>
+                <option>Yesterday</option>
+                <option>Last 7 days</option>
+                <option>Last 30 days</option>
+                <option>Last 90 days</option>
+            </select>
+        </div>
+        <table style="width: 80%; position: relative; left: 5%; text-align: center;">
             <tr>
                 <th>Name</th>
                 <th>Details</th>
+                <th>Sales</th>
+                <th>Margin</th>
                 <th>Remove</th>
             </tr>
-            <tr *ngFor="let item of registered">
-                <td>{{item.name}}</td>
+            <tr *ngFor="let item of registered, let i=index">
+                <td>{{item.name}} ({{item.referral_code}})</td>
                 <td id="det" routerLink="/admin-panel/detail/reg/{{ item.email }}">Details</td>
+                <td>{{codebucket[i].sale}}</td>
+                <td>{{codebucket[i].margin}}</td>
                 <td><button (click)="remover(item.email)">Remove</button></td>
             </tr>
         </table>
+        <br><br>
     </div>
 </div>

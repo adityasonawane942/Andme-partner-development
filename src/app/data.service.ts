@@ -119,11 +119,11 @@ export class DataService {
   }
 
   setuserdata(data) {
-    this.userdata = data
+    localStorage.setItem('udata', JSON.stringify(data))
   }
 
   getuserdata() {
-    return this.userdata
+    return localStorage.getItem('udata')
   }
 
   setadata(data) {

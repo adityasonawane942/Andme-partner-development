@@ -66,6 +66,43 @@ canvas{
     border: 5px solid #ccc;
   }
 
+  .my {
+    width: 80%;
+  }
+
+  td {
+    font-size: 1.3vw;
+    vertical-align: middle;
+  }
+
+  @media screen and (max-width: 1000px) {
+    td {
+      font-size: 1.6vw;
+    }
+  }
+  
+  @media screen and (max-width: 800px) {
+    td {
+      font-size: 1.7vw;
+    }
+  }
+  
+  @media screen and (max-width: 700px) {
+    td {
+      font-size: 1.8vw;
+    }
+  }
+  
+  @media screen and (max-width: 576px) {
+    td {
+      font-size: 3vw;
+      line-height: 15px;
+    }
+    .my {
+      width: 95%;
+    }
+  }
+
   @-webkit-keyframes spin {
     0% {
       -webkit-transform: rotate(0deg);
