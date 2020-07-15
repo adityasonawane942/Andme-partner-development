@@ -40,18 +40,11 @@ export class ListComponent implements OnInit {
   deta
   codebucket = []
 
-
-  setstartdate() {
+  go() {
     this.datestart = this.customdatestart
     console.log(this.datestart)
-  }
-
-  setenddate() {
     this.dateend = this.customdateend
     console.log(this.dateend)
-  }
-
-  go() {
     this.orderlist = []
     this.codelist = []
     this.codeorders = []
