@@ -38,6 +38,9 @@ export class DataService {
   storedata
   postdata
   adata
+  orderdata
+  codebucketdata
+  reglistdata
 
     // Uses http.post() to get an auth token from djangorestframework-jwt endpoint
     public login(user) {
@@ -150,4 +153,28 @@ export class DataService {
     return this.postdata
   }
   
+  setorderdata(data) {
+    this.orderdata = data
+  }
+
+  getorderdata() {
+    return this.orderdata
+  }
+  
+  setcodebucketdata(data) {
+    this.codebucketdata = data
+  }
+
+  getcodebucketdata() {
+    return this.codebucketdata
+  }
+  
+  setreglistdata(data) {
+    this.reglistdata = data
+  }
+
+  getreglistdata() {
+    return this.reglistdata
+  }
+
  }

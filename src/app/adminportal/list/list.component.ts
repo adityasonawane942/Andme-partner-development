@@ -30,6 +30,8 @@ export class ListComponent implements OnInit {
   dateoption = "Today"
   datestart
   dateend = moment().format()
+  customdatestart
+  customdateend
   disabled
   newlist = []
   orderlist = []
@@ -38,6 +40,30 @@ export class ListComponent implements OnInit {
   deta
   codebucket = []
 
+
+  setstartdate() {
+    this.datestart = this.customdatestart
+    console.log(this.datestart)
+  }
+
+  setenddate() {
+    this.dateend = this.customdateend
+    console.log(this.dateend)
+  }
+
+  go() {
+    this.orderlist = []
+    this.codelist = []
+    this.codeorders = []
+    this.dateoption = "custom"
+    if(this.customdatestart!=null&&this.customdateend!=null) {
+      console.log("changer")
+      this.changer(this.datestart, this.dateend)
+    }
+    else {
+      alert("Please select a range")
+    }
+  }
 
   select() {
     this.orderlist = []
@@ -55,12 +81,15 @@ export class ListComponent implements OnInit {
         break
       case "Last 7 days":
         this.datestart = moment().subtract(7, 'days').format()
+        this.dateend = moment().format()
         break
       case "Last 30 days":
         this.datestart = moment().subtract(30, 'days').format()
+        this.dateend = moment().format()
         break
       case "Last 90 days":
         this.datestart = moment().subtract(90, 'days').format()
+        this.dateend = moment().format()
         break
       default:
         // console.log("def")
@@ -69,35 +98,55 @@ export class ListComponent implements OnInit {
   }
 
   changer(datestart, dateend) {
-    // console.log(datestart, dateend)
+    console.log(datestart, dateend)
     var i = 0
+    var j = 0
     var current = moment(this.newlist[0].created_at)
+    console.log(current)
+    if(datestart==moment().subtract(1, 'day').startOf('day').format()) {
+      console.log("IN")
+      while(current.isSameOrAfter(moment().subtract(1, 'day').endOf('day').format())) {
+        j = j + 1
+        console.log(j)
+        current = moment(this.newlist[j].created_at)
+        console.log(current)
+      }
+    }
+    else if(this.dateoption=="custom") {
+      console.log("IN2")
+      while(current.isSameOrAfter(dateend)) {
+        j = j + 1
+        console.log(j)
+        current = moment(this.newlist[j].created_at)
+        console.log(current)
+      }
+    }
+    console.log(current)
     while(current.isBetween(datestart, dateend)&&i<(this.newlist.length-1)) {
-      this.orderlist.push(this.newlist[i])
+      // console.log(i)
+      this.orderlist.push(this.newlist[j+i])
       i = i + 1
-      current = moment(this.newlist[i].created_at)
+      current = moment(this.newlist[j+i].created_at)
     }
-    // console.log(i)
-    // console.log(this.orderlist)
-    // console.log(current.format())
-    for(var j of this.codebucket) {
-      // console.log(j.code)
-      this.codeorders.push(this.orderlist.filter(item => {if(item.discount_codes.length&&item.discount_codes[0].code==j.code) {return item} else {return false}}))
+    console.log(i)
+    console.log(this.orderlist)
+    console.log(current.format())
+    for(var l of this.codebucket) {
+      // console.log(l.code)
+      this.codeorders.push(this.orderlist.filter(item => {if(item.discount_codes.length&&item.discount_codes[0].code==l.code) {return item} else {return false}}))
     }
-    // console.log(this.codeorders)
+    console.log(this.codeorders)
     for(var i=0; i<this.codeorders.length; i++) {
+      this.codebucket[i].sale = 0
+      this.codebucket[i].margin = 0
       for(var k = 0; k<this.codeorders[i].length; k++) {
-        // console.log(this.codeorders[i][k].subtotal_price)
+        console.log(this.codeorders[i][k].subtotal_price)
         this.codebucket[i].sale += parseFloat(this.codeorders[i][k].subtotal_price)
       }
       this.codebucket[i].sale = this.codebucket[i].sale.toFixed(2)
       this.codebucket[i].margin = (this.codebucket[i].sale*this.codebucket[i].marginper/100).toFixed(2)
-      // if(this.codeorders[i].length) {
-      //   this.codebucket[i].sale = this.codeorders[i].reduce((a, b) => parseFloat(a.subtotal_price) + parseFloat(b.subtotal_price)).toFixed(2)
-      //   this.codebucket[i].margin = ((this.codeorders[i].reduce((a, b) => parseFloat(a.subtotal_price) + parseFloat(b.subtotal_price)))*(this.codebucket[i].marginper/100)).toFixed(2)
-      // }
     }
-    // console.log(this.codebucket)
+    console.log(this.codebucket)
     this.disabled = false
   }
 
@@ -113,36 +162,60 @@ export class ListComponent implements OnInit {
           }
         )
 
+        if(!this.data.getcodebucketdata()||!this.data.getreglistdata()) {
       this.http.get('http://partnerapi.andme.in/andme/reglist')
         .subscribe(
           data => {
             // console.log(data)
             this.registered = data['registered'].reverse()
+            this.data.setreglistdata(this.registered)
             for(var i of data['registered']) {
               this.codebucket.push({code: i['referral_code'], marginper:i['margin'], sale: 0, margin: 0})
             }
             // console.log(this.codebucket)
+            this.data.setcodebucketdata(this.codebucket)
           },
           error => {
             alert(JSON.stringify(error))
           }
         )
+        }
+        else {
+          this.registered = this.data.getreglistdata()
+          console.log(this.registered)
+          this.codebucket = this.data.getcodebucketdata()
+          console.log(this.codebucket)
+        }
 
-        this.http.get('http://partnerapi.andme.in/andme/getorder/'+this.ninety)
-          .subscribe(
-            data => {
-              // console.log(data)
-              this.deta = data
-              for(var i = 0; i<this.deta.length; i++) {
-                this.newlist.push(...(data[i].orders))
-              }
-              // console.log(this.newlist)
-              this.select()
-            },
-            error => { 
-              alert(JSON.stringify(error))
+      if(!this.data.getorderdata()) {
+      this.http.get('http://partnerapi.andme.in/andme/getorder/'+this.ninety)
+        .subscribe(
+          data => {
+            // console.log(data)
+            this.deta = data
+            this.data.setorderdata(data)
+            for(var i = 0; i<this.deta.length; i++) {
+              this.newlist.push(...(data[i].orders))
             }
-          )
+            console.log(this.newlist)
+            this.select()
+            document.getElementById('loader-1').style.display = "none"
+          },
+          error => { 
+            alert(JSON.stringify(error))
+          }
+        )
+      }
+      else {
+        this.deta=this.data.getorderdata()
+        console.log("DETA")
+        for(var i = 0; i<this.deta.length; i++) {
+          this.newlist.push(...(this.deta[i].orders))
+        }
+        console.log(this.newlist)
+        this.select()
+        document.getElementById('loader-1').style.display = "none"
+      }
     }
     else {
       this._ngZone.run(() => this.router.navigate(['/home'] ));

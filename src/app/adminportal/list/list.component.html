@@ -21,16 +21,37 @@
         </table>
     </div>
     <div id="registered">
-        <div style="margin: 2vw auto; width: 50%;">
-            <label for="dateoption">Select One</label>
-            <select [disabled]="disabled" class="form-control" id="dateoption" name="dateoption" (change)="select()" [(ngModel)]="dateoption">
-                <option>Today</option>
-                <option>Yesterday</option>
-                <option>Last 7 days</option>
-                <option>Last 30 days</option>
-                <option>Last 90 days</option>
-            </select>
+        <div class="row">
+            <div class="col-sm-6">
+                <label for="dateoption">Select One</label>
+                <hr style="margin-top: 0; margin-bottom: 2.2rem;">
+                <select [disabled]="disabled" class="form-control" id="dateoption" name="dateoption" (change)="select()" [(ngModel)]="dateoption">
+                    <option>Today</option>
+                    <option>Yesterday</option>
+                    <option>Last 7 days</option>
+                    <option>Last 30 days</option>
+                    <option>Last 90 days</option>
+                </select>
+            </div>
+            <div class="col-sm-6">
+                <label for="dateoption">Select Date Range</label>
+                <hr style="margin-top: 0;">
+                <div class="row" style="margin-bottom: 2vw;">
+                    <div class="col-sm-5">
+                        <label>Start Date</label><br>
+                        <input style="width: 100%;" type="date" name="customdatestart" (change)="setstartdate()" [(ngModel)]="customdatestart">
+                    </div>
+                    <div class="col-sm-5">
+                        <label>End Date</label><br>
+                        <input style="width: 100%;" type="date" name="customdateend" (change)="setenddate()" [(ngModel)]="customdateend">
+                    </div>
+                    <div class="col-sm-2" style="margin: auto;">
+                        <button (click)="go()">Go</button>
+                    </div>
+                </div>
+            </div>
         </div>
+        <div class="loader" id="loader-1"></div>
         <table style="width: 80%; position: relative; left: 5%; text-align: center;">
             <tr>
                 <th>Name</th>
