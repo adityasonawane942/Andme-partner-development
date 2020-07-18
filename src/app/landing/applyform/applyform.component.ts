@@ -110,6 +110,8 @@ export class ApplyformComponent implements OnInit {
       // console.log(result)
       alert("Your details have been recorded. Futher details will be mailed to you.")
       this._ngZone.run(() => this.router.navigate(['/home'] ));
+      localStorage.removeItem('ldata')
+      localStorage.removeItem('nldata')
     },
     error => {
       // console.log(error)
