@@ -46,6 +46,12 @@ export class AboutComponent implements OnInit {
       this.http.post('http://partnerapi.andme.in/rout/users/', this.user, this.httpOptions)
         .subscribe(
           result => {
+            // console.log(result)
+            this.data.setnldata(JSON.stringify({
+              'name': '',
+              'email': result['email'],
+              'uidn': result['id']
+            }) );
             this._ngZone.run(() => this.router.navigate(['/form']));
           },
           error => {

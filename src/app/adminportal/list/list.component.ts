@@ -42,15 +42,15 @@ export class ListComponent implements OnInit {
 
   go() {
     this.datestart = this.customdatestart
-    console.log(this.datestart)
+    // console.log(this.datestart)
     this.dateend = this.customdateend
-    console.log(this.dateend)
+    // console.log(this.dateend)
     this.orderlist = []
     this.codelist = []
     this.codeorders = []
     this.dateoption = "custom"
     if(this.customdatestart!=null&&this.customdateend!=null) {
-      console.log("changer")
+      // console.log("changer")
       this.changer(this.datestart, this.dateend)
     }
     else {
@@ -91,55 +91,55 @@ export class ListComponent implements OnInit {
   }
 
   changer(datestart, dateend) {
-    console.log(datestart, dateend)
+    // console.log(datestart, dateend)
     var i = 0
     var j = 0
     var current = moment(this.newlist[0].created_at)
-    console.log(current)
+    // console.log(current)
     if(datestart==moment().subtract(1, 'day').startOf('day').format()) {
-      console.log("IN")
+      // console.log("IN")
       while(current.isSameOrAfter(moment().subtract(1, 'day').endOf('day').format())) {
         j = j + 1
-        console.log(j)
+        // console.log(j)
         current = moment(this.newlist[j].created_at)
-        console.log(current)
+        // console.log(current)
       }
     }
     else if(this.dateoption=="custom") {
-      console.log("IN2")
+      // console.log("IN2")
       while(current.isSameOrAfter(dateend)) {
         j = j + 1
-        console.log(j)
+        // console.log(j)
         current = moment(this.newlist[j].created_at)
-        console.log(current)
+        // console.log(current)
       }
     }
-    console.log(current)
+    // console.log(current)
     while(current.isBetween(datestart, dateend)&&i<(this.newlist.length-1)) {
       // console.log(i)
       this.orderlist.push(this.newlist[j+i])
       i = i + 1
       current = moment(this.newlist[j+i].created_at)
     }
-    console.log(i)
-    console.log(this.orderlist)
-    console.log(current.format())
+    // console.log(i)
+    // console.log(this.orderlist)
+    // console.log(current.format())
     for(var l of this.codebucket) {
       // console.log(l.code)
       this.codeorders.push(this.orderlist.filter(item => {if(item.discount_codes.length&&item.discount_codes[0].code==l.code) {return item} else {return false}}))
     }
-    console.log(this.codeorders)
+    // console.log(this.codeorders)
     for(var i=0; i<this.codeorders.length; i++) {
       this.codebucket[i].sale = 0
       this.codebucket[i].margin = 0
       for(var k = 0; k<this.codeorders[i].length; k++) {
-        console.log(this.codeorders[i][k].subtotal_price)
+        // console.log(this.codeorders[i][k].subtotal_price)
         this.codebucket[i].sale += parseFloat(this.codeorders[i][k].subtotal_price)
       }
       this.codebucket[i].sale = this.codebucket[i].sale.toFixed(2)
       this.codebucket[i].margin = (this.codebucket[i].sale*this.codebucket[i].marginper/100).toFixed(2)
     }
-    console.log(this.codebucket)
+    // console.log(this.codebucket)
     this.disabled = false
   }
 
@@ -175,9 +175,9 @@ export class ListComponent implements OnInit {
         }
         else {
           this.registered = this.data.getreglistdata()
-          console.log(this.registered)
+          // console.log(this.registered)
           this.codebucket = this.data.getcodebucketdata()
-          console.log(this.codebucket)
+          // console.log(this.codebucket)
         }
 
       if(!this.data.getorderdata()) {
@@ -190,7 +190,7 @@ export class ListComponent implements OnInit {
             for(var i = 0; i<this.deta.length; i++) {
               this.newlist.push(...(data[i].orders))
             }
-            console.log(this.newlist)
+            // console.log(this.newlist)
             this.select()
             document.getElementById('loader-1').style.display = "none"
           },
@@ -201,11 +201,11 @@ export class ListComponent implements OnInit {
       }
       else {
         this.deta=this.data.getorderdata()
-        console.log("DETA")
+        // console.log("DETA")
         for(var i = 0; i<this.deta.length; i++) {
           this.newlist.push(...(this.deta[i].orders))
         }
-        console.log(this.newlist)
+        // console.log(this.newlist)
         this.select()
         document.getElementById('loader-1').style.display = "none"
       }

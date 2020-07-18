@@ -58,7 +58,7 @@ export class StoreComponent implements OnInit {
           this.categories = [...new Set(this.categories)]
           // console.log(this.categories)
           this.ref = JSON.parse(this.data.getuserdata()).referral_code
-          console.log(this.ref)
+          // console.log(this.ref)
         },
         error => {
           alert(JSON.stringify(error))

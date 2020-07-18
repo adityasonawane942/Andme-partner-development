@@ -61,9 +61,9 @@ export class ApplyformComponent implements OnInit {
     this.uid = JSON.parse(this.data.getLdata()).uidg
     }
     catch {
-      this.name = ''
-      this.email = ''
-      this.uid = '0000'
+      this.name = JSON.parse(this.data.getnldata()).name
+      this.email = JSON.parse(this.data.getnldata()).email
+      this.uid = JSON.parse(this.data.getnldata()).uidn
     }
     // console.log(this.age)
     // console.log(this.tnc)

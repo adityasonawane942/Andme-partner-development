@@ -24,6 +24,8 @@ export class PerformanceComponent implements OnInit {
   email
   neworders
   neworderlist = []
+  datestart = moment().startOf('day').format()
+  dateend = moment().endOf('day').format()
 margin
 res
 chart
@@ -86,10 +88,45 @@ datesetter() {
   // console.log(this.last90days)
 }
 
+  ninety = moment().subtract(90, 'days').format()
+  codeorders = []
+  orderlist = []
+ 
+  ngOnInit() {
+    this.datesetter()
+    // console.log(this.price)
+    if(!this.data.getorderdata()) {
+      this.http.get('http://partnerapi.andme.in/andme/getorder/'+this.ninety)
+        .subscribe(
+          data => {
+            // console.log(data)
+            this.deta = data
+            this.data.setorderdata(data)
+            for(var i = 0; i<this.deta.length; i++) {
+              this.newlist.push(...(data[i].orders))
+            }
+            // console.log(this.newlist)
+            this.changer(this.datestart, this.dateend, this.unit, this.steps)
+            document.getElementById('loader-1').style.display = "none"
+          },
+          error => { 
+            alert(JSON.stringify(error))
+          }
+        )
+      }
+      else {
+        this.deta=this.data.getorderdata()
+        // console.log("DETA")
+        for(var i = 0; i<this.deta.length; i++) {
+          this.newlist.push(...(this.deta[i].orders))
+        }
+        // console.log(this.newlist)
+            this.changer(this.datestart, this.dateend, this.unit, this.steps)
+        document.getElementById('loader-1').style.display = "none"
+      }
+  }
 
   select() {
-    this.disabled = true
-    this.newlist = []
     this.codelist = []
     this.foundcode = []
     this.foundorder = []
@@ -103,151 +140,125 @@ datesetter() {
     this.charttwo.destroy()
     document.getElementById('canvas').style.display = "none"
     document.getElementById('canvastwo').style.display = "none"
-    // console.log(this.dateoption)
+    this.orderlist = []
+    this.codelist = []
+    this.codeorders = []
+    // this.disabled = true
     switch(this.dateoption) {
       case "Today":
-        this.datefinal = moment().startOf('day').format()
-        // this.finaldata = []
-        // var start = moment().startOf('day')
-        // for(var i=0; i<24; i=i+3) {
-        //   this.finaldata.push({x: start.toDate(), y: 0})
-        //   start = start.add(3, 'hours')
-        // }
-        // console.log(this.finaldata)
+        this.datestart = moment().startOf('day').format()
+        this.dateend = moment().endOf('day').format()
+        this.unit = 'hour'
+        this.steps = 3
         break
       case "Yesterday":
-        this.datefinal = moment().subtract(1, 'days').startOf('day').format()
-        // this.finaldata = []
-        // var start = moment().subtract(1, 'day').startOf('day')
-        // for(var i=0; i<24; i=i+3) {
-        //   this.finaldata.push({x: start.toDate(), y: 0})
-        //   start = start.add(3, 'hours')
-        // }
-        // console.log(this.finaldata)
+        this.datestart = moment().subtract(1, 'day').startOf('day').format()
+        this.dateend = moment().subtract(1, 'day').endOf('day').format()
+        this.unit = 'hour'
+        this.steps = 3
         break
       case "Last 7 days":
-        this.datefinal = moment().subtract(7, 'days').format()
+        this.datestart = moment().subtract(7, 'days').format()
+        this.dateend = moment().format()
         this.unit = 'day'
         this.steps = 1
-        // this.finaldata = []
-        // var start = moment().subtract(7, 'days')
-        // for(var i=0; i<7; i++) {
-        //   this.finaldata.push({x: start.toDate(), y: 0})
-        //   start = start.add(1, 'day')
-        // }
-        // console.log(this.finaldata)
         break
       case "Last 30 days":
-        this.datefinal = moment().subtract(30, 'days').format()
+        this.datestart = moment().subtract(30, 'days').format()
+        this.dateend = moment().format()
         this.unit = 'day'
         this.steps = 3
         break
       case "Last 90 days":
-        this.datefinal = moment().subtract(90, 'days').format()
+        this.datestart = moment().subtract(90, 'days').format()
+        this.dateend = moment().format()
         this.unit = 'day'
         this.steps = 9
         break
       default:
         // console.log("def")
     }
-    document.getElementById('loader-1').style.display = "block"
-    document.getElementById('loader-2').style.display = "block"
-    this.charter(this.datefinal, this.unit, this.steps)
-  }
- 
-  ngOnInit() {
-    this.datesetter()
-    // console.log(this.price)
-    this.charter(this.datefinal, this.unit, this.steps)
+    this.changer(this.datestart, this.dateend, this.unit, this.steps)
   }
 
-  // dater(startday) {
-  //   var now = moment()
-  //   var start = moment().subtract(startday, 'days')
-  //   var next = moment().subtract(startday-1, 'days')
-  //   console.log(now.format())
-  //   console.log(start.format())
-  //   console.log(next.format())
-  //   var count = 0
-  //   while(next.format()!=now.format()&&count!=7) {
-  //     count = count + 1
-  //     this.finaldata.push({x: start.toDate(), y: 0})
-  //     console.log("add0")
-  //     for(var i=0; i<this.price.length; i++) {
-  //       console.log("for")
-  //       var mome = moment(this.dates[this.dates.length - i - 1])
-  //       console.log(mome.format())
-  //       if(mome.isBetween(start, next)) {
-  //         this.finaldata.push({x: new Date(this.dates[this.dates.length - i - 1]).toDateString(), y: this.price[i].toFixed(2)})
-  //         this.finaldatamargin.push({x: new Date(this.dates[this.dates.length - i - 1]).toDateString(), y: (this.price[i]*this.margin).toFixed(2)})
-  //       }
-  //     }
-  //     start = next
-  //     console.log(start.format())
-  //     next = next.add(1, 'day')
-  //     console.log(next.format())
-  //     console.log(next.format()==now.format())
-  //     console.log(now.format())
-  //   }
-  // }
-  
-  charter(date, unit, steps) {
-    document.getElementById('canvas').style.display = "none"
-    document.getElementById('canvastwo').style.display = "none"
-    this.http.get('http://partnerapi.andme.in/andme/orders/' + date)
-    .subscribe(
-      data => {
-        // console.log(data);
-        this.disabled = false
-        this.deta = data
-        this.margin = JSON.parse(this.data.getuserdata()).margin/100
-        // console.log(this.margin)
-        for(var i = 0; i<this.deta.length; i++) {
-          this.newlist.push(...(data[i].orders))
+  changer(datestart, dateend, unit, steps) {
+    this.margin = JSON.parse(this.data.getuserdata()).margin/100
+    // console.log(datestart, dateend)
+    var i = 0
+    var j = 0
+    var current = moment(this.newlist[0].created_at)
+    // console.log(current)
+    if(datestart==moment().subtract(1, 'day').startOf('day').format()) {
+      // console.log("IN")
+      while(current.isSameOrAfter(moment().subtract(1, 'day').endOf('day').format())) {
+        j = j + 1
+        // console.log(j)
+        current = moment(this.newlist[j].created_at)
+        // console.log(current)
+      }
+    }
+    else if(this.dateoption=="custom") {
+      unit = 'day'
+      // console.log("IN2")
+      while(current.isSameOrAfter(dateend)) {
+        j = j + 1
+        // console.log(j)
+        current = moment(this.newlist[j].created_at)
+        // console.log(current)
+      }
+    }
+    // console.log(current)
+    while(current.isBetween(datestart, dateend)&&i<(this.newlist.length-1)) {
+      // console.log(i)
+      this.orderlist.push(this.newlist[j+i])
+      i = i + 1
+      current = moment(this.newlist[j+i].created_at)
+    }
+    // console.log(this.orderlist)
+    for(var i=0; i<this.orderlist.length; i++) {
+      if(this.orderlist[i].discount_codes.length) {
+        if(this.orderlist[i].discount_codes[0].code==JSON.parse(this.data.getuserdata()).referral_code) {
+          this.foundorder.push(this.orderlist[i])
         }
-        // console.log(this.newlist)
-        for(i of this.newlist) {
-          if(i['discount_codes'].length) {
-            this.codelist.push(...i['discount_codes'])
-          }
-        }
-        // console.log(this.codelist)
-        // this.foundcode = this.codelist.filter(item => item.code=="FREESHAKER")
-        this.foundcode = this.codelist.filter(item => item.code==JSON.parse(this.data.getuserdata()).referral_code)
-        // console.log(this.foundcode)
-        for(var i=0; i<this.foundcode.length; i++) {
-          this.foundorder.push(this.newlist.filter(item => item.discount_codes[0]==this.foundcode[i])[0])
-        }
-        // console.log(this.foundorder)
-        this.price = this.foundorder.map(res => parseFloat(res.subtotal_price))
+      }
+    }
+    // this.foundorder = this.orderlist.filter(item => item.discount_codes[0].code=="ANDME5")
+    // console.log(this.foundorder)
+    this.price = this.foundorder.map(res => parseFloat(res.subtotal_price))
         // console.log(this.price.reverse())
         this.dates = this.foundorder.map(res => moment(res.created_at).format('LLL'))
         this.dates = this.dates.reverse()
         this.datesfortable = this.foundorder.map(res => moment(res.created_at).format('LLL'))
         // console.log(this.dates.reverse())
-        for(var i=0; i<this.dates.length-1; i++) {
-          if(this.dates[i].substr(0,13)==this.dates[i+1].substr(0,13)) {
-            // console.log(this.dates[i].substr(0,13))
-            // console.log(this.dates[i+1].substr(0,13))
-            // console.log(new Date(this.dates[i].substr(0,13)).toDateString())
-            this.dates.splice(i, 0, moment(this.dates[i]).format('LLL'))
-            // console.log(this.dates)
-            this.dates.splice(i,2)
-            // console.log(this.dates)
-            // console.log(this.price[this.price.length - i-1])
-            // console.log(this.price[this.price.length - i-2])
-            // console.log(this.price[this.price.length - i-1] + this.price[this.price.length - i-2])
-            this.price.splice(this.price.length - i, 0,this.price[this.price.length - i-1] + this.price[this.price.length - i-2])
-            // console.log(this.price)
-            this.price.splice(this.price.length - i-3,2)
-            // console.log(this.price)
+        if((this.dateoption!="Today")&&(this.dateoption!="Yesterday")) {
+          for(var i=0; i<this.dates.length-1; i++) {
+            if(this.dates[i].substr(0,13)==this.dates[i+1].substr(0,13)) {
+              // console.log(this.dates[i].substr(0,13))
+              // console.log(this.dates[i+1].substr(0,13))
+              // console.log(new Date(this.dates[i].substr(0,13)).toDateString())
+              this.dates.splice(i, 0, moment(this.dates[i]).format('LLL'))
+              // console.log(this.dates)
+              this.dates.splice(i,2)
+              // console.log(this.dates)
+              // console.log(this.price[this.price.length - i-1])
+              // console.log(this.price[this.price.length - i-2])
+              // console.log(this.price[this.price.length - i-1] + this.price[this.price.length - i-2])
+              this.price.splice(this.price.length - i, 0,this.price[this.price.length - i-1] + this.price[this.price.length - i-2])
+              // console.log(this.price)
+              this.price.splice(this.price.length - i-3,2)
+              // console.log(this.price)
+            }
           }
         }
-        // this.dater(7)
         for(var i=0; i<this.price.length; i++) {
           this.finaldata.push({x: new Date(this.dates[this.dates.length - i - 1]).toISOString(), y: this.price[i].toFixed(2)})
+          // console.log(this.price[i])
+          // console.log(this.margin)
+          // console.log(this.price[i]*this.margin)
           this.finaldatamargin.push({x: new Date(this.dates[this.dates.length - i - 1]).toISOString(), y: (this.price[i]*this.margin).toFixed(2)})
         }
+        // console.log(this.finaldata)
+        // console.log(this.finaldatamargin)
         switch(this.dateoption) {
           case "Today":
             var listC = this.finaldata.concat(this.today)
@@ -368,7 +379,12 @@ datesetter() {
                 title: function(tooltipItems, data) {
                   //Return value for title
                   if(tooltipItems[0].yLabel!=0) {
-                    return new Date(tooltipItems[0].xLabel).toDateString();
+                    if(this.dateoption=="Today"||this.dateoption=="Yesterday") {
+                      return tooltipItems[0].xLabel.toString()
+                    }
+                    else {
+                      return new Date(tooltipItems[0].xLabel).toDateString();
+                    }
                   }
                   else {
                     return ''
@@ -417,7 +433,7 @@ datesetter() {
 
         document.getElementById('loader-2').style.display = "none"
         document.getElementById('canvastwo').style.display = "block"
-        
+
         this.charttwo = new Chart('canvastwo', {
           type: 'line',
           data: {
@@ -454,7 +470,20 @@ datesetter() {
               callbacks: {
                 title: function(tooltipItems, data) {
                   //Return value for title
-                  return moment(tooltipItems[0].xLabel).toString().substr(0,24);
+                  if(tooltipItems[0].yLabel!=0) {
+                    return new Date(tooltipItems[0].xLabel).toDateString();
+                  }
+                  else {
+                    return ''
+                  }
+                },
+                label: function(tooltipItems, data) {
+                  if(tooltipItems.yLabel!=0) {
+                    return tooltipItems.yLabel.toString()
+                  }
+                  else {
+                    return ''
+                  }
                 },
               }
             },
@@ -491,11 +520,7 @@ datesetter() {
             }
           }
         })
-      },
-      error => {
-        alert(JSON.stringify(error))
-      }
-    )
+
   }
 
 }
